@@ -1,2 +1,26 @@
 @charset "UTF-8";
 
+#wrap{
+	width:1200px;
+	margin:0 auto;
+}
+
+
+header{
+	height:200px;
+}
+
+
+
+section{
+	height:700px;
+}
+
+footer{
+	height:100px;
+}
+
+/*회원가입*/
+#joinForm{
+	width:400px;
+}
