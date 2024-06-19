@@ -26,18 +26,32 @@
 					</div>
 					<input type="password" class="form-control mb-4" placeholder="PW">
 					<input type="password" class="form-control mb-4" placeholder="PW CHECK">
-					<div class="d-flex">
-						<input type="text" class="form-control mb-4 col-3" placeholder="010">
-						<input type="text" class="form-control mb-4 col-4" placeholder="1234">
-						<input type="text" class="form-control mb-4 col-4" placeholder="5678">
+					<div class="d-flex justify-content-between mb-4">
+						<input type="text" class="form-control col-3" placeholder="010">
+						<h3>-</h3>
+						<input type="text" class="form-control col-4" placeholder="1234">
+						<h3>-</h3>
+						<input type="text" class="form-control col-4" placeholder="5678">
 					</div>
-					<div class="d-flex">
-						<input type="text" class="form-control mb-4" placeholder="이메일">
-						<div class="box domain">
-							
-						</div>				
+					<div class="d-flex justify-content-between mb-4">
+						<input type="text" class="form-control col-5" placeholder="이메일">
+						<h3>@</h3>
+						<input type="text" class="form-control col-5" placeholder="선택하세요">							
+										
 					</div>
-					<input type="text" class="form-control mb-4" placeholder="addresss">
+					
+					<div class="d-flex justify-content-between align-items-center text-align-center">
+						<input type="text" class="form-control col-3" placeholder="yyyy">
+						<h4>년</h4>
+						<input type="text" class="form-control col-2" placeholder="mm">
+						<h3>월</h3>
+						<input type="text" class="form-control col-2" placeholder="dd">
+						<h3>일</h3>
+					</div>
+					<div>
+						성별 선택 버튼
+					</div>
+					
 					<button type="button" class="btn btn-info">회원가입</button>
 				</div>
 			</div>
