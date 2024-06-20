@@ -40,7 +40,7 @@
 										
 					</div>
 					
-					<div class="d-flex justify-content-between align-items-center text-align-center">
+					<div class="d-flex justify-content-between align-items-center text-align-center mb-3">
 						<input type="text" class="form-control col-3" placeholder="yyyy">
 						<h4>년</h4>
 						<input type="text" class="form-control col-2" placeholder="mm">
@@ -48,8 +48,16 @@
 						<input type="text" class="form-control col-2" placeholder="dd">
 						<h3>일</h3>
 					</div>
-					<div>
-						성별 선택 버튼
+					<div class="mb-3 d-flex justify-content-center align-items-center">
+						<div>성별 : &nbsp;</div>
+						<div class="form-check form-check-inline d-flex align-items-center">
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+							<label class="form-check-label" for=inlineRadio1">남성</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+							<label class="form-check-label" for=inlineRadio2">여성</label>
+						</div>
 					</div>
 					
 					<button type="button" class="btn btn-info">회원가입</button>
