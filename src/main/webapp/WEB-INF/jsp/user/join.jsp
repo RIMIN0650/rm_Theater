@@ -82,18 +82,27 @@
 	
 	<script>
 		$(document).ready(function(){
-			var now = new Date();
-			var currentYear = now.getFullYear();
-			var sex = "neutral";
+			
+			var now = new Date(); // 현재 날짜 불러오기
+			var currentYear = now.getFullYear(); // 현재 년도 변수에 저장
+			// var sex = "neutral"; // 초기 성별을 중립으로 설정
 			var checkId = false;
 			
-			
-			// 아이디 입력 부분에 변화가 생긴 경우
-			// 모든 관련 부분 초기화 시켜주기
-			/* $("#identifier").on("input",function){
+		
+			$("#telNum1").on("input",function(){
+				$(this).val($(this).val().replace(/[^0-9]/g, ''));
+				// $(this).val()은 입력 필드의 현재 값을 가져오고
+				// 'replace' 메소드를 통해 숫자가 아닌 모든 문자를 빈 문자열로 대체한 다음
+				// 다시 $(this).val()을 사용해서 필드의 값을 업데이트
 				
-			} */
+			});
 			
+			$("#telNum2").on("input",function(){
+				$(this).val($(this).val().replace(/[^0-9]/g, ''));});
+			
+			$("#telNum3").on("input",function(){
+				$(this).val($(this).val().replace(/[^0-9]/g, ''));			
+			});
 			
 			
 			
