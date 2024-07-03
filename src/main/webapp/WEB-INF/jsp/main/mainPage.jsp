@@ -12,7 +12,7 @@
 
 	<div id="wrap">
 		<header class="bg-success text-center">
-			<h2 class="pt-3">RM Theater</h2>
+			<h1 class="pt-3">RM Theater</h1>
 		</header>
 		
 		
@@ -23,7 +23,7 @@
 				<li class="nav-item mt-1"><a href="#">영화</a></li>
 				<li class="nav-item mt-1"><a href="#">스토어</a></li>
 				<div class="input-group col-4 mb-1">
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" placeholder="검색할 내용을 입력하세요">
 					<div class="input-group-append">
 					<!-- 입력 필드와 버튼이 함께 한 줄로 정렬하고, 버튼이 입력 필드와 시각적으로 연결 -->
 					<button type="button" class="btn btn-info">검색</button>
@@ -35,8 +35,14 @@
 			</ul>
 		</nav>
 		
-		<section>
+		<section class="bg-info">
+			<div>
 			
+			</div>
+			
+			<div>
+			
+			</div>
 		</section>
 			
 		<footer class="bg-warning">
