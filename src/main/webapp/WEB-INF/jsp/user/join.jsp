@@ -88,7 +88,7 @@
 			// var sex = "neutral"; // 초기 성별을 중립으로 설정
 			var checkId = false;
 			
-		
+			
 			$("#telNum1").on("input",function(){
 				$(this).val($(this).val().replace(/[^0-9]/g, ''));
 				// $(this).val()은 입력 필드의 현재 값을 가져오고
@@ -98,7 +98,8 @@
 			});
 			
 			$("#telNum2").on("input",function(){
-				$(this).val($(this).val().replace(/[^0-9]/g, ''));});
+				$(this).val($(this).val().replace(/[^0-9]/g, ''));
+			});
 			
 			$("#telNum3").on("input",function(){
 				$(this).val($(this).val().replace(/[^0-9]/g, ''));			
@@ -130,7 +131,6 @@
 				let birthYear = $("#birthYear").val();
 				let birthMonth = $("#birthMonth").val();
 				let birthDate = $("#birthDate").val();
-				let birthDay = birthYear + birthMonth + birthDate;
 				let age = currentYear - birthYear
 				let sex = $('input[name=sex]:checked').val();
 				
@@ -167,8 +167,15 @@
 					return;
 				}
 				
+				if(birthMonth < 10){
+					birthMonth = "0" + birthMonth;
+				}
 				
+				if(birthDate < 10){
+					birthDate = "0" + birthDate;
+				}
 				
+				let birthDay = birthYear + birthMonth + birthDate;
 				$.ajax({
 					type:"post"
 					, url:"/user/join"
@@ -177,7 +184,7 @@
 							, success:function(data){
 								if(data.result == "success"){
 									alert("회원가입 성공! 환영합니다");
-									
+									alert(birthDay);
 								} else {
 									alert("로그인 실패");
 								}
