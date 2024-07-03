@@ -96,13 +96,23 @@
 			
 			var isDupCheck = false; // 아이디 중복 확인 검사
 			
+			$("#identifier").on("input",function(){
+				// 아이디 입력 칸에 변화가 생긴 경우
+				// 아이디 중복확인과 관련된 모든 부분을 초기화하기
+				isDupCheck = false;
+				isDuplicateId = true;
+				
+				$("#dupId").addClass("d-none");
+				$("#possId").addClass("d-none");
+				
+			});
+			
 			
 			$("#telNum1").on("input",function(){
 				$(this).val($(this).val().replace(/[^0-9]/g, ''));
 				// $(this).val()은 입력 필드의 현재 값을 가져오고
 				// 'replace' 메소드를 통해 숫자가 아닌 모든 문자를 빈 문자열로 대체한 다음
 				// 다시 $(this).val()을 사용해서 필드의 값을 업데이트
-				
 			});
 			
 			$("#telNum2").on("input",function(){
@@ -127,12 +137,13 @@
 					, url:"/user/duplicate-id"
 					, data:{"loginId":id}
 					, success:function(data){
+						
 						isDupCheck = true; // 아이디 중복 확인 여부를 참으로 만들기
-						if(data.isDuplicateId){
+						if(data.isDuplicateId){ // 만약 중복된 아이디라면
 							isDupId = true;
 							$("#dupId").removeClass("d-none");
 							$("#possId").addClass("d-none");
-						} else {
+						} else { // 아이디가 중복이 아니라면
 							isDupId = false;
 							$("#possId").removeClass("d-none");
 							$("#dupId").addClass("d-none");
@@ -164,46 +175,57 @@
 				
 				if(id == ""){
 					alert("id를 입력하세요.");
-					return;
+					return ;
+				}
+				
+				if(!isDupCheck){
+					alert("아이디 중복 확인을 해주세요");
+					return ;
+				}
+				
+				if(isDupId){ // 아이디가 중복 된 것을 띄워도 회원가입 버튼을 누른 경우
+					alert("아이디가 중복되었습니다");
+					return ;
 				}
 				
 				if(name == ""){
 					alert("이름을 입력하세요.");
-					return;
+					return ;
 				}
 				
 				if(pw == ""){
 					alert("비밀번호를 입력하세요.");
-					return;
+					return ;
 				}
 				
 				if(pwCheck != pw){
 					alert("비밀번호가 일치하지 않습니다.");
-					return;
+					return ;
 				}
 				
 				if(telNum1 == "" || telNum2 == "" || telNum3 == "" || phoneNumber.length != 11){
 					alert("전화번호를 확인하세요");
-					return;
+					return ;
 				}
 				
 				if(emailId == "" || emailDomain == ""){
 					alert("이메일을 확인하세요");
-					return;
+					return ;
 				}
 				
 				if(birthYear == "" || birthMonth == "" || birthDate == ""){
 					alert("생년월일을 확인하세요.");
-					return;
+					return ;
 				}
 				
 				if(sex != "MALE" && sex != "FEMALE"){
 					alert("성별을 선택해주세요");
-					return;
+					return ;
 				}
 				
 				if(birthMonth >12){
 					alert("월을 확인하세요");
+					return ;
 				}
 				
 				if(birthMonth < 10){ // 월을 7로 입력한 경우 07로 변환
@@ -212,6 +234,7 @@
 				
 				if(birthDate > 31){
 					alert("일을 확인하세요");
+					return ;
 				}
 				
 				if(birthDate < 10){ // 일을 3으로 입력한 경우 03으로 변환
