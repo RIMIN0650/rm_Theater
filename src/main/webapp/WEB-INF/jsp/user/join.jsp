@@ -11,12 +11,12 @@
 </head>
 <body>
 	
-	<div id="wrap" class="bg-dark">
+	<div id="wrap" class="">
 		<header class="bg-info text-center mt-3">
 			<h1 class="display-2">RM_THEATER</h1>
 		</header>
 	
-		<section class="bg-success d-flex justify-content-center">
+		<section class="d-flex justify-content-center">
 			<div class="text-center" id="joinForm">
 				<h1 class="my-5">Join RM Theater</h1>
 				<div>
@@ -24,10 +24,15 @@
 						<input type="text" class="form-control col-8" placeholder="ID" id="identifier">
 						<button type="button" class="btn btn-info" id="checkDupBtn">중복 확인</button>
 					</div>
+					<div class="d-flex justify-content-center align-items-start">
+						<div class="small text-danger d-none mb-3" id="dupId">중복된 id 입니다.</div>
+						<div class="small text-success d-none mb-3" id="possId">사용 가능한 id 입니다.</div>
+					</div>
+					
 					
 					<input type="text" class="form-control mb-4" placeholder="Name" id="name">
 					<input type="password" class="form-control mb-4" placeholder="PW" id="password">
-					<input type="passwordCheck" class="form-control mb-4" placeholder="PW CHECK" id="passwordCheck">
+					<input type="password" class="form-control mb-4" placeholder="PW CHECK" id="passwordCheck">
 					<div class="d-flex justify-content-between mb-4">
 						<input type="text" class="form-control col-3" placeholder="010" maxlength='3' id="telNum1">
 						<h3>-</h3>
@@ -92,7 +97,6 @@
 			var isDupCheck = false; // 아이디 중복 확인 검사
 			
 			
-			
 			$("#telNum1").on("input",function(){
 				$(this).val($(this).val().replace(/[^0-9]/g, ''));
 				// $(this).val()은 입력 필드의 현재 값을 가져오고
@@ -126,10 +130,12 @@
 						isDupCheck = true; // 아이디 중복 확인 여부를 참으로 만들기
 						if(data.isDuplicateId){
 							isDupId = true;
-							alert("중복");
+							$("#dupId").removeClass("d-none");
+							$("#possId").addClass("d-none");
 						} else {
 							isDupId = false;
-							alert("중복 아님");
+							$("#possId").removeClass("d-none");
+							$("#dupId").addClass("d-none");
 						}
 					}
 					, error:function(){
