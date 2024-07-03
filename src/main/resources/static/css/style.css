@@ -1,32 +1,36 @@
 @charset "UTF-8";
 
 #wrap{
-	width:1200px;
-	margin:0 auto;
+	width: 1600px;
+	margin: 0 auto;
 }
 
 
 header{
-	height:200px;
+	height: 200px;
 }
 
 
 
 section{
-	height:700px;
+	height: 700px;
 }
 
 footer{
-	height:100px;
+	height: 100px;
 }
-
-
-
 
 
 
 
 /*회원가입*/
 #joinForm{
-	width:300px;
+	width: 300px;
+}
+
+
+/*메인 페이지*/
+.main-menu{
+	height: 60px;
+	align-items: center;
 }
