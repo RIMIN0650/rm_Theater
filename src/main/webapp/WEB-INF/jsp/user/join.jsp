@@ -86,7 +86,11 @@
 			var now = new Date(); // 현재 날짜 불러오기
 			var currentYear = now.getFullYear(); // 현재 년도 변수에 저장
 			// var sex = "neutral"; // 초기 성별을 중립으로 설정
-			var checkId = false;
+			
+			var isDupId = true; // 중복된 아이디인지 체크
+			
+			var isDupCheck = false; // 아이디 중복 확인 검사
+			
 			
 			
 			$("#telNum1").on("input",function(){
@@ -114,6 +118,24 @@
 					return;
 				}
 				
+				$.ajax({
+					type:"get"
+					, url:"/user/duplicate-id"
+					, data:{"loginId":id}
+					, success:function(data){
+						isDupCheck = true; // 아이디 중복 확인 여부를 참으로 만들기
+						if(data.isDuplicateId){
+							isDupId = true;
+							alert("중복");
+						} else {
+							isDupId = false;
+							alert("중복 아님");
+						}
+					}
+					, error:function(){
+						alert("중복 확인 에러");
+					}
+				});
 			});
 			
 			$("#joinBtn").on("click",function(){
@@ -199,7 +221,6 @@
 							, success:function(data){
 								if(data.result == "success"){
 									alert("회원가입 성공! 환영합니다");
-									alert(birthDay);
 								} else {
 									alert("로그인 실패");
 								}

@@ -37,4 +37,15 @@ public class UserService {
 	
 	
 	
+	// id 중복 확인
+	public boolean isDuplicateId(String loginId) {
+		int count = userRepository.countByLoginId(loginId);
+		
+		if(count != 0 ) { // 조회된 개수가 0이 아니라면 중복된 아이디
+			return true; // 중복
+		} else {
+			return false; // 중복 아님
+		}
+	}
+	
 }
