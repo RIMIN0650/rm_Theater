@@ -138,40 +138,55 @@
 					alert("id를 입력하세요.");
 					return;
 				}
+				
 				if(name == ""){
 					alert("이름을 입력하세요.");
 					return;
 				}
+				
 				if(pw == ""){
 					alert("비밀번호를 입력하세요.");
 					return;
 				}
+				
 				if(pwCheck != pw){
 					alert("비밀번호가 일치하지 않습니다.");
 					return;
 				}
+				
 				if(telNum1 == "" || telNum2 == "" || telNum3 == "" || phoneNumber.length != 11){
 					alert("전화번호를 확인하세요");
 					return;
 				}
+				
 				if(emailId == "" || emailDomain == ""){
 					alert("이메일을 확인하세요");
 					return;
 				}
+				
 				if(birthYear == "" || birthMonth == "" || birthDate == ""){
 					alert("생년월일을 확인하세요.");
 					return;
 				}
+				
 				if(sex != "MALE" && sex != "FEMALE"){
 					alert("성별을 선택해주세요");
 					return;
 				}
 				
-				if(birthMonth < 10){
+				if(birthMonth >12){
+					alert("월을 확인하세요");
+				}
+				
+				if(birthMonth < 10){ // 월을 7로 입력한 경우 07로 변환
 					birthMonth = "0" + birthMonth;
 				}
 				
-				if(birthDate < 10){
+				if(birthDate > 31){
+					alert("일을 확인하세요");
+				}
+				
+				if(birthDate < 10){ // 일을 3으로 입력한 경우 03으로 변환
 					birthDate = "0" + birthDate;
 				}
 				
