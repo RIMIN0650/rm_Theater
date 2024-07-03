@@ -32,5 +32,5 @@ footer{
 /*메인 페이지*/
 .main-menu{
 	height: 60px;
-	align-items: center;
+	align-items: end;
 }

@@ -14,11 +14,14 @@
 		<header class="bg-success text-center">
 			<h2 class="pt-3">RM Theater</h2>
 		</header>
+		
+		
+		
 		<nav class="main-menu">
 			<ul class="nav nav-fill pt-3">
-				<li class="nav-item"><a href="#">예매</a></li>
-				<li class="nav-item"><a href="#">영화</a></li>
-				<li class="nav-item"><a href="#">스토어</a></li>
+				<li class="nav-item mt-1"><a href="#">예매</a></li>
+				<li class="nav-item mt-1"><a href="#">영화</a></li>
+				<li class="nav-item mt-1"><a href="#">스토어</a></li>
 				<div class="input-group col-4 mb-1">
 					<input type="text" class="form-control">
 					<div class="input-group-append">
@@ -26,9 +29,9 @@
 					<button type="button" class="btn btn-info">검색</button>
 					</div>
 				</div>
-				<li class="nav-item"><a href="#">로그인</a></li>
-				<li class="nav-item"><a href="#">회원가입</a></li>
-				<li class="nav-item"><a href="#">비회원 예매</a></li>
+				<li class="nav-item mt-1"><a href="#">로그인</a></li>
+				<li class="nav-item mt-1"><a href="#">회원가입</a></li>
+				<li class="nav-item mt-1"><a href="#">비회원 예매</a></li>
 			</ul>
 		</nav>
 		
