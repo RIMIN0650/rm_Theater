@@ -19,9 +19,9 @@
 		
 		<nav class="main-menu">
 			<ul class="nav nav-fill pt-3">
-				<li class="nav-item mt-1"><a href="#">예매</a></li>
-				<li class="nav-item mt-1"><a href="#">영화</a></li>
-				<li class="nav-item mt-1"><a href="#">스토어</a></li>
+				<li class="nav-item mt-2"><a href="#">예매</a></li>
+				<li class="nav-item mt-2"><a href="#">영화</a></li>
+				<li class="nav-item mt-2"><a href="#">스토어</a></li>
 				<div class="input-group col-4 mb-1">
 					<input type="text" class="form-control" placeholder="검색할 내용을 입력하세요">
 					<div class="input-group-append">
@@ -29,24 +29,45 @@
 					<button type="button" class="btn btn-info">검색</button>
 					</div>
 				</div>
-				<li class="nav-item mt-1"><a href="#">로그인</a></li>
-				<li class="nav-item mt-1"><a href="#">회원가입</a></li>
-				<li class="nav-item mt-1"><a href="#">비회원 예매</a></li>
+				<li class="nav-item mt-2"><a href="#">로그인</a></li>
+				<li class="nav-item mt-2"><a href="#">회원가입</a></li>
+				<li class="nav-item mt-2"><a href="#">비회원 예매</a></li>
 			</ul>
 		</nav>
 		
-		<section class="bg-info">
-			<div>
-			
+		<section>
+			<div class="movie-thumbnail bg-light d-flex justify-content-center align-items-center">
+				<h3>slick 사용해서 영화 포스터 회전시킬 공간</h3>
 			</div>
 			
-			<div>
-			
+			<div class="movie-subInfo d-flex justify-content-between align-items-center mx-2">
+				<div class="bg-info movie-1">
+					<h2 class="ml-2 mt-1">1</h2>
+					<div>
+						<img src="https://cdn.pixabay.com/photo/2022/04/17/20/44/film-noir-7138980_1280.jpg" width="100%">
+						<h4 class="mt-1 ml-1">영화 1</h4>
+					</div>
+				</div>
+				<div class="bg-secondary movie-1">
+					<h2 class="ml-2 mt-1">2</h2>
+				</div>
+				<div class="bg-warning movie-1">
+					<h2 class="ml-2 mt-1">3</h2>
+				</div>
+				<div class="bg-danger movie-1">
+					<h2 class="ml-2 mt-1">4</h2>
+				</div>
+				<div class="bg-success movie-1">
+					<h2 class="ml-2 mt-1">5</h2>
+				</div>
 			</div>
 		</section>
 			
-		<footer class="bg-warning">
-			
+		<footer class="bg-warning pl-3 pt-1">
+			<div>(230905)경기도 용인시 수지구 정평로 03-27</div>
+			<div>대표 : 권민석 • 사업자 등록 번호 323-65-06503</div>
+			<div>대표 이메일 : chris0540@naver.com</div>
+			<div>©THE RM. All Rights Reserved</div>
 		</footer>
 	</div>
 
