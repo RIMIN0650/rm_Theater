@@ -31,6 +31,7 @@ footer{
 .main-menu{
 	height: 60px;
 	align-items: end;
+	background-color:#b3ffc3;
 }
 
 .movie-thumbnail{
@@ -42,6 +43,10 @@ footer{
 }
 
 .movie-1{
-	height: 650px;
+	height: 580px;
 	width: 280px;
+	border: 1px solid;
+}
+#searchInput{
+	margin-top:11px;
 }
