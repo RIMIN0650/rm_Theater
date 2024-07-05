@@ -34,7 +34,7 @@
 					</div>
 				</div>
 				<li class="nav-item mt-3"><a href="#" class="text-dark">로그인</a></li>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">회원가입</a></li>
+				<li class="nav-item mt-3"><a href="/user/join" class="text-dark">회원가입</a></li>
 				<li class="nav-item mt-3"><a href="#" class="text-dark">비회원 예매</a></li>
 			</ul>
 		</nav>
