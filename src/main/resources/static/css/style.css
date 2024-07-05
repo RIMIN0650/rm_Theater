@@ -3,6 +3,7 @@
 #wrap{
 	width: 1600px;
 	margin: 0 auto;
+	font-family: "나눔고딕";
 }
 
 
@@ -15,7 +16,11 @@ header{
 
 
 footer{
-	height: 100px;
+	height: 300px;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 
@@ -50,3 +55,4 @@ footer{
 #searchInput{
 	margin-top:11px;
 }
+

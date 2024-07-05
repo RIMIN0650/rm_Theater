@@ -68,13 +68,18 @@
 					<h2 class="ml-2 mt-1">5</h2>
 				</div>
 			</div>
+			
+			<div>
+				<h2>EVENT</h2>
+				<img src="https://cdn.pixabay.com/photo/2020/10/29/13/34/table-5696243_1280.jpg" width="500">
+			</div>
 		</section>
 			
-		<footer class="pl-3 pt-1">
-			<div>(230905)경기도 용인시 수지구 정평로 03-27</div>
-			<div>대표 : 권민석 • 사업자 등록 번호 323-65-06503</div>
-			<div>대표 이메일 : chris0540@naver.com</div>
-			<div>©THE RM. All Rights Reserved</div>
+		<footer class="pl-3 pt-1 bg-success">
+			<div id="text-bottom">(230905)경기도 용인시 수지구 정평로 03-27</div>
+			<div id="text-bottom">대표 : 권민석 • 사업자 등록 번호 323-65-06503</div>
+			<div id="text-bottom">대표 이메일 : chris0540@naver.com</div>
+			<div id="text-bottom">©THE RM. All Rights Reserved</div>
 		</footer>
 	</div>
 
