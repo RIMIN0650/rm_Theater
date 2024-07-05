@@ -85,7 +85,7 @@
 				</div>
 			</div>
 			
-			<div class="d-flex justify-content-between">
+			<div class="d-flex justify-content-between mb-5">
 				<div class="gift-section">
 					<h3 class="ml-3 mt-3">패키지</h3>
 					<div class="ml-3 mb-3 d-flex">
@@ -158,6 +158,11 @@
 					</div>
 				</div>
 			</div>
+			
+			<div id="client-notice" class="bg-info">
+				
+			</div>
+			
 		</section>
 			
 		<footer class="pl-3 pt-1 bg-success">

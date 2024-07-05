@@ -61,9 +61,14 @@ footer{
 }
 
 .gift-section{
-	width: 450px;
+	width: 470px;
 	height: 500px;
 	border: 1px solid;
+	border-color: #c7c7c7;
 	border-radius: 10px;
+}
+
+#client-notice{
+	height: 400px;
 }
 
