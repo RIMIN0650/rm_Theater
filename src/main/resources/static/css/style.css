@@ -53,6 +53,17 @@ footer{
 	border: 1px solid;
 }
 #searchInput{
-	margin-top:11px;
+	margin-top: 11px;
+}
+
+#event-section{
+	margin-bottom: 100px;
+}
+
+.gift-section{
+	width: 450px;
+	height: 500px;
+	border: 1px solid;
+	border-radius: 10px;
 }
 

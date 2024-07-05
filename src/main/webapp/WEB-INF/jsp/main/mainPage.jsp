@@ -69,9 +69,94 @@
 				</div>
 			</div>
 			
-			<div>
+			<div id="event-section">
 				<h2>EVENT</h2>
-				<img src="https://cdn.pixabay.com/photo/2020/10/29/13/34/table-5696243_1280.jpg" width="500">
+				<div class="d-flex">
+					<div class="mr-5">
+						<img src="https://cdn.pixabay.com/photo/2020/10/29/13/34/table-5696243_1280.jpg" height="320">
+						<h4 class="mt-1 ml-1">[영화 후 레스토랑 가자!]</h4>
+						<div class="mt-1 ml-2">영화 1을 본 후 입장권을 제시하면...</div>
+					</div>
+					<div>
+						<img src="https://cdn.pixabay.com/photo/2019/02/27/21/45/fantasy-4025050_1280.jpg" height="320">
+						<h4 class="mt-1 ml-1">[영화 티켓 지참시 전시회 할인!]</h4>
+						<div class="mt-1 ml-2">영화 3 예매시 전시회 할인 쿠폰 증정...</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="d-flex justify-content-between">
+				<div class="gift-section">
+					<h3 class="ml-3 mt-3">패키지</h3>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2017/07/07/12/34/lime-2481358_1280.jpg" width="200">
+						<div class="ml-2">
+							<span>기본 패키지</span><br>
+							<strong>22000원</strong>
+						</div>
+					</div>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2017/03/10/15/15/lime-2133091_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>커플 패키지</span><br>
+							<strong>27000원</strong>
+						</div>
+					</div>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2016/09/05/20/52/grapefruit-1647688_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>효도 패키지</span><br>
+							<strong>32000원</strong>
+						</div>
+					</div>
+				</div>
+				<div class="gift-section">
+					<h3 class="ml-3">영화 관람권</h3>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2012/02/19/18/05/oranges-15046_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>RM 영화 관람권</span><br>
+							<strong>9000원</strong>
+						</div>
+					</div>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2022/09/08/13/47/kiwi-7441021_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>소파 영화 관람권</span><br>
+							<strong>19000원</strong>
+						</div>
+					</div>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2021/03/06/12/27/apples-6073599_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>4D 영화 관람권</span><br>
+							<strong>14000원</strong>
+						</div>
+					</div>
+				</div>
+				<div class="gift-section">
+					<h3 class="ml-3">기프트 카드</h3>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2017/07/21/23/35/map-2527420_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>RM THEATER 10000원 상품권</span><br>
+							<strong>10000원</strong>
+						</div>
+					</div>
+					<div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2017/07/21/23/36/map-2527424_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>RM THEATER 20000원 상품권</span><br>
+							<strong>19500원</strong>
+						</div>
+					</div><div class="ml-3 mb-3 d-flex">
+						<img src="https://cdn.pixabay.com/photo/2017/07/21/23/37/map-2527430_1280.jpg" width="200">
+						<div class="ml-3">
+							<span>RM THEATER 30000원 상품권</span><br>
+							<strong>28700원</strong>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 			
