@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,32 +13,9 @@
 
 	<div id="wrap">
 	
-		<header class="d-flex">
-			<img src="/static/images/movieLogo.png" class="rounded-2" height="200">
-			<div class="mt-5">
-				<h1 class="display-3 ">RM Theater</h1>
-			</div>
-		</header>
+		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
-		
-		
-		<nav class="main-menu">
-			<ul class="nav nav-fill">
-				<li class="nav-item mt-3"><a href="#" class="text-dark">예매</a></li>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">영화</a></li>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">스토어</a></li>
-				<div class="input-group col-4" id="searchInput">
-					<input type="text" class="form-control" placeholder="검색할 내용을 입력하세요">
-					<div class="input-group-append">
-					<!-- 입력 필드와 버튼이 함께 한 줄로 정렬하고, 버튼이 입력 필드와 시각적으로 연결 -->
-					<button type="button" class="btn btn-info">검색</button>
-					</div>
-				</div>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">로그인</a></li>
-				<li class="nav-item mt-3"><a href="/user/join" class="text-dark">회원가입</a></li>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">비회원 예매</a></li>
-			</ul>
-		</nav>
+		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
 		<section>
 			<div class="movie-thumbnail bg-light d-flex justify-content-center align-items-center mt-3">
@@ -165,12 +143,8 @@
 			
 		</section>
 			
-		<footer class="pl-3 pt-1 bg-success">
-			<div id="text-bottom">(230905)경기도 용인시 수지구 정평로 03-27</div>
-			<div id="text-bottom">대표 : 권민석 • 사업자 등록 번호 323-65-06503</div>
-			<div id="text-bottom">대표 이메일 : chris0540@naver.com</div>
-			<div id="text-bottom">©THE RM. All Rights Reserved</div>
-		</footer>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+		
 	</div>
 
 
