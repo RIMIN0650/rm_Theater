@@ -15,8 +15,20 @@
 		
 	<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 	
-	<div id="wrap">
-
+	<div id="wrap" class="d-flex justify-content-center">
+		<div id="loginForm" >
+			<div>
+				<input type="text" class="form-control" placeholder="ID">
+				<input type="password" class="form-control" placeholder="PassWord">
+			</div>
+			<div class="d-flex justify-content-center">
+				<button type="button" class="btn btn-info">로그인</button>
+			</div>
+		</div>
+		
+		
+		
+		
 	</div>
 	
 	
