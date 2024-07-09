@@ -48,4 +48,11 @@ public class UserService {
 		}
 	}
 	
+	
+	// 로그인 기능
+	public User getUser(String loginId, String loginPw) {
+		
+		return userRepository.findByLoginIdAndPassword(loginId, loginPw);
+	}
+	
 }

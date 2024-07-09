@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rimin.theater.user.domain.User;
 import com.rimin.theater.user.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class UserRestController {
 
@@ -56,6 +59,33 @@ public class UserRestController {
 		return resultMap;
 		
 	}
+	
+	
+	// 로그인 기능
+	@PostMapping("/user/login")
+	public Map<String, String> login(@RequestParam("loginId") String loginId
+										, @RequestParam("loginPw") String loginPw
+										, HttpServletRequest request){
+		
+		User user = userService.getUser(loginId, loginPw);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(user != null) {
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("userId",  user.getId());
+			session.setAttribute("userName",  user.getName());
+			
+			resultMap.put("result",  "success");
+		} else {
+			resultMap.put("result",  "fail");
+			
+		} 
+		return resultMap;
+		
+	}
+	
 	
 	
 	
