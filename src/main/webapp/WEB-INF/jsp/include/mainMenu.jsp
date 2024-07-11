@@ -23,7 +23,7 @@
 					</c:when>
 					<c:otherwise>
 						<div id="loginStatus" class="mt-3 right">
-							<div>${userName }님&nbsp;&nbsp;<a href="#">로그아웃</a></div>
+							<div>${userName }님&nbsp;&nbsp;<a href="/user/logout">로그아웃</a></div>
 						</div>
 						<li class="nav-item mt-3"><a href="#" class="text-dark">내정보</a></li>
 						
