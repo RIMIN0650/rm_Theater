@@ -14,8 +14,20 @@
 					<button type="button" class="btn btn-info">검색</button>
 					</div>
 				</div>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">로그인</a></li>
-				<li class="nav-item mt-3"><a href="/user/join" class="text-dark">회원가입</a></li>
-				<li class="nav-item mt-3"><a href="#" class="text-dark">비회원 예매</a></li>
+				
+				<c:choose>
+					<c:when test="${userName eq null }">
+						<li class="nav-item mt-3"><a href="/user/login" class="text-dark">로그인</a></li>
+						<li class="nav-item mt-3"><a href="/user/join" class="text-dark">회원가입</a></li>
+						<li class="nav-item mt-3"><a href="#" class="text-dark">비회원 예매</a></li>
+					</c:when>
+					<c:otherwise>
+						<div id="loginStatus" class="mt-3 right">
+							<div>${userName }님&nbsp;&nbsp;<a href="#">로그아웃</a></div>
+						</div>
+						<li class="nav-item mt-3"><a href="#" class="text-dark">내정보</a></li>
+						
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</nav>

@@ -11,8 +11,16 @@ header{
 	height: 200px;
 }
 
+/*nav*/
+#loginStatus{
+	width: 200px;
+}
 
-
+.main-menu{
+	height: 60px;
+	align-items: end;
+	background-color:#b3ffc3;
+}
 
 
 footer{
@@ -34,12 +42,9 @@ footer{
 }
 
 
+
 /*메인 페이지*/
-.main-menu{
-	height: 60px;
-	align-items: end;
-	background-color:#b3ffc3;
-}
+
 
 .movie-thumbnail{
 	height: 300px;
@@ -74,3 +79,8 @@ footer{
 	height: 400px;
 }
 
+
+/*글자 정렬*/
+.right{
+	text-align: right;
+}
