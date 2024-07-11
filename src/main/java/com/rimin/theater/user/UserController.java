@@ -12,14 +12,14 @@ public class UserController {
 	// user 회원가입 페이지
 	@GetMapping("/user/join")
 	public String join() {
-		return "user/join";
+		return "user/userJoin";
 	}
 	
 	
 	// user 로그인 페이지
 	@GetMapping("/user/login")
 	public String login() {
-		return "user/login";
+		return "user/userLogin";
 	}
 	
 	// 로그아웃 

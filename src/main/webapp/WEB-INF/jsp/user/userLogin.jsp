@@ -11,23 +11,28 @@
 </head>
 <body>
 	
-	<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		
-	<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 	
-	<div id="wrap" class="d-flex justify-content-center">
-		<div id="loginForm" class="my-5">
-			<h3 class="text-center mb-5">로그인</h3>
-			<div>
-				<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
-				<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
-			</div>
-			<div class="d-flex justify-content-center">
-				<button type="button" class="btn btn-info" id="loginBtn">로그인</button>
-			</div>
-		</div>
+	
+	<div id="wrap">
+	
+		<c:import url="/WEB-INF/jsp/include/header.jsp" />
+			
+		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
-		
+		<section class="d-flex justify-content-center my-5">
+			<div id="loginForm" class="my-5 d-flex justify-content-center">
+				<div>
+					<h3 class="text-center mb-5">로그인</h3>
+					<div>
+						<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
+						<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
+					</div>
+					<div class="d-flex justify-content-center">
+						<button type="button" class="btn btn-info" id="loginBtn">로그인</button>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 	
 	
@@ -77,10 +82,7 @@
 				
 			});
 			
-			
-			
-			
-			
+
 		});
 	</script>
 	
