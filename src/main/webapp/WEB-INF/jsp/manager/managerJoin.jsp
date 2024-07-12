@@ -272,6 +272,7 @@
 							, success:function(data){
 								if(data.result == "success"){
 									alert("회원가입 성공! 환영합니다");
+									location.href="/main/home"
 								} else {
 									alert("로그인 실패");
 								}

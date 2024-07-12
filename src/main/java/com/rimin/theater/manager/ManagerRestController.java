@@ -70,8 +70,8 @@ public class ManagerRestController {
 		if(manager != null) {
 			HttpSession session = request.getSession();
 			
-			session.setAttribute("userId", manager.getId());
-			session.setAttribute("userName", manager.getName());
+			session.setAttribute("managerId", manager.getId());
+			session.setAttribute("managerName", manager.getName());
 			
 			resultMap.put("result",  "success");
 		
