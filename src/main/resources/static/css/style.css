@@ -86,3 +86,16 @@ footer{
 .right{
 	text-align: right;
 }
+
+/*영화 상세 정보*/
+
+#movieDetail{
+	resize: none;
+	width: 503px;
+	border-radius: 7px;
+}
+#movieDetail::placeholder{
+	padding-left: 10px;
+	padding-top: 5px;
+}
+

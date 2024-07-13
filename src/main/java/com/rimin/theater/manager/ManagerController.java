@@ -30,4 +30,9 @@ public class ManagerController {
 		return "redirect:/main/home";
 	}
 	
+	@GetMapping("/admin/addMovie")
+	public String addMovie() {
+		return "manager/addMovie";
+	}
+	
 }
