@@ -34,11 +34,12 @@ footer{
 
 /*회원가입*/
 #joinForm{
-	width: 300px;
+	width: 350px;
 }
 
+/*로그인*/
 #loginForm{
-	width: 300px;
+	width: 350px;
 }
 
 

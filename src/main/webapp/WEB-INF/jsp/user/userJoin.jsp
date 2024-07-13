@@ -18,8 +18,8 @@
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 	
 		<section class="d-flex justify-content-center">
-			<div class="text-center" id="joinForm">
-				<h1 class="my-5">Join RM Theater</h1>
+			<div class="text-center my-5" id="joinForm">
+				<h1 class="mb-5">Join RM Theater</h1>
 				<div>
 					<div class="d-flex justify-content-between mb-4">
 						<input type="text" class="form-control col-8" placeholder="ID" id="identifier">
@@ -70,11 +70,20 @@
 					
 					<button type="button" class="btn btn-info" id="joinBtn">회원가입</button>
 				</div>
+				
+				
+				
 			</div>
 		</section>
+		<div class="text-center">
+					<a href="/user/login">로그인  </a>&nbsp;또는&nbsp;<a href="/main/home"> 메인 페이지로</a>
+				</div>
+		<div class="text-center mt-3">
+			<a href="/admin/join">관리자용 회원가입</a>
+		</div>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
-	
+		
 	</div>
 
 		

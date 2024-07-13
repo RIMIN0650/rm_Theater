@@ -19,18 +19,28 @@
 			
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
-		<section class="d-flex justify-content-center">
-			<div id="loginForm" class="my-5">
-				<h3 class="text-center mb-5">관리자 로그인</h3>
+		<section class="d-flex justify-content-center my-5">
+			<div id="loginForm" class="my-5 d-flex justify-content-center">
 				<div>
-					<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
-					<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
-				</div>
-				<div class="d-flex justify-content-center">
-					<button type="button" class="btn btn-info" id="loginBtn">로그인</button>
+					<h1 class="text-center mb-5">관리자 로그인</h1>
+					<div>
+						<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
+						<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
+					</div>
+					<div class="d-flex justify-content-center">
+						<button type="button" class="btn btn-info" id="loginBtn">로그인</button>
+					</div>
 				</div>
 			</div>
 		</section>
+	</div>
+	
+	<div class="text-center">
+		<a href="/admin/join">회원가입</a>&nbsp;또는&nbsp;<a href="/main/home">메인 페이지로</a>
+	</div>
+	
+	<div class="text-center mt-3">
+		<a href="/user/login">고객 로그인</a>
 	</div>
 	
 	

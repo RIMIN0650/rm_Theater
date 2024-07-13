@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<nav class="main-menu">
+	<nav class="main-menu mb-5">
 			<ul class="nav nav-fill">
 				<c:choose>
 					<c:when test="${managerName ne null }"> 

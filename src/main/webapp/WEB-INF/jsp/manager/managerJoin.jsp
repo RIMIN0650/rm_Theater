@@ -18,8 +18,8 @@
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 	
 		<section class="d-flex justify-content-center">
-			<div class="text-center" id="joinForm">
-				<h1 class="my-5">관리자 회원가입</h1>
+			<div class="text-center my-5" id="joinForm">
+				<h1 class="mb-5">관리자 회원가입</h1>
 				
 				<div id="managerVerifyForm" class="input-group">
 					<input type="password" class="form-control" placeholder="Autorization Key" id="managerKey">
@@ -81,8 +81,15 @@
 			</div>
 		</section>
 		
+		<div class="text-center">
+			<a href="/admin/login">로그인</a>&nbsp;또는&nbsp;<a href="/main/home">메인 페이지로</a>
+		</div>
+		
+		<div class="text-center mt-3">
+			<a href="/user/join">고객 회원가입</a>
+		</div>
+		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
-	
 	</div>
 	
 	

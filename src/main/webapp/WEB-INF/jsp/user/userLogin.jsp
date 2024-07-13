@@ -22,7 +22,7 @@
 		<section class="d-flex justify-content-center my-5">
 			<div id="loginForm" class="my-5 d-flex justify-content-center">
 				<div>
-					<h3 class="text-center mb-5">로그인</h3>
+					<h1 class="text-center mb-5">로그인</h1>
 					<div>
 						<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
 						<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
@@ -32,7 +32,17 @@
 					</div>
 				</div>
 			</div>
+	
 		</section>
+		
+		<div class="text-center">
+			<a href="/user/join">회원가입</a>&nbsp;또는&nbsp;<a href="/main/home">메인 페이지로</a>
+		</div>
+		
+		<div class="text-center mt-3">
+			<a href="/admin/login">관리자용 로그인</a>
+		</div>
+		
 	</div>
 	
 	
