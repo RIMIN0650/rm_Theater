@@ -42,12 +42,10 @@
 		<div class="text-center mt-3">
 			<a href="/admin/login">관리자용 로그인</a>
 		</div>
+
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
-	</div>
-	
-	
-	<c:import url="/WEB-INF/jsp/include/footer.jsp" />
-		
+	</div>	
 		
 				
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
