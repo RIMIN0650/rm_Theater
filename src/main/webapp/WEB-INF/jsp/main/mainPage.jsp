@@ -23,19 +23,21 @@
 			</div>
 			
 			<div class="movie-subInfo d-flex justify-content-between align-items-center mx-2">
+				
+				
+				<c:forEach var="movie" items="${movieList }">
 				<div class="movie-1">
 					<h2 class="ml-2 mt-1">1</h2>
-					
-						<img src="https://cdn.pixabay.com/photo/2022/04/17/20/44/film-noir-7138980_1280.jpg" width="100%">
+						<img src="${movie.imagePath }" width="100%">
 					<div class="mt-2 ml-1">
-						<h4>영화 1</h4>
-						<div>19+</div>
-						<div>액션, 첩보물</div>
+						<h4>${movie.title }</h4>
+						<div>${movie.age }</div>
+						<div>${movie.mainGenre }</div>
 					</div>
 				</div>
-				<div class="movie-1">
-					<h2 class="ml-2 mt-1">2</h2>
-				</div>
+				</c:forEach>
+				
+				
 				<div class="movie-1">
 					<h2 class="ml-2 mt-1">3</h2>
 				</div>
