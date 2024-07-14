@@ -34,8 +34,8 @@
 				<input type="text" class="form-control mb-4" placeholder="Movie OpeningDay">
 				<textarea class="mb-2" placeholder="Movie Detail" id="movieDetail" rows="7"></textarea>
 			</div>
-			
-			
+		
+		
 		</section>
 		<div class="d-flex justify-content-end mt-3">
 			<button type="button" class="btn btn-danger btn-lg mr-5">취소</button>

@@ -138,7 +138,7 @@
 			</div>
 			
 			<div id="client-notice" class="bg-info">
-				
+				고객 공지창
 			</div>
 			
 		</section>
