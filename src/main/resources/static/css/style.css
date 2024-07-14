@@ -82,24 +82,27 @@ footer{
 }
 
 
-/*글자 정렬*/
-.right{
-	text-align: right;
-}
-
 
 /*영화 상세 정보*/
 #detail{
 	resize: none;
 	width: 503px;
 	border-radius: 7px;
+	border-color: #c7c7c7;
+	padding-left: 13px;
+	padding-top: 10px;
 }
-#detail::placeholder{
-	padding-left: 10px;
-	padding-top: 5px;
-}
+
 .movieInfoInputForm{
 	height: 700px;
 	background-color: #f9ffb5;
 }
-
+.movieInfoTextInput{
+	height: 60px;
+}
+.big-font{
+	font-size: 60px;
+}
+#imagePreview{
+	width: 75%;
+}

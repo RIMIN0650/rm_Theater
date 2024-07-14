@@ -21,27 +21,29 @@
 		<section class="pt-5">
 			<h1 class="mb-5 text-center">신규 영화 등록</h1>
 			<div class="d-flex justify-content-center pt-5">
-				<div class="col-4 d-flex justify-content-center align-items-center movieInfoInputForm">
-					<label for="fileInput"><i class="bi bi-image big-font" id="imageIcon">파일첨부</i></label>
-					<input type="file" id="fileInput" class="d-none">
-					<div>
-						<img id="imagePreview" src="" alt="Image Preview" class="d-none">
+				<div class="col-4 movieInfoInputForm">
+					<div class="d-flex justify-content-end">
+						<label for="fileInput"><i class="bi bi-image big-font right" id="addPoster"></i></label>
+						<input type="file" id="fileInput" class="d-none">
+					</div>
+					<div class="d-flex justify-content-center">
+						<img id="imagePreview" src="" alt="Image Preview" class="img-fluid d-none">
 					</div>
 				</div>
 				<div class="col-4 ml-5 movieInfoInputForm">
-					<input type="text" class="form-control my-4" placeholder="Title" id="title">
+					<input type="text" class="form-control my-4 movieInfoTextInput" placeholder="Title" id="title">
 					<div class="d-flex">
-						<input type="text" class="form-control mb-4 col-5" placeholder="Main Genre" id="mainGenre">
-						<input type="text" class="form-control mb-4 col-5 ml-4" placeholder="Sub Genre" id="subGenre">
+						<input type="text" class="form-control mb-4 col-5 movieInfoTextInput" placeholder="Main Genre" id="mainGenre">
+						<input type="text" class="form-control mb-4 col-5 ml-4 movieInfoTextInput" placeholder="Sub Genre" id="subGenre">
 					</div>
-					<input type="text" class="form-control mb-4" placeholder="Director" id="director">
+					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Director" id="director">
 					<div class="d-flex">
-						<input type="text" class="form-control mb-4 col-3" placeholder="Age Of View" id="ageOfView">
-						<input type="text" class="form-control mb-4 col-3 ml-3" placeholder="RunTime" id="runTime">
-						<input type="text" class="form-control mb-4 col-3 ml-3" placeholder="Country" id="country">
+						<input type="text" class="form-control mb-4 col-3 movieInfoTextInput" placeholder="Age Of View" id="ageOfView">
+						<input type="text" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="RunTime" id="runTime">
+						<input type="text" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="Country" id="country">
 					</div>
-					<input type="text" class="form-control mb-4" placeholder="Movie OpeningDay" id="openingDay">
-					<textarea class="mb-2" placeholder="Movie Detail" rows="7" id="detail"></textarea>
+					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Movie OpeningDay" id="openingDay">
+					<textarea class="mb-2" placeholder="Movie Detail" rows="9" id="detail"></textarea>
 				</div>
 			</div>
 		</section>
@@ -65,11 +67,12 @@
 					let reader = new FileReader();
 					reader.onload = function(e){
 						$("#imagePreview").attr("src", e.target.result);
-						$("#imagePreview").show();
+						$("#imagePreview").removeClass("d-none");
+						
 					}
 					reader.readAsDataURL(file);
 				} else {
-					$("#imagePreview").hide();
+					$("#imagePreview").addClass("d-none");
 				}
 			});
 			
