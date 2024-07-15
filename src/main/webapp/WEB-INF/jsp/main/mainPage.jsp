@@ -25,9 +25,10 @@
 			<div class="movie-subInfo d-flex justify-content-between align-items-center mx-2">
 				
 				
-				<c:forEach var="movie" items="${movieList }">
+				<c:forEach var="movie" items="${movieList }" varStatus="status">
+				
 				<div class="movie-1">
-					<h2 class="ml-2 mt-1">1</h2>
+					<h2 class="ml-2 mt-1">${status.count }</h2>
 						<img src="${movie.imagePath }" width="100%">
 					<div class="mt-2 ml-1">
 						<h4>${movie.title }</h4>

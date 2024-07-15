@@ -64,6 +64,44 @@ public class FileManager {
 	}
 	
 	
-	
+	// 파일을 삭제하는 경우
+	public static boolean removeFile(String filePath) {
+		
+		if(filePath == null) {
+			return false;
+		}
+		
+		// 삭제 대상 파일 경로
+		String fullFilePath = FILE_UPLOAD_PATH + filePath.replace("/images", "");
+		
+		Path path = Paths.get(fullFilePath);
+		
+		// 파일 존재 여부 확인
+		if(Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		// 디렉토리 삭제
+		Path dirPath = path.getParent();
+		
+		if(Files.exists(dirPath)) {
+			try {
+				Files.delete(dirPath);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return true;
+
+	}
 	
 }

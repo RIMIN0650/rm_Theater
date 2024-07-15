@@ -6,6 +6,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,4 +51,20 @@ public class MovieRestController {
 	}
 	
 	
+	
+	// 영화 삭제
+	@DeleteMapping("/movie/delete")
+	public Map<String, String> deletePost(@RequestParam("id") int id){
+		
+		Movie movie = movieService.deleteMovie(id);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(movie != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
 }
