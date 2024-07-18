@@ -39,7 +39,7 @@
 					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Director" id="director">
 					<div class="d-flex">
 						<input type="text" class="form-control mb-4 col-3 movieInfoTextInput" placeholder="Age Of View" id="ageOfView">
-						<input type="text" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="RunTime" id="runTime">
+						<input type="number" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="RunTime" id="runTime">
 						<input type="text" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="Country" id="country">
 					</div>
 					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Movie OpeningDay" id="openingDay">
@@ -60,6 +60,16 @@
 	
 	<script>
 		$(document).ready(function(){
+			let runTime = 1;
+			
+			$("#runTime").on("change",function(){
+				let runTime = $(this).val();
+				if(runTime < 1){
+					alert("1 이하의 숫자는 입력할 수 없습니다");
+					$("#runTime").val("");
+				}
+				
+			});
 			
 			$("#fileInput").on("change", function(){
 				let file = this.files[0];
