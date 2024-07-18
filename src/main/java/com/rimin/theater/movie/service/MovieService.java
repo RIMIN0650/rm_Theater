@@ -43,6 +43,7 @@ public class MovieService {
 	
 	
 	// 등록된 영화 전체 목록 가져오기
+	// 메인 페이지에 보여주기 위함
 	public List<MovieDetail> getMovieDetail(){
 		
 		List<Movie> movieList = movieRepository.findAll();
@@ -108,6 +109,13 @@ public class MovieService {
 		return movie;
 	}
 	
+	// 영화 상세정보 불러오기
+	public Movie getMovieInfo(int id) {
+		Optional<Movie> optionalMovie = movieRepository.findById(id);
+		
+		Movie movie = optionalMovie.orElse(null);
+		return movie;
+	}
 	
 	
 }

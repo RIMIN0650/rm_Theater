@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.dto.MovieDetail;
 import com.rimin.theater.movie.service.MovieService;
 
@@ -32,5 +34,16 @@ public class MovieController {
 		return "main/movieList";
 	}
 	
+	// 영화 상세정보 페이지
+	@GetMapping("/movie/detail")
+	public String movieDetail(@RequestParam("id") int id
+								, Model model) {
+		
+		Movie movie = movieService.getMovieInfo(id);
+		
+		model.addAttribute("movieInfo",movie);
+		
+		return "movie/movieDetail";
+	}
 	
 }

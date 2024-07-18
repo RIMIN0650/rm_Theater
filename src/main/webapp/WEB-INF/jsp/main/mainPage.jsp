@@ -27,6 +27,7 @@
 				
 				<c:forEach var="movie" items="${movieList }" varStatus="status">
 				
+				<a href="/movie/detail?id=${movie.id }" class="text-dark"  style="text-decoration: none;">
 				<div class="movie-1">
 					<h2 class="ml-2 mt-1">${status.count }</h2>
 						<img src="${movie.imagePath }" width="100%">
@@ -37,6 +38,7 @@
 					</div>
 				</div>
 				</c:forEach>
+				</a>
 				
 				
 				<div class="movie-1">
