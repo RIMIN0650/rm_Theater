@@ -8,6 +8,5 @@ public interface ManagerRepository extends JpaRepository<Manager, Integer> {
 	
 	public int countByLoginId(String loginId);
 	
-	
 	public Manager findByLoginIdAndPassword(String loginId, String password);
 }

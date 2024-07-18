@@ -46,7 +46,7 @@ public class MovieService {
 	// 메인 페이지에 보여주기 위함
 	public List<MovieDetail> getMovieDetail(){
 		
-		List<Movie> movieList = movieRepository.findAll();
+		List<Movie> movieList = movieRepository.findTop5ByOrderById();
 		
 		List<MovieDetail> movieDetailList = new ArrayList<>();
 		
