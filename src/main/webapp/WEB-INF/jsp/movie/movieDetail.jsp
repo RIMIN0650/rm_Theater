@@ -19,17 +19,30 @@
 			
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
-		<section class="d-flex justify-content-center my-5">
-			<img src="${movieInfo.imagePath }">
-			${movieInfo.title }<br>
-			${movieInfo.mainGenre } ${movieInfo.subGenre }<br>
-			${movieInfo.runTime }<br>
-			${movieInfo.country }<br>
-			${movieInfo.director }<br>
-			${movieInfo.openingDay }<br>
-			${movieInfo.ageOfView }<br>
-			${movieInfo.detail }<br>
-			${movieInfo.title }<br>
+		<section class="my-5">
+			<div class="d-flex ml-5">
+				<img src="${movieInfo.imagePath }" width="200">
+				<div class="ml-5">
+					<h1>${movieInfo.title }</h1>
+					<hr>
+					${movieInfo.director }<br>
+					
+					${movieInfo.mainGenre } ${movieInfo.subGenre },
+					${movieInfo.runTime } 분,
+					${movieInfo.country }<br>
+					
+					개봉일 : ${movieInfo.openingDay }<br>
+					${movieInfo.ageOfView }<br>
+				
+				<div class="mt-5" id="movieInfoDetail">
+				${movieInfo.detail }
+				</div>
+				</div>
+			</div>
+			
+				
+			
+			
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

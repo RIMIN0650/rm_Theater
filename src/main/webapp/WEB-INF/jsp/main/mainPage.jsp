@@ -40,16 +40,6 @@
 				</c:forEach>
 				</a>
 				
-				
-				<div class="movie-1">
-					<h2 class="ml-2 mt-1">3</h2>
-				</div>
-				<div class="movie-1">
-					<h2 class="ml-2 mt-1">4</h2>
-				</div>
-				<div class="movie-1">
-					<h2 class="ml-2 mt-1">5</h2>
-				</div>
 			</div>
 			
 			<div id="event-section">

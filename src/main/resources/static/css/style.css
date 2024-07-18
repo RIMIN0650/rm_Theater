@@ -83,7 +83,7 @@ footer{
 
 
 
-/*영화 상세 정보*/
+/*영화 상세 정보 입력*/
 #detail{
 	resize: none;
 	width: 503px;
@@ -116,4 +116,9 @@ footer{
 .poster-image{
 	width: 100px;
 	height: auto;
+}
+
+/*영화 상세 정보 창*/
+#movieInfoDetail{
+	width:600px;
 }
