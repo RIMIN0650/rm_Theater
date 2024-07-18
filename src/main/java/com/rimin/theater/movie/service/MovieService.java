@@ -119,5 +119,32 @@ public class MovieService {
 		return movie;
 	}
 	
-	
+	// 영화 상세 정보 수정
+	public Movie updateMovie(int id, String title, String mainGenre 
+							, String subGenre, String director, String ageOfView
+							, int runTime, String country, String openingDay
+							, String detail, MultipartFile file ) {
+		Optional<Movie> optionalMovie = movieRepository.findById(id);
+		Movie movie = optionalMovie.orElse(null);
+		
+		String filePath = FileManager.saveFile(title, file);
+		
+		if(movie != null) {
+			// toBuilder : lombok 라이브러리를 사용하는 경우 객체를 수정하기 위해 사용
+			movie = movie.toBuilder()
+							.title(title)
+							.mainGenre(mainGenre)
+							.subGenre(subGenre)
+							.director(director)
+							.ageOfView(ageOfView)
+							.runTime(runTime)
+							.country(country)
+							.openingDay(openingDay)
+							.detail(detail)
+							.imagePath(filePath)
+							.build();
+			movie = movieRepository.save(movie);
+		}
+		return movie;
+	}
 }

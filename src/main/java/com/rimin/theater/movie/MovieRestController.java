@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -68,5 +69,28 @@ public class MovieRestController {
 		return resultMap;
 	}
 	
+	// 영화 상세정보 수정 api
+	@PutMapping("/movie/update")
+	public Map<String, String> updateMemo(@RequestParam("id") int id
+											, @RequestParam("title") String title
+											, @RequestParam("mainGenre") String mainGenre
+											, @RequestParam("subGenre") String subGenre
+											, @RequestParam("director") String director
+											, @RequestParam("ageOfView") String ageOfView
+											, @RequestParam("runTime") int runTime
+											, @RequestParam("country") String country
+											, @RequestParam("openingDay") String openingDay
+											, @RequestParam("detail") String detail
+											, @RequestParam("imageFile") MultipartFile imageFile ){
+		Movie movie = movieService.updateMovie(id, title, mainGenre, subGenre, director, ageOfView, runTime, country, openingDay, detail, imageFile);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		if(movie != null) {
+			resultMap.put("result",  "success");
+		} else {
+			resultMap.put("result",  "fail");
+		} 
+		return resultMap;
+	}
 	
 }

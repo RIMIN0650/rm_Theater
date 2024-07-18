@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+</html><%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>addMovie</title>
+<title>movie update</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
@@ -19,7 +19,7 @@
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 	
 		<section class="pt-5">
-			<h1 class="mb-5 text-center">신규 영화 등록</h1>
+			<h1 class="mb-5 text-center">영화 정보 수정</h1>
 			<div class="d-flex justify-content-center pt-5">
 				<div class="col-4 movieInfoInputForm">
 					<div class="d-flex justify-content-end">
@@ -27,29 +27,31 @@
 						<input type="file" id="fileInput" class="d-none">
 					</div>
 					<div class="d-flex justify-content-center">
-						<img id="imagePreview" src="" alt="Image Preview" class="img-fluid d-none">
+						<img id="imagePreview" src="${movieInfo.imagePath }" alt="Image Preview" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-4 ml-5 movieInfoInputForm">
-					<input type="text" class="form-control my-4 movieInfoTextInput" placeholder="Title" id="title">
+					<div id="pkNum">${movieInfo.id }</div>
+					<input type="text" class="form-control my-4 movieInfoTextInput" placeholder="Title" id="title" value="${movieInfo.title }">
 					<div class="d-flex">
-						<input type="text" class="form-control mb-4 col-5 movieInfoTextInput" placeholder="Main Genre" id="mainGenre">
-						<input type="text" class="form-control mb-4 col-5 ml-4 movieInfoTextInput" placeholder="Sub Genre" id="subGenre">
+						<input type="text" class="form-control mb-4 col-5 movieInfoTextInput" placeholder="Main Genre" id="mainGenre" value="${movieInfo.mainGenre }">
+						<input type="text" class="form-control mb-4 col-5 ml-4 movieInfoTextInput" placeholder="Sub Genre" id="subGenre" value="${movieInfo.subGenre }">
 					</div>
-					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Director" id="director">
+					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Director" id="director" value="${movieInfo.director }">
 					<div class="d-flex">
-						<input type="text" class="form-control mb-4 col-3 movieInfoTextInput" placeholder="Age Of View" id="ageOfView">
-						<input type="number" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="RunTime" id="runTime">
-						<input type="text" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="Country" id="country">
+						<input type="text" class="form-control mb-4 col-3 movieInfoTextInput" placeholder="Age Of View" id="ageOfView" value="${movieInfo.ageOfView }">
+						<input type="number" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="RunTime" id="runTime" value="${movieInfo.runTime }">
+						<input type="text" class="form-control mb-4 col-3 ml-3 movieInfoTextInput" placeholder="Country" id="country" value="${movieInfo.country }">
 					</div>
-					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Movie OpeningDay" id="openingDay">
-					<textarea class="mb-2" placeholder="Movie Detail" rows="9" id="detail"></textarea>
+					<input type="text" class="form-control mb-4 movieInfoTextInput" placeholder="Movie OpeningDay" id="openingDay" value="${movieInfo.openingDay }">
+					<textarea class="mb-2" placeholder="Movie Detail" rows="9" id="detail">${movieInfo.detail }</textarea>
 				</div>
 			</div>
 		</section>
 		<div class="d-flex justify-content-end mt-3">
-			<button type="button" class="btn btn-danger btn-lg mr-5" id="cancelBtn">취소</button>
-			<button type="button" class="btn btn-success btn-lg" id="registerBtn">등록</button>
+			<button type="button" class="btn btn-danger btn-lg mr-5" id="cancelBtn">삭제</button>
+			<button type="button" class="btn btn-warning btn-lg mr-5" id="deleteBtn">취소</button>
+			<button type="button" class="btn btn-success btn-lg" id="modifyBtn">수정</button>
 		</div>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
@@ -61,6 +63,12 @@
 	<script>
 		$(document).ready(function(){
 			let runTime = 1;
+			let movieId = $("#pkNum").text();
+			
+			
+			
+			
+			
 			
 			$("#runTime").on("change",function(){
 				let runTime = $(this).val();
@@ -87,9 +95,12 @@
 			});
 			
 			// 영화 등록 기능
-			$("#registerBtn").on("click",function(){
+			$("#modifyBtn").on("click",function(){
+				
+				alert(movieId);
+				
 				let title = $("#title").val();
-				let file = $("#fileInput")[0].files[0];
+				let file = $("#imagePreview").attr("src");				
 				let mainGenre = $("#mainGenre").val();
 				let subGenre = $("#subGenre").val();
 				let director = $("#director").val();
@@ -127,13 +138,14 @@
 					alert("openingDay를 입력하세요");
 					return;
 				}
-				if(file == null){
+				if(file == null && registeredFile == null){
 					console.log(file);
 					alert("파일을 선택해주세요");
 					return ;
 				}
 				
 				let formData = new FormData();
+				formData.append("id", movieId);
 				formData.append("title", title);
 				formData.append("imageFile", file);
 				formData.append("mainGenre", mainGenre);
@@ -146,22 +158,22 @@
 				formData.append("detail", detail);
 				
 				$.ajax({
-					type:"post"
-					, url:"/movie/addMovie"
+					type:"put"
+					, url:"/movie/update"
 					, data:formData
 					, enctype:"multipart/form-data"
 					, processData:false
 					, contentType:false
 					, success:function(data){
 						if(data.result == "success"){
-							alert("영화 등록 성공");
+							alert("영화 정보 수정 성공");
 							location.reload();
 						} else {
-							alert("영화 등록 실패");
+							alert("영화 정보 수정 실패");
 						}
 					}
 					, error:function(){
-						alert("영화 등록 에러");
+						alert("영화 정보 수정 에러");
 					}
 				});
 			});

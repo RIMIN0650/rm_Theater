@@ -46,4 +46,14 @@ public class MovieController {
 		return "movie/movieDetail";
 	}
 	
+	// 영화 수정을 위한 상세정보 페이지
+	@GetMapping("/movie/update-view")
+	public String updateMovieInfo(@RequestParam("id") int id
+								, Model model) {
+		Movie movie = movieService.getMovieInfo(id);
+		
+		model.addAttribute("movieInfo",movie);
+		
+		return "movie/updateInfo";
+	}
 }
