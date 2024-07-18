@@ -46,6 +46,8 @@ public class MovieService {
 	// 메인 페이지에 보여주기 위함
 	public List<MovieDetail> getMovieDetail(){
 		
+		// 현재는 id 순으로 가져왔지만
+		// 이후에 예매수나 다른 데이터를 통해 나열하여 가져올 예정
 		List<Movie> movieList = movieRepository.findTop5ByOrderById();
 		
 		List<MovieDetail> movieDetailList = new ArrayList<>();
