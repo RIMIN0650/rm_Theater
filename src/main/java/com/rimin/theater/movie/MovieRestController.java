@@ -86,8 +86,9 @@ public class MovieRestController {
 											, @RequestParam("openingDay") String openingDay
 											, @RequestParam("detail") String detail
 											, @RequestParam(value = "imageFile", required = false) MultipartFile imageFile
-											, @RequestParam("existingImagePath") String existingImagePath){
-		Movie movie = movieService.updateMovie(id, title, mainGenre, subGenre, director, ageOfView, runTime, country, openingDay, detail, imageFile, existingImagePath);
+											, @RequestParam(value = "existingImagePath", required = false) String existingImagePath){
+		Movie movie = movieService.updateMovie(id, title, mainGenre, subGenre, director, ageOfView, runTime
+												, country, openingDay, detail, imageFile, existingImagePath);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(movie != null) {
