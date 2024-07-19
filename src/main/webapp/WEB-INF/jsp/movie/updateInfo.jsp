@@ -79,6 +79,7 @@
 			
 			$("#fileInput").on("change", function(){
 				let file = this.files[0];
+				
 				if(file) {
 					let reader = new FileReader();
 					reader.onload = function(e){
@@ -105,6 +106,15 @@
 				let country = $("#country").val();
 				let openingDay = $("#openingDay").val();
 				let detail = $("#detail").val();
+				
+				
+				//
+				// 이미지 파일이 어떻게 전달되는지 콘솔에 찍기
+				let applyFile = document.getElementById("fileInput").files;
+				console.log(applyFile);
+				
+				
+				//
 				
 				if(title == ""){
 					alert("title을 입력하세요");
