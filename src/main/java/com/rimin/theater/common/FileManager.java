@@ -21,6 +21,11 @@ public class FileManager {
 	// 업로드된 파일을 고유한 디렉토리에 저장하고 파일의 접근 가능한 URL 경로를 반환
 	public static String saveFile(String title, MultipartFile file) {
 		
+		if (file == null || file.isEmpty()) {
+			// 파일이 없으면 null 반환
+			return null;
+		}
+		
 		// 같은 이름의 파일을 처리하기 위해
 		// 폴더를 만들어서 파일 저장
 		// 영화의 movieId를 폴더이름
@@ -35,7 +40,7 @@ public class FileManager {
 		File directory = new File(directoryPath);
 		
 		// 디렉토리를 생성
-		if(!directory.mkdir()) {
+		if (!directory.mkdir()) {
 			// 디렉토리 생성 실패 > 오류를 기록, null 반환
 			logger.error("saveFile :: 디렉토리 생성 실패 - " + directoryPath);
 			return null;
@@ -43,7 +48,6 @@ public class FileManager {
 		
 		// 파일이 저장될 전체 경로
 		String filePath = directoryPath + "/" + file.getOriginalFilename();
-		
 		
 		try {
 			// file 내용을 바이트 배열로 가져옴
@@ -85,7 +89,7 @@ public class FileManager {
 		File directory = new File(directoryPath);
 		
 		// 디렉토리를 생성
-		if(!directory.mkdir()) {
+		if (!directory.mkdir()) {
 			// 디렉토리 생성 실패 > 오류를 기록, null 반환
 			logger.error("saveFile :: 디렉토리 생성 실패 - " + directoryPath);
 			return null;
@@ -118,7 +122,7 @@ public class FileManager {
 	// 파일을 삭제하는 경우
 	public static boolean removeFile(String filePath) {
 		
-		if(filePath == null) {
+		if (filePath == null) {
 			return false;
 		}
 		
@@ -141,7 +145,7 @@ public class FileManager {
 		// 디렉토리 삭제
 		Path dirPath = path.getParent();
 		
-		if(Files.exists(dirPath)) {
+		if (Files.exists(dirPath)) {
 			try {
 				Files.delete(dirPath);
 			} catch (IOException e) {

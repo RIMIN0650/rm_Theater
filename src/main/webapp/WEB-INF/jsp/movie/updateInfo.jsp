@@ -32,7 +32,7 @@
 					
 				</div>
 				<div class="col-4 ml-5 movieInfoInputForm">
-					<div id="pkNum">${movieInfo.id }</div>
+					<div id="pkNum" class="d-none">${movieInfo.id }</div>
 					<input type="text" class="form-control my-4 movieInfoTextInput" placeholder="Title" id="title" value="${movieInfo.title }">
 					<div class="d-flex">
 						<input type="text" class="form-control mb-4 col-5 movieInfoTextInput" placeholder="Main Genre" id="mainGenre" value="${movieInfo.mainGenre }">
@@ -163,7 +163,7 @@
 					, success:function(data){
 						if(data.result == "success"){
 							alert("영화 정보 수정 성공");
-						
+							location.href="/movie/list"
 						} else {
 							alert("영화 정보 수정 실패");
 						}
