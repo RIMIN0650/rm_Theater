@@ -88,8 +88,10 @@
 			
 			// 영화 등록 기능
 			$("#registerBtn").on("click",function(){
+				
 				let title = $("#title").val();
 				let file = $("#fileInput")[0].files[0];
+				alert(file);
 				let mainGenre = $("#mainGenre").val();
 				let subGenre = $("#subGenre").val();
 				let director = $("#director").val();

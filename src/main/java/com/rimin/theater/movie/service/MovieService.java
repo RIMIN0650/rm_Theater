@@ -123,14 +123,17 @@ public class MovieService {
 	public Movie updateMovie(int id, String title, String mainGenre 
 							, String subGenre, String director, String ageOfView
 							, int runTime, String country, String openingDay
-							, String detail, MultipartFile file ) {
+							, String detail, MultipartFile file, String existingImagePath ) {
 		Optional<Movie> optionalMovie = movieRepository.findById(id);
 		Movie movie = optionalMovie.orElse(null);
 		
-		String filePath = FileManager.saveFile(title, file);
+		String filePath = FileManager.saveFile(title, file, existingImagePath);
 		
 		if(movie != null) {
 			// toBuilder : lombok 라이브러리를 사용하는 경우 객체를 수정하기 위해 사용
+			
+			FileManager.removeFile(movie.getImagePath()); // 기존에 저장된 파일을 지우기 위해
+			
 			movie = movie.toBuilder()
 							.title(title)
 							.mainGenre(mainGenre)

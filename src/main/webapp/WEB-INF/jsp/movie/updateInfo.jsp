@@ -29,6 +29,7 @@
 					<div class="d-flex justify-content-center">
 						<img id="imagePreview" src="${movieInfo.imagePath }" alt="Image Preview" class="img-fluid">
 					</div>
+					
 				</div>
 				<div class="col-4 ml-5 movieInfoInputForm">
 					<div id="pkNum">${movieInfo.id }</div>
@@ -63,11 +64,8 @@
 	<script>
 		$(document).ready(function(){
 			let runTime = 1;
-			let movieId = $("#pkNum").text();
-			
-			
-			
-			
+			let movieId = $("#pkNum").text();			
+			let existingImagePath = $("imagePreview").attr("src");
 			
 			
 			$("#runTime").on("change",function(){
@@ -97,10 +95,8 @@
 			// 영화 등록 기능
 			$("#modifyBtn").on("click",function(){
 				
-				alert(movieId);
-				
 				let title = $("#title").val();
-				let file = $("#imagePreview").attr("src");				
+				let file = $("#fileInput")[0].files[0]; // 파일 업로드 input에서 파일 가져오기
 				let mainGenre = $("#mainGenre").val();
 				let subGenre = $("#subGenre").val();
 				let director = $("#director").val();
@@ -138,16 +134,16 @@
 					alert("openingDay를 입력하세요");
 					return;
 				}
-				if(file == null && registeredFile == null){
-					console.log(file);
-					alert("파일을 선택해주세요");
-					return ;
-				}
 				
 				let formData = new FormData();
 				formData.append("id", movieId);
 				formData.append("title", title);
-				formData.append("imageFile", file);
+				// 이미지 파일이 선택되었고, 파일이 등록되지 않은 경우에만 추가
+		        if (file !== undefined && file != null ) {
+		            formData.append("imageFile", file);
+		        } else {
+		        	formData.append("existingImagePath", existingImagePath);
+		        }
 				formData.append("mainGenre", mainGenre);
 				formData.append("subGenre", subGenre);
 				formData.append("director", director);
@@ -167,7 +163,7 @@
 					, success:function(data){
 						if(data.result == "success"){
 							alert("영화 정보 수정 성공");
-							location.reload();
+						
 						} else {
 							alert("영화 정보 수정 실패");
 						}

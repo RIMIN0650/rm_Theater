@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +20,7 @@ public class FileManager {
 	
 	// 업로드된 파일을 고유한 디렉토리에 저장하고 파일의 접근 가능한 URL 경로를 반환
 	public static String saveFile(String title, MultipartFile file) {
+		
 		// 같은 이름의 파일을 처리하기 위해
 		// 폴더를 만들어서 파일 저장
 		// 영화의 movieId를 폴더이름
@@ -62,6 +62,57 @@ public class FileManager {
 		// 클라이언트가 파일에 접근할 수 있는 url 경로를 생성하여 반환
 		return "/images" + directoryName + "/" + file.getOriginalFilename();
 	}
+	
+	
+	public static String saveFile(String title, MultipartFile file, String existingImagePath) {
+		
+		if (file == null || file.isEmpty()) {
+			// 새 파일이 업로드 되지 않은 경우 기존 이미지 경로를 반환
+			return existingImagePath;
+		}
+		
+		// 같은 이름의 파일을 처리하기 위해
+		// 폴더를 만들어서 파일 저장
+		// 영화의 movieId를 폴더이름
+		// 현재시간 정보를 폴더 이름에 포함
+		
+		// directoryName movieId와 현재 시간을 밀리초로 사용하여 고유한 디렉토리 이름을 생성
+		String directoryName = "/" + title + "_" + System.currentTimeMillis();
+		
+		// 폴더 생성
+		// directoryPath는 새로운 디렉토리의 전체 경로
+		String directoryPath = FILE_UPLOAD_PATH + directoryName;
+		File directory = new File(directoryPath);
+		
+		// 디렉토리를 생성
+		if(!directory.mkdir()) {
+			// 디렉토리 생성 실패 > 오류를 기록, null 반환
+			logger.error("saveFile :: 디렉토리 생성 실패 - " + directoryPath);
+			return null;
+		}
+		
+		// 파일이 저장될 전체 경로
+		String filePath = directoryPath + "/" + file.getOriginalFilename();
+		
+		
+		try {
+			// file 내용을 바이트 배열로 가져옴
+			byte[] bytes = file.getBytes();
+			Path path = Paths.get(filePath);
+			// 바이트 배열을 지정된 경로에 씀
+			Files.write(path, bytes);
+		} catch (IOException e) {
+			logger.error("saveFile :: 파일 저장 실패 - " + filePath);
+			e.printStackTrace();
+			// 파일 저장 실패
+			return null;
+		}
+		
+		// url 경로 반환
+		// 클라이언트가 파일에 접근할 수 있는 url 경로를 생성하여 반환
+		return "/images" + directoryName + "/" + file.getOriginalFilename();
+	}
+	
 	
 	
 	// 파일을 삭제하는 경우
