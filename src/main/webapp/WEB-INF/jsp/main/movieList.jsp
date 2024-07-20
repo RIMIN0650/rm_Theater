@@ -40,7 +40,7 @@
 						<td>${list.title }</td>
 						<td>${list.age }</td>
 						<td>${list.mainGenre }</td>
-						<td><button type="button" class="btn btn-warning modifyBtn" data-movie-id="${list.id }"><a href="/movie/update-view?id=${list.id }">수정</a></button></td>
+						<td><button type="button" class="btn btn-warning modifyBtn" data-movie-id="${list.id }" onclick="location.href='/movie/update-view?id=${list.id }'">수정</button></td>
 						<td><button type="button" class="btn btn-danger deleteBtn" data-movie-id="${list.id }">삭제</button></td>
 					</tr>
 				</c:forEach>

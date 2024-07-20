@@ -51,7 +51,7 @@
 		</section>
 		<div class="d-flex justify-content-end mt-3">
 			<button type="button" class="btn btn-danger btn-lg mr-5" id="cancelBtn">삭제</button>
-			<button type="button" class="btn btn-warning btn-lg mr-5" id="deleteBtn">취소</button>
+			<button type="button" class="btn btn-warning btn-lg mr-5" id="backToListBtn" onclick="location.href='/movie/list'">취소</button>
 			<button type="button" class="btn btn-success btn-lg" id="modifyBtn">수정</button>
 		</div>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
