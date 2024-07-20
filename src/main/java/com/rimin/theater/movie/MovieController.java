@@ -57,6 +57,11 @@ public class MovieController {
 		return "movie/updateInfo";
 	}
 	
+	// 관 별 영화 등록 페이지
+	@GetMapping("/movie/assignRoom")
+	public String assignMovieRoom() {
+		return "movie/assignMovieRoom";
+	}
 	// 영화 예매 페이지
 	@GetMapping("/movie/reservation")
 	public String movieReservation() {
