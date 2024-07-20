@@ -16,6 +16,7 @@ public class HomeController {
 	@Autowired
 	private MovieService movieService;
 	
+	// 메인 페이지
 	@GetMapping("/main/home")
 	public String homepage(Model model) {
 		
