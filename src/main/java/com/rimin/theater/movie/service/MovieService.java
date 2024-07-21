@@ -18,6 +18,7 @@ public class MovieService {
 	@Autowired
 	private MovieRepository movieRepository;
 	
+	// 영화 신규 등록
 	public Movie addNewMovie(String title, String mainGenre 
 							, String subGenre, String director, String ageOfView
 							, int runTime, String country, String openingDay

@@ -17,28 +17,34 @@
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
 		<section>
-			<div class="ml-5 pt-5">
-				<div class="mb-5">
-					<h3>#관</h3>
-					<div>
-						<select class="selectpicker" data-width="200px" id="selectCategory">
-						  <option value="0" selected>분류 선택</option>
-						  <option value="1">1관</option>
-						  <option value="2">2관</option>
-						  <option value="3">3관</option>
-						  <option value="4">4관</option>
-						  <option value="5">5관</option>
-						  
-						</select>
+		<h1 class="text-center">관 설정</h1>
+		
+			<div class="ml-5 pt-5 d-flex justify-content-center">
+				<div class="mb-5" id="assignRoomForm">
+					<div class="d-flex justify-content-center mt-5">
+						<div>
+							<select class="selectpicker" data-width="200px" id="selectCategory">
+							  <option value="0" selected>관 선택</option>
+							  <option value="1">HR관</option>
+							  <option value="2">MS관</option>
+							  <option value="3">RM관</option>
+							  <option value="4">65관</option>
+							  <option value="5">95관</option>		  
+							</select>
+						</div>
+						<div class="ml-4">
+							<select class="selectpicker" data-width="200px" id="selectCategory">
+							  <option value="0" selected>영화 선택</option>
+							  <c:forEach var="movie" items="${movieList }">
+							  	<option value="${movie.title }">${movie.title }</option>
+							  </c:forEach>
+							</select>
+						</div>
 					</div>
-					<div>
-						option model로 반복문 해서 불러오기
+					<div class="d-flex justify-content-end mt-5">
+						<button type="button" class="btn btn-danger mr-3" onclick="location.href='/movie/list'">취소</button>
+						<button type="button" class="btn btn-info rightMargin">등록</button>
 					</div>
-					selection box 만들어서 영화 등록<br>
-					+ 버튼 눌러서 추가 영화 등록<br>
-					같은 영화 추가 불가하게<br>
-					이미 등록된 영화 제외시켜주기<br>
-					
 				</div>
 				
 			</div>
@@ -52,5 +58,19 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 	
+	<script>
+	$(document).ready(function(){
+		
+		
+		
+		
+		
+		
+		
+	});
+	
+	
+	
+	</script>
 </body>
 </html>

@@ -33,6 +33,10 @@ footer{
 }
 
 
+.rightMargin{
+	margin-right: 40px;
+}
+
 /*회원가입*/
 #joinForm{
 	width: 350px;
@@ -121,4 +125,13 @@ footer{
 /*영화 상세 정보 창*/
 #movieInfoDetail{
 	width:600px;
+}
+
+
+
+/*영화 별 관 설정*/
+#assignRoomForm{
+	width:500px;
+	height:200px;
+	background-color: #d4d448;
 }
