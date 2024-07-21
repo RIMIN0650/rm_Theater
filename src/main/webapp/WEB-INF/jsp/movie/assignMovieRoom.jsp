@@ -17,26 +17,25 @@
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
 		<section>
-		<h1 class="text-center">관 설정</h1>
-		
-			<div class="ml-5 pt-5 d-flex justify-content-center">
-				<div class="mb-5" id="assignRoomForm">
+			<h1 class="text-center">관 설정</h1>
+			<div class="pt-5 d-flex justify-content-center">
+				<div id="assignRoomForm">
 					<div class="d-flex justify-content-center mt-5">
 						<div>
-							<select class="selectpicker" data-width="200px" id="selectCategory">
+							<select class="selectpicker" data-width="200px" id="selectRoom">
 							  <option value="0" selected>관 선택</option>
-							  <option value="1">HR관</option>
-							  <option value="2">MS관</option>
-							  <option value="3">RM관</option>
-							  <option value="4">65관</option>
-							  <option value="5">95관</option>		  
+							  <option value="HR">HR관</option>
+							  <option value="MS">MS관</option>
+							  <option value="RM">RM관</option>
+							  <option value="65">65관</option>
+							  <option value="95">95관</option>		  
 							</select>
 						</div>
 						<div class="ml-4">
-							<select class="selectpicker" data-width="200px" id="selectCategory">
+							<select class="selectpicker" data-width="200px" id="selectMovie">
 							  <option value="0" selected>영화 선택</option>
 							  <c:forEach var="movie" items="${movieList }">
-							  	<option value="${movie.title }">${movie.title }</option>
+							  	<option value="${movie.id }">${movie.title }</option>
 							  </c:forEach>
 							</select>
 						</div>
@@ -45,8 +44,7 @@
 						<button type="button" class="btn btn-danger mr-3" onclick="location.href='/movie/list'">취소</button>
 						<button type="button" class="btn btn-info rightMargin">등록</button>
 					</div>
-				</div>
-				
+				</div>	
 			</div>
 		</section>
 		
@@ -61,9 +59,26 @@
 	<script>
 	$(document).ready(function(){
 		
+		let roomNumber;
+		let movieTitle;
 		
 		
+		$("#selectRoom").change(function(){
+			
+			let selectRoom = document.getElementById("selectRoom");
+			roomNumber = selectRoom.options[selectRoom.selectedIndex].value;				
+			
+		});
 		
+		$("#selectMovie").change(function(){
+			
+			let selectMovie = document.getElementById("selectMovie");
+			movieTitle = selectMovie.options[selectMovie.selectedIndex].value;
+			
+			alert(movieTitle);
+			
+			
+		});
 		
 		
 		

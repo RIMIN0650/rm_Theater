@@ -124,14 +124,21 @@ footer{
 
 /*영화 상세 정보 창*/
 #movieInfoDetail{
-	width:600px;
+	width: 600px;
 }
 
 
 
 /*영화 별 관 설정*/
 #assignRoomForm{
+	width: 500px;
+	height: 200px;
+	background-color: #d4d448;
+}
+
+/*관 등록 폼*/
+#addRoomForm{
 	width:500px;
-	height:200px;
+	height: 200px;
 	background-color: #d4d448;
 }

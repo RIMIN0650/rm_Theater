@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.rimin.theater.manager.domain.Manager;
 import com.rimin.theater.manager.repository.ManagerRepository;
 
+
 @Service
 public class ManagerService {
 	
@@ -50,6 +51,8 @@ public class ManagerService {
 	public Manager getManager(String loginId, String loginPw) {
 		return managerRepository.findByLoginIdAndPassword(loginId, loginPw);
 	}
+	
+	
 	
 	
 }
