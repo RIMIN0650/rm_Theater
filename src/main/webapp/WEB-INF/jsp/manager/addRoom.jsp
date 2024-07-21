@@ -55,7 +55,22 @@
 					alert("관 이름을 입력하세요");
 					return ;
 				}
-
+				
+				$.ajax({
+					type:"post"
+					, url:"/admin/addRoom"
+					, data:{"roomName":roomName}
+					, success:function(data){
+						if(data.result == "success"){
+							alert("영화관 추가 성공");
+						} else {
+							alert("영화관 추가 실패");
+						}
+					}
+					, error:function(data){
+						alert("영화관 추가 에러");
+					}
+				})
 				
 			});
 			
