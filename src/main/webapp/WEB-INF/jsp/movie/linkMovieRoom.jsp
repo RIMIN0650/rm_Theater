@@ -61,18 +61,101 @@
 		let movieTitle = 0;
 		
 		
+		
+		
+		
+		
+		
+		
+		function checkRoomDuplicates(){
+			$("#selectRoom option").each(function(){
+				let option = $(this);
+				let roomName = option.val();
+				if(roomName != "0"){ // 관 선택 옵션 제외하기 위해
+					$.ajax({
+						type:"get"
+						, url:"/link/duplicateRoom"
+						, data:{"roomName":roomName}
+						, success:function(data){
+							if(data.isDuplicateRoom){
+								option.text(option.text() + '❌');
+								option.attr('disabled', true);
+								
+							}
+						}
+						, error: function(){
+							alert("중복 확인 에러")
+						} 
+					});
+				}
+			})
+			$('.selectpicker').selectpicker('refresh');
+		}
+		
+		
+		checkRoomDuplicates();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		$("#selectRoom").change(function(){
 			
 			let selectRoom = document.getElementById("selectRoom");
-			roomName = selectRoom.options[selectRoom.selectedIndex].value;				
+			roomName = selectRoom.options[selectRoom.selectedIndex].value;
 			
+			$.ajax({
+				type:"get"
+				, url:"/link/duplicateRoom"
+				, data:{"roomName":roomName}
+				, success:function(data){
+					if(data.isDuplicateRoom){
+						alert("중복")
+					} else {
+						alert("중복 아님");
+					}
+				}
+				, error:function(){
+					alert("중복 확인 에러");
+				}
+			});
 		});
 		
 		$("#selectMovie").change(function(){
 			
 			let selectMovie = document.getElementById("selectMovie");
 			movieName = selectMovie.options[selectMovie.selectedIndex].value;
-		
+			
+			alert(movieName);
+			
+			$.ajax({
+				type:"get"
+				, url:"/link/duplicateMovie"
+				, data:{"movieName":movieName}
+				, success:function(data){
+					if(data.isDuplicateRoom){
+						alert("중복")
+					} else {
+						alert("중복 아님");
+					}
+				}
+				, error:function(){
+					alert("중복 확인 에러");
+				}
+				
+			});
+			
 		});
 		
 		
