@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.room.domain.Room;
 import com.rimin.theater.room.service.RoomService;
 
@@ -15,6 +16,7 @@ public class RoomController {
 	
 	@Autowired
 	private RoomService roomService;
+	
 	
 	@GetMapping("/admin/addRoom")
 	public String addRoom() {
@@ -25,12 +27,24 @@ public class RoomController {
 	// 현재 등록된 관 보여주기
 	@GetMapping("/room/roomList")
 	public String roomList(Model model) {
-		
+			
 		List<Room> roomList = roomService.getMovieList();
 		
 		model.addAttribute("roomList", roomList);
 		
 		return "main/roomList";
 	}
+	
+	// 연결된 관-영화 보여주기
+	@GetMapping("/room/linkMovie")
+	public String linkCineList(Model model) {
+		
+		List<CineLink> cineLinkList = roomService.getcineLinkList();
+		
+		model.addAttribute("cineLinkList", cineLinkList);
+	
+		return "movie/linkCineList";
+	}
+	
 	
 }

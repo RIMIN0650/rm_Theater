@@ -27,6 +27,7 @@ public class CineLinkController {
 		// 모든 영화 조회하기
 		List<MovieDetail> movieList = movieService.getMovieList();
 		
+		// 모든 관 조회하기
 		List<Room> roomList = roomService.getMovieList();
 		
 		model.addAttribute("movieList", movieList);
@@ -35,4 +36,8 @@ public class CineLinkController {
 		
 		return "movie/linkMovieRoom";
 	}
+	
+	
+	
+	
 }

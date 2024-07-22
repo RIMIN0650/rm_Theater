@@ -25,7 +25,7 @@
 							<select class="selectpicker" data-width="200px" id="selectRoom">
 							  <option value="0" selected>관 선택</option>
 							  <c:forEach var="room" items="${roomList }">
-							  	<option value="${room.id }">${room.roomName }</option>
+							  	<option value="${room.roomName }">${room.roomName }</option>
 							  </c:forEach>	  
 							</select>
 						</div>
@@ -33,7 +33,7 @@
 							<select class="selectpicker" data-width="200px" id="selectMovie">
 							  <option value="0" selected>영화 선택</option>
 							  <c:forEach var="movie" items="${movieList }">
-							  	<option value="${movie.id }">${movie.title }</option>
+							  	<option value="${movie.title }">${movie.title }</option>
 							  </c:forEach>
 							</select>
 						</div>
@@ -71,7 +71,7 @@
 		$("#selectMovie").change(function(){
 			
 			let selectMovie = document.getElementById("selectMovie");
-			movieTitle = selectMovie.options[selectMovie.selectedIndex].value;
+			movieName = selectMovie.options[selectMovie.selectedIndex].value;
 		
 		});
 		
@@ -83,7 +83,7 @@
 				return;
 			}
 			
-			if(movieTitle == 0){
+			if(movieName == 0){
 				alert("영화를 선택하세요");
 				return;
 			}
@@ -91,7 +91,7 @@
 			$.ajax({
 				type:"post"
 				, url:"/movie/linkRoom"
-				, data:{"roomName":roomName, "movieName":movieTitle}
+				, data:{"roomName":roomName, "movieName":movieName}
 				, success:function(data){
 					if(data.result == "success"){
 						alert("등록 성공");
