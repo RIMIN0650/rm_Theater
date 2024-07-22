@@ -1,13 +1,35 @@
 package com.rimin.theater.room;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.rimin.theater.room.domain.Room;
+import com.rimin.theater.room.service.RoomService;
 
 @Controller
 public class RoomController {
+	
+	@Autowired
+	private RoomService roomService;
 	
 	@GetMapping("/admin/addRoom")
 	public String addRoom() {
 		return "manager/addRoom";
 	}
+	
+	// 현재 등록된 관 보여주기
+	@GetMapping("/room/roomList")
+	public String roomList(Model model) {
+		
+		List<Room> roomList = roomService.getMovieList();
+		
+		model.addAttribute("roomList", roomList);
+		
+		return "main/roomList";
+	}
+	
 }
