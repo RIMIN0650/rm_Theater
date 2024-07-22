@@ -24,11 +24,9 @@
 						<div>
 							<select class="selectpicker" data-width="200px" id="selectRoom">
 							  <option value="0" selected>관 선택</option>
-							  <option value="HR">HR관</option>
-							  <option value="MS">MS관</option>
-							  <option value="RM">RM관</option>
-							  <option value="65">65관</option>
-							  <option value="95">95관</option>		  
+							  <c:forEach var="room" items="${roomList }">
+							  	<option value="${room.id }">${room.roomName }</option>
+							  </c:forEach>	  
 							</select>
 						</div>
 						<div class="ml-4">
@@ -42,7 +40,7 @@
 					</div>
 					<div class="d-flex justify-content-end mt-5">
 						<button type="button" class="btn btn-danger mr-3" onclick="location.href='/movie/list'">취소</button>
-						<button type="button" class="btn btn-info rightMargin">등록</button>
+						<button type="button" class="btn btn-info rightMargin" id="assignMovieRoomBtn">등록</button>
 					</div>
 				</div>	
 			</div>
@@ -59,14 +57,14 @@
 	<script>
 	$(document).ready(function(){
 		
-		let roomNumber;
-		let movieTitle;
+		let roomName = 0;
+		let movieTitle = 0;
 		
 		
 		$("#selectRoom").change(function(){
 			
 			let selectRoom = document.getElementById("selectRoom");
-			roomNumber = selectRoom.options[selectRoom.selectedIndex].value;				
+			roomName = selectRoom.options[selectRoom.selectedIndex].value;				
 			
 		});
 		
@@ -74,11 +72,25 @@
 			
 			let selectMovie = document.getElementById("selectMovie");
 			movieTitle = selectMovie.options[selectMovie.selectedIndex].value;
-			
-			alert(movieTitle);
-			
-			
+		
 		});
+		
+		
+		$("#assignMovieRoomBtn").on("click", function(){
+			
+			if(roomName == 0){
+				alert("관을 선택하세요");
+				return;
+			}
+			
+			if(movieTitle == 0){
+				alert("영화를 선택하세요");
+				return;
+			}
+			
+
+		});
+		
 		
 		
 		

@@ -57,17 +57,7 @@ public class MovieController {
 		return "movie/updateInfo";
 	}
 	
-	// 관 별 영화 등록 페이지
-	@GetMapping("/movie/assignRoom")
-	public String assignMovieRoom(Model model) {
-		
-		// 모든 영화 조회하기
-		List<MovieDetail> movieList = movieService.getMovieList();
-		
-		model.addAttribute("movieList", movieList);
-		
-		return "movie/assignMovieRoom";
-	}
+	
 	
 	// 영화 예매 페이지
 	@GetMapping("/movie/reservation")

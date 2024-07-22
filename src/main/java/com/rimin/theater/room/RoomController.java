@@ -21,6 +21,7 @@ public class RoomController {
 		return "manager/addRoom";
 	}
 	
+	
 	// 현재 등록된 관 보여주기
 	@GetMapping("/room/roomList")
 	public String roomList(Model model) {
