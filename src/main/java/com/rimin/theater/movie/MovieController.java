@@ -58,7 +58,6 @@ public class MovieController {
 	}
 	
 	
-	
 	// 영화 예매 페이지
 	@GetMapping("/movie/reservation")
 	public String movieReservation() {

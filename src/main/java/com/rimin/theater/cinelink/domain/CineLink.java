@@ -1,4 +1,4 @@
-package com.rimin.theater.assign.domain;
+package com.rimin.theater.cinelink.domain;
 
 import java.util.Date;
 
@@ -19,9 +19,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Table(name="assignRoom")
+@Table(name="cineLink")
 @Entity
-public class AssignRoom {
+public class CineLink {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;

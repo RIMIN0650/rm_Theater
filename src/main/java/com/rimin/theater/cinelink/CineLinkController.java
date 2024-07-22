@@ -1,4 +1,4 @@
-package com.rimin.theater.assign;
+package com.rimin.theater.cinelink;
 
 import java.util.List;
 
@@ -13,8 +13,7 @@ import com.rimin.theater.room.domain.Room;
 import com.rimin.theater.room.service.RoomService;
 
 @Controller
-public class AssignController {
-	
+public class CineLinkController {
 	@Autowired
 	private MovieService movieService;
 	
@@ -22,8 +21,8 @@ public class AssignController {
 	private RoomService roomService;
 	
 	// 관 별 영화 등록 페이지
-	@GetMapping("/movie/assignRoom")
-	public String assignMovieRoom(Model model) {
+	@GetMapping("/movie/linkRoom")
+	public String linkMovieRoom(Model model) {
 		
 		// 모든 영화 조회하기
 		List<MovieDetail> movieList = movieService.getMovieList();
@@ -34,11 +33,6 @@ public class AssignController {
 		
 		model.addAttribute("roomList", roomList);
 		
-		return "movie/assignMovieRoom";
+		return "movie/linkMovieRoom";
 	}
-		
-	
-		
-		
-		
 }
