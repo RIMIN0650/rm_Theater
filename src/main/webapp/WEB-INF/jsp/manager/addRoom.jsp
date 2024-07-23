@@ -63,6 +63,7 @@
 					, success:function(data){
 						if(data.result == "success"){
 							alert("영화관 추가 성공");
+							location.reload();
 						} else {
 							alert("영화관 추가 실패");
 						}

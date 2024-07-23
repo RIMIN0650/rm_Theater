@@ -17,7 +17,7 @@
 		
 		<section>
 			
-			<h1 class="text-center">관 리스트</h1>
+			<h1 class="text-center">관 / 등록된 영화</h1>
 			
 			<div>
 				<table class="table text-center mt-5">
@@ -25,7 +25,8 @@
 						<tr>
 							<th>#</th>
 							<th>관 이름</th>
-							<th>등록 영화</th>							
+							<th>등록 영화</th>	
+							<th>삭제</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,6 +35,7 @@
 							<th>${status.count }</th>
 							<td>${linkList.roomName }</td>
 							<td>${linkList.movieName }</td>
+							<td><button type="button" class="btn btn-danger">삭제</button></td>
 						</tr>
 						</c:forEach>
 					</tbody>

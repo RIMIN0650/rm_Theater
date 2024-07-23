@@ -164,6 +164,7 @@
 				, success:function(data){
 					if(data.result == "success"){
 						alert("등록 성공");
+						location.reload();
 					} else {
 						alert("등록 실패");
 					}

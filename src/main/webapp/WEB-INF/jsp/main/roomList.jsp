@@ -20,18 +20,22 @@
 			<h1 class="text-center">관 리스트</h1>
 			
 			<div>
-				<table>
+				<table class="table text-center mt-5">
 					<thead>
 						<tr>
+							<th>#</th>
 							<th>관 이름</th>
-							<th>등록 영화</th>							
+							<th>수정</th>							
+							<th>삭제</th>							
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="roomList" items="${roomList }">
+						<c:forEach var="roomList" items="${roomList }" varStatus="status">
 						<tr>
-							<td>${roomList.roomName }</td>
-							<td>영화 제목</td>
+							<td>${status.count }</td>
+							<td class="roomName-cell">${roomList.roomName }</td>
+							<td class="roomListAlterBtn-cell"><button type="button" class="btn btn-warning">수정</button></td>
+							<td class="roomListAlterBtn-cell"><button type="button" class="btn btn-danger">삭제</button></td>
 						</tr>
 						</c:forEach>
 					</tbody>
