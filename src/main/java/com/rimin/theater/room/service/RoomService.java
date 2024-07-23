@@ -43,6 +43,7 @@ public class RoomService {
 			
 			Room rooms = Room.builder()
 							.id(room.getId())
+							.linkCheck(room.getLinkCheck())
 							.roomName(room.getRoomName())
 							.build();
 			

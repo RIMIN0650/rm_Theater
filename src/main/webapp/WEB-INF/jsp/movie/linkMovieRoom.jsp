@@ -25,7 +25,14 @@
 							<select class="selectpicker" data-width="200px" id="selectRoom">
 							  <option value="0" selected>관 선택</option>
 							  <c:forEach var="room" items="${roomList }">
-							  	<option value="${room.roomName }">${room.roomName }</option>
+							  	<c:choose>
+							  		<c:when test="${room.linkCheck == 'Unlinked'}">
+							  			<option value="${room.roomName }">${room.roomName }</option>
+							  		</c:when>
+							  		<c:otherwise>
+							  			<option value="${room.roomName }" disabled>${room.roomName } [선택불가]</option>
+							  		</c:otherwise>
+							  	</c:choose>
 							  </c:forEach>	  
 							</select>
 						</div>
@@ -84,13 +91,13 @@
 		});
 		*/
 
-		/*
-		#중복 확인을 위함
+		
 		$("#selectRoom").change(function(){
 			
 			let selectRoom = document.getElementById("selectRoom");
 			roomName = selectRoom.options[selectRoom.selectedIndex].value;
 			
+			/* 
 			$.ajax({
 				type:"get"
 				, url:"/link/duplicateRoom"
@@ -105,19 +112,19 @@
 				, error:function(){
 					alert("중복 확인 에러");
 				}
-			});
+			}); */
 		});
-		*/
 		
-		/*
-		#중복 확인하기 위함
+		
+		
+		
 		$("#selectMovie").change(function(){
 			
 			let selectMovie = document.getElementById("selectMovie");
 			movieName = selectMovie.options[selectMovie.selectedIndex].value;
 			
+			/* 
 			alert(movieName);
-			
 			$.ajax({
 				type:"get"
 				, url:"/link/duplicateMovie"
@@ -132,11 +139,11 @@
 				, error:function(){
 					alert("중복 확인 에러");
 				}
-				
-			});
-			
+			}); */
 		});
-		*/
+		
+		
+		
 		
 		$("#assignMovieRoomBtn").on("click", function(){
 			

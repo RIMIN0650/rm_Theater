@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.repository.CineLinkRepository;
+import com.rimin.theater.room.domain.Room;
+import com.rimin.theater.room.repository.RoomRepository;
 
 @Service
 public class CineLinkService {
@@ -12,7 +14,19 @@ public class CineLinkService {
 	@Autowired
 	private CineLinkRepository cineLinkRepository;
 	
+	@Autowired
+	private RoomRepository roomRepository;
+	
 	public CineLink linkRoomwithMovie(String roomName, String movieName) {
+		
+		Room room = roomRepository.findByRoomName(roomName);
+		
+		if(room != null) {
+			room = room.toBuilder()
+						.linkCheck("Linked")
+						.build();
+			room = roomRepository.save(room);
+		}
 		
 		CineLink cineLink = CineLink.builder()
 								.roomName(roomName)
