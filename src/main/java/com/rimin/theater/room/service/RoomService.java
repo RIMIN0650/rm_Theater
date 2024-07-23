@@ -2,14 +2,11 @@ package com.rimin.theater.room.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.repository.CineLinkRepository;
-import com.rimin.theater.movie.repository.MovieRepository;
 import com.rimin.theater.room.domain.Room;
 import com.rimin.theater.room.repository.RoomRepository;
 
@@ -21,15 +18,13 @@ public class RoomService {
 	
 	@Autowired
 	private CineLinkRepository cineLinkRepository;
-	
-	@Autowired
-	private MovieRepository movieRepository;
 	                                 
 	// 새로운 관 등록
 	public Room addRoom(String roomName) {
 		
 		Room room = Room.builder()
 						.roomName(roomName)
+						.linkCheck("Unlinked")
 						.build();
 		
 		room = roomRepository.save(room);

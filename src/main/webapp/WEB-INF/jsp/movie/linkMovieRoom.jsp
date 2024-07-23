@@ -61,55 +61,31 @@
 		let movieTitle = 0;
 		
 		
-		
-		
-		
-		
-		
-		
-		function checkRoomDuplicates(){
+		/*
+		$("selectRoom option").each(function(){
 			$("#selectRoom option").each(function(){
-				let option = $(this);
-				let roomName = option.val();
-				if(roomName != "0"){ // 관 선택 옵션 제외하기 위해
+				var roomName = $(this).val();
+				if(roomName != "0"){ // 관 선택 옵션 제외
 					$.ajax({
 						type:"get"
 						, url:"/link/duplicateRoom"
 						, data:{"roomName":roomName}
-						, success:function(data){
-							if(data.isDuplicateRoom){
-								option.text(option.text() + '❌');
-								option.attr('disabled', true);
-								
+						, success: function(response){
+							if(response.isDuplicateRoom){
+								$('#selectRoom option[value"' + roomName + '"]').attr('disabled', true);
 							}
 						}
-						, error: function(){
-							alert("중복 확인 에러")
-						} 
+						, error:function(){
+							alert("중복 확인 에러");
+						}		
 					});
 				}
-			})
-			$('.selectpicker').selectpicker('refresh');
-		}
-		
-		
-		checkRoomDuplicates();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			});
+		});
+		*/
+
+		/*
+		#중복 확인을 위함
 		$("#selectRoom").change(function(){
 			
 			let selectRoom = document.getElementById("selectRoom");
@@ -131,7 +107,10 @@
 				}
 			});
 		});
+		*/
 		
+		/*
+		#중복 확인하기 위함
 		$("#selectMovie").change(function(){
 			
 			let selectMovie = document.getElementById("selectMovie");
@@ -157,7 +136,7 @@
 			});
 			
 		});
-		
+		*/
 		
 		$("#assignMovieRoomBtn").on("click", function(){
 			

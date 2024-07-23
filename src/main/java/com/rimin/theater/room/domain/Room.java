@@ -30,6 +30,9 @@ public class Room {
 	@Column(name="roomName")
 	private String roomName;
 	
+	@Column(name="linkCheck")
+	private String linkCheck;
+	
 	@UpdateTimestamp
 	@Column(name="createdAt", updatable=false)
 	private Date createdAt;

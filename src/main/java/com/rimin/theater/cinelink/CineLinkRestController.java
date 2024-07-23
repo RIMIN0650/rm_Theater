@@ -37,6 +37,7 @@ public class CineLinkRestController {
 		
 	}
 	
+	/*
 	// 이미 등록된 관인지 확인
 	@GetMapping("/link/duplicateRoom")
 	public Map<String, Boolean> isDuplicateRoom(@RequestParam("roomName") String roomName){
@@ -51,6 +52,9 @@ public class CineLinkRestController {
 		
 	}
 	
+	*/
+	
+	/*
 	// 이미 등록된 영화인지 확인
 	@GetMapping("/link/duplicateMovie")
 	public Map<String, Boolean> isDuplicateMovie(@RequestParam("movieName") String movieName){
@@ -63,6 +67,6 @@ public class CineLinkRestController {
 		return resultMap;
 	}
 	
-	
+	*/
 	
 }

@@ -23,6 +23,7 @@ public class CineLinkService {
 	}
 	
 	
+	/*
 	// 이미 등록되어 있는 관인지 확인
 	public boolean isDuplicateRoom(String roomName) {
 		
@@ -35,8 +36,10 @@ public class CineLinkService {
 		}
 		
 		
-	}
+	}	 
+	*/
 	
+	/*
 	// 이미 등록되어 있는 영화인지 확인
 	public boolean isDuplicateMovie(String movieName) {
 		int count = cineLinkRepository.countByMovieName(movieName);
@@ -49,6 +52,6 @@ public class CineLinkService {
 		
 	}
 	
-	
+	*/
 	
 }
