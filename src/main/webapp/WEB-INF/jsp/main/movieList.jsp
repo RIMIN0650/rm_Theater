@@ -32,7 +32,6 @@
 					</tr>
 				</thead>
 				<tbody>
-				
 				<c:forEach var="list" items="${movieList }" varStatus="status">
 					<tr class="text-center">
 						<td>${status.count }</td>
@@ -44,9 +43,15 @@
 						<td><button type="button" class="btn btn-danger deleteBtn" data-movie-id="${list.id }">삭제</button></td>
 					</tr>
 				</c:forEach>
-				
 				</tbody>
-			</table>
+			</table>	
+			
+			<div class="d-flex justify-content-between mt-5">
+				<button type="button" class="btn btn-info" onclick="location.href='/admin/addRoom'">새 관 등록</button>
+				<button type="button" class="btn btn-info" onclick="location.href='/movie/linkRoom'">관에 영화 할당</button>
+				<button type="button" class="btn btn-info" onclick="location.href='/room/linkMovie'">관-영화 연결 리스트 확인</button>
+				<button type="button" class="btn btn-info" onclick="location.href='/room/roomList'">관 이름 수정</button>
+			</div>
 		</div>
 	
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
