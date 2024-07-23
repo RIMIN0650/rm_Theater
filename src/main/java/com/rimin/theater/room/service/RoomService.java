@@ -72,5 +72,22 @@ public class RoomService {
 		}
 		return newCineLinkList;
 	}
+	
+	
+	// 연결 해제되면 다시 Unlinked 로 바꿔주기
+	public Room alterLinkCheck(String roomName) {
 		
+		Room room = roomRepository.findByRoomName(roomName);
+		
+		if(room != null) {
+			room = room.toBuilder()
+						.linkCheck("Unlinked")
+						.build();
+			room = roomRepository.save(room);
+		}
+		
+		return room;
+	}
+	
+	
 }

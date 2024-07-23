@@ -68,4 +68,18 @@ public class CineLinkService {
 	
 	*/
 	
+	
+	// 관에 할당된 영화 지우기
+	public CineLink deleteLink(String roomName) {
+		
+		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
+		
+		if(cineLink != null) {
+			cineLinkRepository.delete(cineLink);
+		}
+		
+		return cineLink;
+		
+	}
+	
 }
