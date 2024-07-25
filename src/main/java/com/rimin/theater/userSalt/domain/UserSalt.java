@@ -1,4 +1,4 @@
-package com.rimin.theater.user.domain;
+package com.rimin.theater.userSalt.domain;
 
 import java.util.Date;
 
@@ -19,24 +19,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Table(name="user")
+@Table(name="userSalt")
 @Entity
-public class User {
-	
+public class UserSalt {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="loginId")
-	private String loginId;
-	private String password;
-	private String name;
-	private String email;
+	@Column(name="userId")
+	private String userId;
 	
-	@Column(name="phoneNumber")
-	private String phoneNumber;
-	private int age;
-	private String sex;
+	private String salt;
 	
 	@UpdateTimestamp
 	@Column(name="createdAt", updatable=false)

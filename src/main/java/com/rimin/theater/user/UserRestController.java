@@ -1,5 +1,6 @@
 package com.rimin.theater.user;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rimin.theater.user.domain.User;
 import com.rimin.theater.user.service.UserService;
+import com.rimin.theater.userSalt.domain.UserSalt;
+import com.rimin.theater.userSalt.service.UserSaltService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +24,10 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private UserSaltService userSaltService;
+	
+	// 회원가입
 	@PostMapping("/user/join")
 	public Map<String, String> join(
 			@RequestParam("loginId") String loginId
@@ -29,8 +36,12 @@ public class UserRestController {
 			, @RequestParam("email") String email
 			, @RequestParam("phoneNumber") String phoneNumber
 			, @RequestParam("age") int age
-			, @RequestParam("sex") String sex) {
+			, @RequestParam("sex") String sex) throws NoSuchAlgorithmException {
 		
+		// 사용자별 salt를 먼저 저장 후
+		UserSalt userSalt = userSaltService.saveUserSalt(loginId);
+		
+		// salt를 추가하여 암호화된 비밀번호를 저장
 		User user = userService.addUser(loginId, password, name, email, phoneNumber, age, sex);
 		
 		Map<String, String> resultMap = new HashMap<>();

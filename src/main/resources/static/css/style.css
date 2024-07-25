@@ -37,7 +37,6 @@ header{
 	visibility: hidden;
 	background-color: #b3ffc3;
 	margin-top: 10px;
-	transform: translateX(4%);
 }
 
 .sub-menu > li{

@@ -3,8 +3,11 @@ package com.rimin.theater.user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rimin.theater.common.EncryptUtils;
 import com.rimin.theater.user.domain.User;
 import com.rimin.theater.user.repository.UserRepository;
+import com.rimin.theater.userSalt.domain.UserSalt;
+import com.rimin.theater.userSalt.repository.UserSaltRepository;
 
 @Service
 public class UserService {
@@ -12,6 +15,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private UserSaltRepository userSaltRepository;
 	
 	// 회원가입
 	public User addUser(String loginId
@@ -21,9 +26,16 @@ public class UserService {
 						, String phoneNumber
 						, int age
 						, String sex) {
+		
+		// 저장된 salt 불러오기
+		UserSalt userSalt = userSaltRepository.findByUserId(loginId);
+		
+		// salt 와 SHA256으로 암호화
+		String encryptedPassword = EncryptUtils.encrypt(password, userSalt.getSalt());
+		
 		User user = User.builder()
 						.loginId(loginId)
-						.password(password)
+						.password(encryptedPassword)
 						.name(name)
 						.email(email)
 						.phoneNumber(phoneNumber)
