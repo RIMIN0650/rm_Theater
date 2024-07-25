@@ -2,11 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<nav class="main-menu mb-5">
-			<ul class="nav nav-fill">
+	<nav class="main-menu-form mb-5">
+			<ul class="nav nav-fill" class="main-menu">
 				<c:choose>
-					<c:when test="${managerName ne null }"> 
-						<li class="nav-item mt-3"><a href="/movie/list" class="text-dark">영화 관리</a></li>
+					<c:when test="${managerName ne null }">		
+						<li class="nav-item mt-3"><a href="/movie/list" class="text-dark">영화 관리</a><li>
+							<ul class="sub-menu">
+								<li>1</li>	
+								<li>1</li>	
+								<li>1</li>	
+							</ul>
+						</li>
 						<li class="nav-item mt-3"><a href="#" class="text-dark">이벤트 관리</a></li>
 						<li class="nav-item mt-3"><a href="#" class="text-dark">공지 관리</a></li>
 					</c:when>
@@ -51,3 +57,5 @@
 				</c:choose>
 			</ul>
 		</nav>
+		
+		

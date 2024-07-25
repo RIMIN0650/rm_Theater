@@ -16,11 +16,17 @@ header{
 	width: 200px;
 }
 
-.main-menu{
+.main-menu-form{
 	height: 60px;
 	align-items: end;
 	background-color:#b3ffc3;
 }
+
+.main-menu
+, .sub-menu{
+	list-style-type: none;
+}
+
 
 
 footer{
@@ -50,7 +56,6 @@ footer{
 
 
 /*메인 페이지*/
-
 
 .movie-thumbnail{
 	height: 300px;
