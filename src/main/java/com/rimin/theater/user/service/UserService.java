@@ -47,8 +47,6 @@ public class UserService {
 		
 	}
 	
-	
-	
 	// id 중복 확인
 	public boolean isDuplicateId(String loginId) {
 		int count = userRepository.countByLoginId(loginId);
@@ -60,11 +58,14 @@ public class UserService {
 		}
 	}
 	
-	
 	// 로그인 기능
 	public User getUser(String loginId, String loginPw) {
 		
-		return userRepository.findByLoginIdAndPassword(loginId, loginPw);
+		UserSalt userSalt = userSaltRepository.findByUserId(loginId);
+		
+		String encryptedPassword = EncryptUtils.encrypt(loginPw, userSalt.getSalt());
+		
+		return userRepository.findByLoginIdAndPassword(loginId, encryptedPassword);
 	}
 	
 }
