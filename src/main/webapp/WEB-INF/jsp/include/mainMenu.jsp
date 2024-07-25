@@ -6,7 +6,7 @@
 			<ul class="nav nav-fill main-menu">
 				<c:choose>
 					<c:when test="${managerName ne null }">		
-						<li class="nav-item mt-2"><a href="/movie/list" class="text-dark">영화 관리</a>
+						<li class="nav-item mt-2"><a href="/movie/list">영화 관리</a>
 							<ul class="sub-menu">
 								<li><a href="/admin/addRoom">새로운 관 등록</a></li>
 								<li><a href="/movie/linkRoom">영화 배정</a></li>

@@ -26,13 +26,35 @@ header{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	height: 60px;
 }
 
 .sub-menu{
 	list-style-type: none;
+	position: absolute;
 	margin: 0;
 	padding: 0;
 	visibility: hidden;
+	background-color: #b3ffc3;
+	margin-top: 10px;
+	transform: translateX(4%);
+}
+
+.sub-menu > li{
+	height: 40px;
+	width: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sub-menu > li:hover{
+	background-color: #9ae6aa;
+}
+
+.sub-menu > li > a{
+	color: black;
+	text-decoration-line: none;
 }
 
 .main-menu > li{
@@ -43,10 +65,14 @@ header{
 	visibility: visible;
 }
 
+
+
 .main-menu > li > a{
 	display: block;
 	padding: 8px 16px;
 	text-align: center;
+	color: black;
+	text-decoration-line: none;
 }
 
 #mainPageSearchBtn{
