@@ -22,11 +22,36 @@ header{
 	background-color:#b3ffc3;
 }
 
-.main-menu
-, .sub-menu{
+.main-menu{
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
+.sub-menu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	visibility: hidden;
+}
+
+.main-menu > li{
+	float: left;
+}
+
+.main-menu > li:hover .sub-menu{
+	visibility: visible;
+}
+
+.main-menu > li > a{
+	display: block;
+	padding: 8px 16px;
+	text-align: center;
+}
+
+#mainPageSearchBtn{
+	height: 38px;
+}
 
 
 footer{
