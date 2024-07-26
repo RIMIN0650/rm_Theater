@@ -1,5 +1,6 @@
 package com.rimin.theater.manager;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rimin.theater.manager.domain.Manager;
 import com.rimin.theater.manager.service.ManagerService;
+import com.rimin.theater.managerSalt.domain.ManagerSalt;
+import com.rimin.theater.managerSalt.service.ManagerSaltService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +24,9 @@ public class ManagerRestController {
 	@Autowired
 	public ManagerService managerService;
 	
+	@Autowired
+	public ManagerSaltService managerSaltService;
+	
 	@PostMapping("/admin/join")
 	public Map<String, String> join (@RequestParam("loginId") String loginId
 									, @RequestParam("password") String password
@@ -28,13 +34,15 @@ public class ManagerRestController {
 									, @RequestParam("email") String email
 									, @RequestParam("phoneNumber") String phoneNumber
 									, @RequestParam("age") int age
-									, @RequestParam("sex") String sex) {
+									, @RequestParam("sex") String sex) throws NoSuchAlgorithmException {
+		
+		ManagerSalt managerSalt = managerSaltService.saveManagerSalt(loginId);
 		
 		Manager manager = managerService.addManager(loginId, password, name, email ,phoneNumber ,age, sex);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
-		if(manager != null) {
+		if(manager != null && managerSalt != null) {
 			resultMap.put("result",  "success");
 		} else {
 			resultMap.put("result", "fail");

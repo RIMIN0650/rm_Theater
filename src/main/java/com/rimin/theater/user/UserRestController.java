@@ -46,7 +46,7 @@ public class UserRestController {
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
-		if(user != null) {
+		if(user != null && userSalt != null) {
 			resultMap.put("result",  "success");
 		} else {
 			resultMap.put("result",  "fail");
