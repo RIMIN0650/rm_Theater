@@ -134,6 +134,10 @@ footer{
 	background-color: #ffebde;
 }
 
+#showUserId{
+	margin-top: 125px;
+}
+
 
 /*메인 페이지*/
 .movie-thumbnail{

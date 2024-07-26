@@ -1,7 +1,10 @@
 package com.rimin.theater.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.rimin.theater.user.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -9,6 +12,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
+	@Autowired
+	private UserService userService;
+	
 	// user 회원가입 페이지
 	@GetMapping("/user/join")
 	public String join() {
@@ -41,4 +47,8 @@ public class UserController {
 	public String findAccoutn() {
 		return "user/findAccount";
 	}
+	
+	
+	
+		
 }

@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<div id="returnIdForm" class="d-none">
-				<h3>Id : </h3>
+				<div class="text-center" id="showUserId"></div>
 			</div>
 			<div id="returnPwForm" class="d-none">
 				<h3>Pw : </h3>
@@ -114,7 +114,22 @@
 				$("#findIdForm").addClass("d-none");
 				$("#returnIdForm").removeClass("d-none");
 				
-				
+				$.ajax({
+					type:"post"
+					, url:"/user/findId"
+					, data:{"name":name, "email":email}
+					, success:function(data){
+						if(data.result == "success"){
+							$("#showUserId").html("<h2>아이디 : " + data.userId + "</h2>");
+						} else {
+							$("#showUserId").html("<h1>등록된 아이디가 없습니다</h1>");
+						}
+					}
+					, error:function(){
+						alert("아이디 찾기 에러");
+					}
+
+				});
 				
 			});
 			

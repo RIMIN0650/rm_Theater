@@ -68,4 +68,13 @@ public class UserService {
 		return userRepository.findByLoginIdAndPassword(loginId, encryptedPassword);
 	}
 	
+	
+	// id 찾기
+	public String findUserId(String name, String email) {
+		
+		User user = userRepository.findByNameAndEmail(name, email);
+		
+		return user.getLoginId();
+	}
+	
 }
