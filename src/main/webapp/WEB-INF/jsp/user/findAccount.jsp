@@ -85,6 +85,7 @@
 				$("#findPwForm").addClass("d-none");
 				$("#returnPwForm").addClass("d-none");
 				$("#returnIdForm").addClass("d-none");
+				
 			});
 			
 			$("#findMyPwBtn").on("click",function(){
@@ -92,17 +93,35 @@
 				$("#findIdForm").addClass("d-none");
 				$("#returnIdForm").addClass("d-none");
 				$("#returnPwForm").addClass("d-none");
+				
 			});
 			
 			$("#findIdBtn").on("click",function(){
+				
+				let name = $("#nameForId").val();
+				let email = $("#emailForId").val();
+				
+				if(name == ""){
+					alert("이름을 입력하세요");
+					return ;
+				}
+				
+				if(email == ""){
+					alert("이메일을 입력하세요");
+					return ;
+				}
+				
 				$("#findIdForm").addClass("d-none");
 				$("#returnIdForm").removeClass("d-none");
+				
+				
 				
 			});
 			
 			$("#findPwBtn").on("click",function(){
 				$("#findPwForm").addClass("d-none");
 				$("#returnPwForm").removeClass("d-none");
+				
 			});
 			
 			
