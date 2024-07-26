@@ -103,8 +103,24 @@ footer{
 	width: 350px;
 }
 
+/*아이디 비밀번호 찾기*/
+#findAccount{
+	width:400px;
+	height:300px;
+	background-color: #ffebde;
+}
 
+#findIdForm{
+	width:400px;
+	height:300px;
+	background-color: #ffebde;
+}
 
+#findPasswordForm{
+	width:400px;
+	height:300px;
+	background-color: #ffebde;
+}
 /*메인 페이지*/
 
 .movie-thumbnail{

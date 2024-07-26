@@ -35,4 +35,10 @@ public class UserController {
 		return "redirect:/main/home";
 	}
 	
+	
+	// 아이디 비밀번호 찾기
+	@GetMapping("/user/findAccount")
+	public String findAccoutn() {
+		return "user/findAccount";
+	}
 }
