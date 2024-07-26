@@ -20,11 +20,11 @@
 		<section class="d-flex justify-content-center my-5">
 		
 			<div id="findAccount"class=" d-flex justify-content-center align-items-center">
-				<button type="button" class="btn btn-info mr-4">아이디 찾기</button>
-				<button type="button" class="btn btn-info">비밀번호 찾기</button>
+				<button type="button" class="btn btn-info mr-4" id="findMyIdBtn">아이디 찾기</button>
+				<button type="button" class="btn btn-info" id="findMyPwBtn">비밀번호 찾기</button>
 			</div>
 			
-			<div id="findIdForm">
+			<div id="findIdForm" class="d-none">
 				<div class="d-flex justify-content-center">
 					<div class="mt-5">
 						<input type="text" class="form-control" placeholder="Name" id="nameForId">
@@ -35,12 +35,10 @@
 					<div class="d-flex justify-content-center">
 						<button type="button" class="btn btn-info mt-3" id="findIdBtn">찾기</button>
 					</div>
-					<div class="d-flex justify-content-center mt-4">
-						<button type="button" class="btn btn-success" id="toFindPwBtn">비밀번호 찾기</button>
-					</div>
 				</div>
 			</div>
-			<div id="findPasswordForm">
+			
+			<div id="findPwForm" class="d-none">
 				<div class="d-flex justify-content-center">
 					<div class="mt-5">
 						<input type="text" class="form-control" placeholder="ID" id="idForPw">
@@ -51,10 +49,13 @@
 					<div class="d-flex justify-content-center">
 						<button type="button" class="btn btn-info mt-3" id="findPwBtn">찾기</button>
 					</div>
-					<div class="d-flex justify-content-center mt-4">
-						<button type="button" class="btn btn-success" id="toFindIdBtn">아이디 찾기</button>
-					</div>
 				</div>
+			</div>
+			<div id="returnIdForm" class="d-none">
+				<h3>Id : </h3>
+			</div>
+			<div id="returnPwForm" class="d-none">
+				<h3>Pw : </h3>
 			</div>
 		</section>
 		
@@ -76,7 +77,46 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 	
 	
+	<script>
+		$(document).ready(function(){
+			
+			$("#findMyIdBtn").on("click",function(){
+				$("#findIdForm").removeClass("d-none");
+				$("#findPwForm").addClass("d-none");
+				$("#returnPwForm").addClass("d-none");
+				$("#returnIdForm").addClass("d-none");
+			});
+			
+			$("#findMyPwBtn").on("click",function(){
+				$("#findPwForm").removeClass("d-none");
+				$("#findIdForm").addClass("d-none");
+				$("#returnIdForm").addClass("d-none");
+				$("#returnPwForm").addClass("d-none");
+			});
+			
+			$("#findIdBtn").on("click",function(){
+				$("#findIdForm").addClass("d-none");
+				$("#returnIdForm").removeClass("d-none");
+				
+			});
+			
+			$("#findPwBtn").on("click",function(){
+				$("#findPwForm").addClass("d-none");
+				$("#returnPwForm").removeClass("d-none");
+			});
+			
+			
+			
+		});
 	
+	
+	
+	
+	
+	
+	
+	
+	</script>
 	
 	
 	
