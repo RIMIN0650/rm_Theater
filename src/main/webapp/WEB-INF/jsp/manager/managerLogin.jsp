@@ -21,7 +21,7 @@
 		
 		<section class="d-flex justify-content-center my-5">
 			<div id="loginForm" class="my-5 d-flex justify-content-center">
-				<div>
+				<div class="mt-5">
 					<h1 class="text-center mb-5">관리자 로그인</h1>
 					<div>
 						<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
@@ -29,6 +29,9 @@
 					</div>
 					<div class="d-flex justify-content-center">
 						<button type="button" class="btn btn-info" id="loginBtn">로그인</button>
+					</div>
+					<div class="text-center mt-4">
+						<a href="/admin/findAccount">아이디 / 비밀번호 찾기</a>
 					</div>
 				</div>
 			</div>

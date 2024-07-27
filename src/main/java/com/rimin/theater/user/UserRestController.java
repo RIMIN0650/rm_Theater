@@ -123,13 +123,13 @@ public class UserRestController {
 	public Map<String, String> showTempPw(@RequestParam("loginId") String loginId
 										, @RequestParam("phoneNumber") String phoneNumber){
 		
-		String userPw = userService.findUserPw(loginId, phoneNumber);
+		String userTempPw = userService.findUserPw(loginId, phoneNumber);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
-		if(userPw != null) {
+		if(userTempPw != null) {
 			resultMap.put("result", "success");
-			resultMap.put("userPw", userPw);
+			resultMap.put("userTempPw", userTempPw);
 		} else {
 			resultMap.put("result", "fail");
 		}

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Find User Account</title>
+<title>Find Manager Account</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
@@ -67,7 +67,7 @@
 		</div>
 		
 		<div class="text-center mt-3">
-			<a href="/admin/login">관리자용 로그인</a>
+			<a href="/user/login">고객 로그인</a>
 		</div>
 
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
@@ -114,16 +114,17 @@
 					return ;
 				}
 				
-				$("#findIdForm").addClass("d-none");
-				$("#returnIdForm").removeClass("d-none");
+				
 				
 				$.ajax({
 					type:"post"
-					, url:"/user/findId"
+					, url:"/admin/findId"
 					, data:{"name":name, "email":email}
 					, success:function(data){
 						if(data.result == "success"){
-							$("#showId").html("<h2>아이디 : " + data.userId + "</h2>");
+							$("#showId").html("<h2>아이디 : " + data.managerId + "</h2>");
+							$("#findIdForm").addClass("d-none");
+							$("#returnIdForm").removeClass("d-none");
 						} else {
 							alert("등록된 이름 / 이메일이 없습니다");
 						}
@@ -152,11 +153,11 @@
 				
 				$.ajax({
 					type:"post"
-					, url:"/user/showTempPw"
+					, url:"/admin/showTempPw"
 					, data:{"loginId":id, "phoneNumber":phone}
 					, success:function(data){
 						if(data.result == "success"){
-							$("#showTempPw").html("<h2>임시 비밀번호 : " + data.userTempPw + "</h2>");
+							$("#showTempPw").html("<h2>임시 비밀번호 : " + data.managerTempPw + "</h2>");
 							$("#findPwForm").addClass("d-none");
 							$("#returnPwForm").removeClass("d-none");
 						} else {
@@ -164,14 +165,14 @@
 						}
 					}
 					, error:function(){
-						alert("등록된 아이디가 없습니다.");
+						alert("비밀번호 찾기 에러");
 					}
 				});
 				
 			});
 			
 			$("#toResetPw").on("click",function(){
-				location.href="/user/resetPassword";
+				location.href="/admin/resetPassword";
 			});
 						
 		});

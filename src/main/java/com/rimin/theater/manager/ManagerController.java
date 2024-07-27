@@ -30,4 +30,13 @@ public class ManagerController {
 		return "redirect:/main/home";
 	}
 	
+	@GetMapping("/admin/findAccount")
+	public String findAccount() {
+		return "manager/findAccount";
+	}
+	
+	@GetMapping("/admin/resetPassword")
+	public String resetPassword() {
+		return "manager/resetPassword";
+	}
 }

@@ -22,13 +22,16 @@
 		<section class="d-flex justify-content-center my-5">
 			<div id="loginForm" class="my-5 d-flex justify-content-center">
 				<div>
-					<h1 class="text-center mt-4 mb-5">로그인</h1>
+					<h1 class="text-center mt-5 mb-5">로그인</h1>
 					<div>
 						<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
 						<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
 					</div>
 					<div class="d-flex justify-content-center">
 						<button type="button" class="btn btn-info" id="loginBtn">로그인</button>
+					</div>
+					<div class="text-center mt-4">
+						<a href="/user/findAccount">아이디 / 비밀번호 찾기</a>
 					</div>
 				</div>
 			</div>

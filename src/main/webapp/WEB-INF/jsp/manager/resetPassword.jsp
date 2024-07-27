@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Reset User Password</title>
+<title>Reset Manager Password</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
@@ -28,7 +28,7 @@
 					<div>
 						<h3 class="mt-4 mb-5 text-center">비밀번호 변경</h3>
 						<div id="checkTempPwForm">
-							<input type="text" class="form-control mt-4" placeholder="Id" id="userId">
+							<input type="text" class="form-control mt-4" placeholder="Id" id="managerId">
 							<input type="text" class="form-control mt-3" placeholder="Temp password" id="tempPw">
 							<div class="d-flex justify-content-center">
 								<button type="button" class="btn btn-success mt-4" id="checkTempPwBtn">확인하기</button>
@@ -63,10 +63,10 @@
 			
 			$("#checkTempPwBtn").on("click",function(){
 				
-				let userId = $("#userId").val();
+				let	managerId = $("#managerId").val();
 				let tempPw = $("#tempPw").val();
 				
-				if(userId == ""){
+				if(managerId == ""){
 					alert("아이디를 입력하세요");
 					return ;
 				}
@@ -77,8 +77,8 @@
 				
 				$.ajax({
 					type:"post"
-					, url:"/user/checkTempPassword"
-					, data:{"loginId":userId, "tempPassword":tempPw}
+					, url:"/admin/checkTempPassword"
+					, data:{"loginId":managerId, "tempPassword":tempPw}
 					, success:function(data){
 						if(data.result){
 							alert("임시 비밀번호 확인 성공");
@@ -96,7 +96,7 @@
 			});
 			
 			$("#changePasswordBtn").on("click",function(){
-				let userId = $("#userId").val();
+				let managerId = $("#managerId").val();
 				let newPw = $("#newPassword").val();
 				let newPwCheck = $("#newPasswordCheck").val();
 				
@@ -112,8 +112,8 @@
 				
 				$.ajax({
 					type:"post"
-					, url:"/user/changePassword"
-					, data:{"loginId":userId, "password":newPw}
+					, url:"/admin/changePassword"
+					, data:{"loginId":managerId, "password":newPw}
 					, success:function(data){
 						if(data.result == "success"){
 							alert("비밀번호 변경 성공");

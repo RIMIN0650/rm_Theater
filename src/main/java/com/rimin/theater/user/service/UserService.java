@@ -99,11 +99,7 @@ public class UserService {
 		
 		User user = userRepository.findByLoginId(userId);
 		
-		String actualPassword = user.getPassword();
-		
-		String subStringPassword = actualPassword.substring(0,10);
-		
-		return tempPassword.equals(subStringPassword);		
+		return tempPassword.equals(user.getPassword().substring(0,10));		
 		
 	}
 	
@@ -117,7 +113,7 @@ public class UserService {
 		String encryptedPassword = EncryptUtils.encrypt(password, userSalt.getSalt());
 				
 		
-		if(user != null) {
+		if(user != null && userSalt != null) {
 			user = user.toBuilder()
 						.password(encryptedPassword)
 						.build();
