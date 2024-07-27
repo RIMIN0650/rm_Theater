@@ -117,6 +117,7 @@
 					, success:function(data){
 						if(data.result == "success"){
 							alert("비밀번호 변경 성공");
+							location.href="/main/home";
 						} else {
 							alert("비밀번호 변경 실패");
 						}
