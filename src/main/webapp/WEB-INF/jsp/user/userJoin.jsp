@@ -17,13 +17,13 @@
 		
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 	
-		<section class="d-flex justify-content-center">
-			<div class="text-center my-5" id="joinForm">
-				<h1 class="mb-5">Join RM Theater</h1>
-				<div>
-					<div class="d-flex justify-content-between mb-4">
+		<section class="d-flex justify-content-center my-5">
+			<div class="my-5 d-flex justify-content-center" id="joinForm">	
+				<div id="zipJoinForm">
+					<h1 class="mt-4 mb-5 text-center">Join RM Theater</h1>
+					<div class="d-flex justify-content-center mb-4">
 						<input type="text" class="form-control col-8" placeholder="ID" id="identifier">
-						<button type="button" class="btn btn-info" id="checkDupBtn">중복 확인</button>
+						<button type="button" class="btn btn-info ml-3" id="checkDupBtn">중복 확인</button>
 					</div>
 					<div class="d-flex justify-content-center align-items-start">
 						<div class="small text-danger d-none mb-3" id="dupId">중복된 id 입니다.</div>
@@ -35,26 +35,26 @@
 					<input type="password" class="form-control mb-4" placeholder="PW" id="password">
 					<input type="password" class="form-control mb-4" placeholder="PW CHECK" id="passwordCheck">
 					<div class="d-flex justify-content-between mb-4">
-						<input type="text" class="form-control col-3" placeholder="010" maxlength='3' id="telNum1">
-						<h3>-</h3>
-						<input type="text" class="form-control col-4" placeholder="1234" maxlength='4' id="telNum2">
-						<h3>-</h3>
-						<input type="text" class="form-control col-4" placeholder="5678" maxlength='4' id="telNum3">
+						<input type="text" class="form-control col-2" placeholder="010" maxlength='3' id="telNum1">
+						<h4>-</h4>
+						<input type="text" class="form-control col-3" placeholder="1234" maxlength='4' id="telNum2">
+						<h4>-</h4>
+						<input type="text" class="form-control col-3" placeholder="5678" maxlength='4' id="telNum3">
 					</div>
 					<div class="d-flex justify-content-between mb-4">
 						<input type="text" class="form-control col-5" placeholder="이메일" id="emailId">
-						<h3>@</h3>
+						<h5>@</h5>
 						<input type="text" class="form-control col-5" placeholder="선택하세요" id="emailDomain">							
 										
 					</div>
 					
 					<div class="d-flex justify-content-between align-items-center text-align-center mb-3">
 						<input type="text" class="form-control col-3" placeholder="yyyy" id="birthYear" maxlength='4'>
-						<h4>년</h4>
+						<h6>년</h6>
 						<input type="text" class="form-control col-2" placeholder="mm" id="birthMonth" maxlength='2'>
-						<h3>월</h3>
+						<h6>월</h6>
 						<input type="text" class="form-control col-2" placeholder="dd" id="birthDate" maxlength='2'>
-						<h3>일</h3>
+						<h6>일</h6>
 					</div>
 					<div class="mb-3 d-flex justify-content-center align-items-center">
 						<div>성별 : &nbsp;</div>
@@ -67,8 +67,9 @@
 							<label class="form-check-label" for="femailRadioButton">여성</label>
 						</div>
 					</div>
-					
-					<button type="button" class="btn btn-info" id="joinBtn">회원가입</button>
+					<div class="d-flex justify-content-center">
+						<button type="button" class="btn btn-info" id="joinBtn">회원가입</button>
+					</div>
 				</div>
 				
 				

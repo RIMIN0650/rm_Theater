@@ -42,7 +42,7 @@
 				<div class="d-flex justify-content-center">
 					<div class="mt-5">
 						<input type="text" class="form-control" placeholder="ID" id="idForPw">
-						<input type="text" class="form-control my-3 " placeholder="birthDay" id="birthDayForPw">
+						<input type="text" class="form-control my-3 " placeholder="phoneNumber" id="phoneForPw">
 					</div>
 				</div>
 					<div>
@@ -52,10 +52,13 @@
 				</div>
 			</div>
 			<div id="returnIdForm" class="d-none">
-				<div class="text-center" id="showUserId"></div>
+				<div class="text-center" id="showId"></div>
 			</div>
 			<div id="returnPwForm" class="d-none">
-				<h3>Pw : </h3>
+				<div class="text-center" id="showTempPw"></div>
+				<div class="d-flex justify-content-end">
+					<button type="button" class="btn btn-warning mt-5 mr-3" id="toResetPw">비밀번호 재설정</button>
+				</div>
 			</div>
 		</section>
 		
@@ -120,9 +123,9 @@
 					, data:{"name":name, "email":email}
 					, success:function(data){
 						if(data.result == "success"){
-							$("#showUserId").html("<h2>아이디 : " + data.userId + "</h2>");
+							$("#showId").html("<h2>아이디 : " + data.userId + "</h2>");
 						} else {
-							$("#showUserId").html("<h1>등록된 아이디가 없습니다</h1>");
+							alert("등록된 이름 / 이메일이 없습니다");
 						}
 					}
 					, error:function(){
@@ -134,27 +137,46 @@
 			});
 			
 			$("#findPwBtn").on("click",function(){
-				$("#findPwForm").addClass("d-none");
-				$("#returnPwForm").removeClass("d-none");
+				
+				let id = $("#idForPw").val();
+				let phone = $("#phoneForPw").val();
+				
+				if(id == ""){
+					alert("아이디를 입력하세요");
+					return ;
+				}
+				if(phone == ""){
+					alert("전화번호를 입력하세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/showTempPw"
+					, data:{"loginId":id, "phoneNumber":phone}
+					, success:function(data){
+						if(data.result == "success"){
+							$("#showTempPw").html("<h2>임시 비밀번호 : " + data.userPw + "</h2>");
+							$("#findPwForm").addClass("d-none");
+							$("#returnPwForm").removeClass("d-none");
+						} else {
+							alert("등록된 아이디 / 전화번호가 없습니다");
+						}
+					}
+					, error:function(){
+						alert("비밀번호 찾기 에러");
+					}
+				});
 				
 			});
 			
-			
-			
+			$("#toResetPw").on("click",function(){
+				location.href="/user/resetPassword";
+			});
+						
 		});
 	
-	
-	
-	
-	
-	
-	
-	
 	</script>
-	
-	
-	
-	
 	
 	
 </body>

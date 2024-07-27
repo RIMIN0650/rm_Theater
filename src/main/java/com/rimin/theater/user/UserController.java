@@ -11,9 +11,6 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
-
-	@Autowired
-	private UserService userService;
 	
 	// user 회원가입 페이지
 	@GetMapping("/user/join")
@@ -44,11 +41,16 @@ public class UserController {
 	
 	// 아이디 비밀번호 찾기
 	@GetMapping("/user/findAccount")
-	public String findAccoutn() {
+	public String findAccount() {
 		return "user/findAccount";
 	}
 	
 	
+	// 비밀번호 재설정 창
+	@GetMapping("/user/resetPassword")
+	public String resetPassword() {
+		return "user/resetPassword";
+	}
 	
 		
 }

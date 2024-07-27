@@ -22,7 +22,7 @@
 		<section class="d-flex justify-content-center my-5">
 			<div id="loginForm" class="my-5 d-flex justify-content-center">
 				<div>
-					<h1 class="text-center mb-5">로그인</h1>
+					<h1 class="text-center mt-4 mb-5">로그인</h1>
 					<div>
 						<input type="text" class="form-control mb-3" placeholder="ID" id="identifier">
 						<input type="password" class="form-control mb-5" placeholder="PassWord" id="password">
@@ -32,7 +32,6 @@
 					</div>
 				</div>
 			</div>
-	
 		</section>
 		
 		<div class="text-center">

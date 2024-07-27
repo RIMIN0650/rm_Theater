@@ -74,7 +74,63 @@ public class UserService {
 		
 		User user = userRepository.findByNameAndEmail(name, email);
 		
-		return user.getLoginId();
+		if(user != null) {
+			return user.getLoginId();
+		} else {
+			return null;
+		}
 	}
+	
+	// 임시 비밀번호 발급
+	public String findUserPw(String loginId, String phoneNumber) {
+		
+		User user = userRepository.findByLoginIdAndPhoneNumber(loginId, phoneNumber);
+		
+		if(user != null) {
+			return user.getPassword().substring(0,10);
+		} else {
+			return null;
+		}
+		
+	}
+	
+	// 임시 비밀번호와 암호화되어 저장된 비밀번호의 앞 10자리가 같은지 확인
+	public boolean checkTempPw(String userId, String tempPassword) {
+		
+		User user = userRepository.findByLoginId(userId);
+		
+		String actualPassword = user.getPassword();
+		
+		String subStringPassword = actualPassword.substring(0,10);
+		
+		return tempPassword.equals(subStringPassword);		
+		
+	}
+	
+	// 비밀번호 재설정
+	public User updateUserPassword(String loginId, String password) {
+		
+		User user = userRepository.findByLoginId(loginId);
+		
+		UserSalt userSalt = userSaltRepository.findByUserId(loginId);
+				
+		String encryptedPassword = EncryptUtils.encrypt(password, userSalt.getSalt());
+				
+		
+		if(user != null) {
+			user = user.toBuilder()
+						.password(encryptedPassword)
+						.build();
+			
+			user = userRepository.save(user);
+		}
+		
+		return user;
+		
+	}
+	
+	
+	
+	
 	
 }
