@@ -20,9 +20,11 @@
 			<h1 class="text-center">관 등록</h1>
 			<div class="pt-5 d-flex justify-content-center">
 			<div id="addRoomForm"> 
-				<div class="mt-5">
-					<div class="d-flex justify-content-end">
-						<input type="text" class="form-control col-6 ml-4 rightMargin" placeholder="Room name" id="roomName">
+				<div class="mt-5 d-flex justify-content-center">
+					<div>
+						<input type="text" class="form-control rightMargin col-10" placeholder="Room name" id="roomName">
+							<input type="text" class="form-control col-6 mt-4" placeholder="total seat" id="totalSeat">
+							<input type="text" class="form-control col-6 mt-4" placeholder="price" id="seatPrice">
 					</div>
 				</div>
 				<div class="d-flex justify-content-end mt-5">
@@ -49,17 +51,28 @@
 			});
 			
 			$("#addNewRoomBtn").on("click", function(){
+				
 				let roomName = $("#roomName").val();
+				let totalSeat = $("#totalSeat").val();
+				let seatPrice = $("#seatPrice").val();
+				
+				
 				
 				if(roomName == ""){
 					alert("관 이름을 입력하세요");
 					return ;
 				}
+				if(totalSeat == ""){
+					alert("총 좌석을 입력하세요");
+				}
+				if(seatPrice == ""){
+					alert("가격을 입력하세요");
+				}
 				
 				$.ajax({
 					type:"post"
 					, url:"/admin/addRoom"
-					, data:{"roomName":roomName}
+					, data:{"roomName":roomName, "totalSeat":totalSeat, "seatPrice":seatPrice}
 					, success:function(data){
 						if(data.result == "success"){
 							alert("영화관 추가 성공");

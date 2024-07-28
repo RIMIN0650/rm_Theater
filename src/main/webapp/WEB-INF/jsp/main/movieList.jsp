@@ -59,6 +59,7 @@
 		$(document).ready(function(){
 			$(".modifyBtn").on("click", function(){
 				let movieId = $(this).data("movie-id");
+				
 			});
 			
 			$(".deleteBtn").on("click", function(){

@@ -20,10 +20,13 @@ public class RoomService {
 	private CineLinkRepository cineLinkRepository;
 	                                 
 	// 새로운 관 등록
-	public Room addRoom(String roomName) {
+	public Room addRoom(String roomName, int totalSeat, int seatPrice) {
 		
 		Room room = Room.builder()
 						.roomName(roomName)
+						.totalSeat(totalSeat)
+						.remainSeat(totalSeat)
+						.seatPrice(seatPrice)						
 						.linkCheck("Unlinked")
 						.build();
 		

@@ -30,6 +30,15 @@ public class Room {
 	@Column(name="roomName")
 	private String roomName;
 	
+	@Column(name="totalSeat")
+	private int totalSeat;
+	
+	@Column(name="remainSeat")
+	private int remainSeat;
+	
+	@Column(name="seatPrice")
+	private int seatPrice;
+	
 	@Column(name="linkCheck")
 	private String linkCheck;
 	

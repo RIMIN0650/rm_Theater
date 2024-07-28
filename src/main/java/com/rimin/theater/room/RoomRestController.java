@@ -19,9 +19,11 @@ public class RoomRestController {
 	
 	// 새로운 관 등록
 	@PostMapping("/admin/addRoom")
-	public Map<String, String> addRoom(@RequestParam("roomName") String roomName){
+	public Map<String, String> addRoom(@RequestParam("roomName") String roomName
+										, @RequestParam("totalSeat") int totalSeat
+										, @RequestParam("seatPrice") int seatPrice){
 		
-		Room room = roomService.addRoom(roomName);
+		Room room = roomService.addRoom(roomName, totalSeat, seatPrice);
 		
 		Map <String, String> resultMap = new HashMap<>();
 		

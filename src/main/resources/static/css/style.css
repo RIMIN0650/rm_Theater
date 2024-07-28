@@ -107,7 +107,7 @@ footer{
 /*로그인*/
 #loginForm{
 	width: 350px;
-	height: 400px;
+	height: 450px;
 	background-color: #ffebde;
 }
 
@@ -246,7 +246,7 @@ footer{
 /*관 등록 폼*/
 #addRoomForm{
 	width:500px;
-	height: 200px;
+	height: 350px;
 	background-color: #d4d448;
 }
 
