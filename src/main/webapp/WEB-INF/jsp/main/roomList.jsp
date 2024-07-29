@@ -69,7 +69,22 @@
 			$(".deleteRoomBtn").on("click",function(){
 				let roomId = $(this).data("room-id");
 				
-				
+				$.ajax({
+					type:"delete"
+					, url:"/room/delete"
+					, data:{"id":roomId}
+					, success:function(data){
+						if(data.result == "success"){
+							alert("삭제 성공");
+							location.href="/room/roomList";
+						} else {
+							alert("삭제 실패");
+						}
+					} 
+					, error:function(data){
+						alert("삭제 에러");
+					}
+				});
 				
 			});
 		});

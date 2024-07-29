@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,5 +57,24 @@ public class RoomRestController {
 		return resultMap;
 		
 	}
+	
+	
+	// 관 정보 삭제
+	@DeleteMapping("/room/delete")
+	public Map<String, String> deleteRoom(@RequestParam("id") int id){
+		
+		Room room = roomService.deleteRoom(id);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(room != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+
 	
 }

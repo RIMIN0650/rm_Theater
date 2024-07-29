@@ -127,4 +127,25 @@ public class RoomService {
 		return room;
 	}
 	
+	// 관 삭제
+	public Room deleteRoom(int id) {
+		Optional<Room> optionalRoom = roomRepository.findById(id);
+		Room room = optionalRoom.orElse(null);
+		
+		String roomName = room.getRoomName();
+		
+		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
+		
+		if(room != null) {
+			roomRepository.delete(room);
+		}
+		
+		if(cineLink != null) {
+			cineLinkRepository.delete(cineLink);
+		}
+		
+		return room;
+	}
+	
+	
 }

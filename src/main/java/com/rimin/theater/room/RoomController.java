@@ -58,6 +58,6 @@ public class RoomController {
 		
 		return "manager/updateRoom";
 	}
-	
 
+	
 }
