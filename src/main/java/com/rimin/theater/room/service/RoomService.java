@@ -2,6 +2,8 @@ package com.rimin.theater.room.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,8 @@ public class RoomService {
 			
 			Room rooms = Room.builder()
 							.id(room.getId())
+							.totalSeat(room.getTotalSeat())
+							.seatPrice(room.getSeatPrice())
 							.linkCheck(room.getLinkCheck())
 							.roomName(room.getRoomName())
 							.build();
@@ -92,5 +96,35 @@ public class RoomService {
 		return room;
 	}
 	
+	
+	// 관 상세정보 돌려주기
+	public Room findRoom(int id) {
+		
+		Optional<Room> optionalRoom = roomRepository.findById(id);
+		Room room = optionalRoom.orElse(null);
+		
+		if(room != null) {
+			return room;
+		} else {
+			return null;
+		}
+	}
+	
+	// 관 정보 수정
+	public Room updateRoom(int id, String roomName, int totalSeat, int seatPrice) {
+		Optional<Room> optionalRoom = roomRepository.findById(id);
+		Room room = optionalRoom.orElse(null);
+		
+		if(room != null) {
+			room = room.toBuilder()
+						.roomName(roomName)
+						.totalSeat(totalSeat)
+						.seatPrice(seatPrice)
+						.build();
+			room = roomRepository.save(room);
+		}
+		
+		return room;
+	}
 	
 }

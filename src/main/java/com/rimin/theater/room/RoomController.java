@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.room.domain.Room;
@@ -46,5 +47,17 @@ public class RoomController {
 		return "movie/linkCineList";
 	}
 	
+	// 관 정보 수정하기
+	@GetMapping("/room/updateInfo")
+	public String updateRoomInfo(@RequestParam("id") int id
+								, Model model) {
+		
+		Room room = roomService.findRoom(id);
+		
+		model.addAttribute("room", room);
+		
+		return "manager/updateRoom";
+	}
 	
+
 }

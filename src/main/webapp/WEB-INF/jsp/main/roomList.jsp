@@ -25,6 +25,8 @@
 						<tr>
 							<th>#</th>
 							<th>관 이름</th>
+							<th>좌석 수 </th>
+							<th>가격</th>
 							<th>수정</th>							
 							<th>삭제</th>							
 						</tr>
@@ -34,6 +36,8 @@
 						<tr>
 							<td>${status.count }</td>
 							<td class="roomName-cell">${roomList.roomName }</td>
+							<td>${roomList.totalSeat }</td>
+							<td>${roomList.seatPrice }</td>
 							<td class="roomListAlterBtn-cell"><button type="button" class="btn btn-warning modifyRoomNameBtn" data-room-id="${roomList.id }">수정</button></td>
 							<td class="roomListAlterBtn-cell"><button type="button" class="btn btn-danger deleteRoomBtn" data-room-id="${roomList.id }">삭제</button></td>
 						</tr>
@@ -56,13 +60,14 @@
 	<script>
 		$(document).ready(function(){
 			$(".modifyRoomNameBtn").on("click",function(){
-				let room = $(this).data("room-id");
+				let roomId = $(this).data("room-id");
 				
+				location.href="/room/updateInfo?id="+roomId;
 				
 			});
 			
 			$(".deleteRoomBtn").on("click",function(){
-				let room = $(this).data("room-id");
+				let roomId = $(this).data("room-id");
 				
 				
 				

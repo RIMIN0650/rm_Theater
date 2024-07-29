@@ -86,6 +86,7 @@ public class MovieRestController {
 												, country, openingDay, detail, imageFile, existingImagePath);
 		
 		Map<String, String> resultMap = new HashMap<>();
+		
 		if(movie != null) {
 			resultMap.put("result",  "success");
 		} else {

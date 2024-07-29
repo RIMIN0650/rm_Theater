@@ -35,4 +35,26 @@ public class RoomRestController {
 		
 		return resultMap;
 	}
+	
+	// 관 정보 수정
+	@PostMapping("/room/update")
+	public Map<String, String> updateRoomInfo(@RequestParam("id") int id
+												, @RequestParam("roomName") String roomName
+												, @RequestParam("totalSeat") int totalSeat
+												, @RequestParam("seatPrice") int seatPrice){
+		
+		Room room = roomService.updateRoom(id, roomName, totalSeat, seatPrice);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(room != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+		
+	}
+	
 }

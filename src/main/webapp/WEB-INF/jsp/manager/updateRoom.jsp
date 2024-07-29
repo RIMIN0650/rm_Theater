@@ -5,34 +5,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>add Room</title>
+<title>update room Info</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-<div id="wrap">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 		
 		<section>
 			
-			<h1 class="text-center">관 등록</h1>
+			<h1 class="text-center">관 수정</h1>
 			<div class="pt-5 d-flex justify-content-center">
+			
 			<div id="addRoomForm"> 
+			<div id="pkNum" class="d-none">${room.id }</div>
 				<div class="mt-5 d-flex justify-content-center">
 					<div>
-						<input type="text" class="form-control rightMargin col-10" placeholder="Room name" id="roomName">
-							<input type="text" class="form-control col-6 mt-4" placeholder="total seat" id="totalSeat">
-							<input type="text" class="form-control col-6 mt-4" placeholder="price" id="seatPrice">
+						<input type="text" class="form-control rightMargin col-10" placeholder="Room name" id="roomName" value="${room.roomName }">
+							<input type="text" class="form-control col-6 mt-4" placeholder="total seat" id="totalSeat" value="${room.totalSeat }">
+							<input type="text" class="form-control col-6 mt-4" placeholder="price" id="seatPrice" value="${room.seatPrice }">
 					</div>
 				</div>
 				<div class="d-flex justify-content-end mt-5">
 					<button type="button" class="btn btn-danger mr-3" id="backToRoomListBtn">취소</button>
-					<button type="button" class="btn btn-info rightMargin" id="addNewRoomBtn">등록</button>
+					<button type="button" class="btn btn-info rightMargin" id="modifyBtn">수정</button>
 				</div>
 			</div>
 			</div>
+			
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
@@ -44,52 +47,36 @@
 	
 	<script>
 		$(document).ready(function(){
-			
-			$("#backToRoomListBtn").on("click",function(){
-				// 관 리스트 보여주기
-				location.href="/room/roomList";
-			});
-			
-			$("#addNewRoomBtn").on("click", function(){
+			$("#modifyBtn").on("click",function(){
 				
+				let roomId = $("#pkNum").text();
 				let roomName = $("#roomName").val();
 				let totalSeat = $("#totalSeat").val();
 				let seatPrice = $("#seatPrice").val();
 				
-				
-				
-				if(roomName == ""){
-					alert("관 이름을 입력하세요");
-					return ;
-				}
-				if(totalSeat == ""){
-					alert("총 좌석을 입력하세요");
-				}
-				if(seatPrice == ""){
-					alert("가격을 입력하세요");
-				}
-				
 				$.ajax({
 					type:"post"
-					, url:"/admin/addRoom"
-					, data:{"roomName":roomName, "totalSeat":totalSeat, "seatPrice":seatPrice}
+					, url:"/room/update"
+					, data:{"id":roomId, "roomName":roomName, "totalSeat":totalSeat, "seatPrice":seatPrice}
 					, success:function(data){
 						if(data.result == "success"){
-							alert("영화관 추가 성공");
-							location.reload();
+							alert("관 정보 변경 성공");
+							location.href="/room/roomList";
 						} else {
-							alert("영화관 추가 실패");
+							alert("관 정보 변경 실패");
 						}
 					}
-					, error:function(data){
-						alert("영화관 추가 에러");
+					, error:function(){
+						alert("관 정보 수정 오류");
 					}
 				})
 				
+				
+				
 			});
 			
-			
 		});
+			
 	</script>
 	
 </body>
