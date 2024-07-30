@@ -151,4 +151,14 @@ public class MovieService {
 		}
 		return movie;
 	}
+	
+	
+	// 영화 이름으로 정보 조회
+	public Movie findMovie(String movieName) {
+		
+		Movie movie = movieRepository.findByTitle(movieName);
+		
+		return movie;
+	}
+	
 }

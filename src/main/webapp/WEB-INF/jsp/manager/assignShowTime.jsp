@@ -21,11 +21,11 @@
 			
 			<div id="assignShowTimeForm" class="mt-5">
 				<div class="pt-4 pl-3">
-					<h1>RM - 파일럿</h1>
+					<h1>${roomName } - ${movieName }</h1>
 				</div>
 				<div class="mt-4">
 					<div class="d-flex pl-3">
-						<input type="text" class="form-control col-6" placeholder="Start time">
+						<input type="text" class="form-control col-6" placeholder="Start time" id="showTime">
 						<button type="button" class="btn btn-info no-line-break ml-3" id="verifyTimeBtn">시간 확인</button>
 					</div>
 					<div class="d-flex justify-content-end mt-4">
@@ -55,8 +55,24 @@
 			});
 			
 			$("#addShowTimeBtn").on("click",function(){
-				alert("등록");
+				let showTime = $("#showTime").val();
+				let roomName = "${roomName }";
 				
+				$.ajax({
+					type:"post"
+					, url:"/runTime/assign"
+					, data:{"roomName": roomName, "startTime":showTime}
+					, success:function(data){
+						if(data.result == "success"){
+							alert("시간 추가 성공");
+						} else {
+							alert("시간 추가 실패");
+						}
+					}
+					, error:function(){
+						alert("시간 추가 오류");
+					}
+				});
 			});
 			
 			
