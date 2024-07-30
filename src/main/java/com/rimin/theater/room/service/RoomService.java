@@ -115,6 +115,14 @@ public class RoomService {
 		Optional<Room> optionalRoom = roomRepository.findById(id);
 		Room room = optionalRoom.orElse(null);
 		
+		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
+		
+		if(cineLink != null) {
+			cineLink = cineLink.toBuilder()
+								.roomName(roomName)
+								.build();
+		}
+		
 		if(room != null) {
 			room = room.toBuilder()
 						.roomName(roomName)

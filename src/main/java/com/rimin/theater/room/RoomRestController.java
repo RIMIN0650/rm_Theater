@@ -46,6 +46,8 @@ public class RoomRestController {
 		
 		Room room = roomService.updateRoom(id, roomName, totalSeat, seatPrice);
 		
+		
+		
 		Map<String, String> resultMap = new HashMap<>();
 		
 		if(room != null) {
