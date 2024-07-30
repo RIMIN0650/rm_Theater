@@ -245,7 +245,7 @@ footer{
 
 /*관 등록 폼*/
 #addRoomForm{
-	width:500px;
+	width: 500px;
 	height: 350px;
 	background-color: #d4d448;
 }
@@ -266,4 +266,8 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.no-line-break{
+	white-space: nowrap;
 }

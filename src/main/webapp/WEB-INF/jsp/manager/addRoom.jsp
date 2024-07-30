@@ -22,9 +22,12 @@
 			<div id="addRoomForm"> 
 				<div class="mt-5 d-flex justify-content-center">
 					<div>
-						<input type="text" class="form-control rightMargin col-10" placeholder="Room name" id="roomName">
-							<input type="text" class="form-control col-6 mt-4" placeholder="total seat" id="totalSeat">
-							<input type="text" class="form-control col-6 mt-4" placeholder="price" id="seatPrice">
+						<div class="d-flex">
+							<input type="text" class="form-control" placeholder="Room name" id="roomName">
+							<button type="button" class="btn btn-info ml-5 no-line-break" id="checkDupRoomBtn">중복확인</button>
+						</div>
+						<input type="number" class="form-control col-4 mt-4" placeholder="total seat" id="totalSeat">
+						<input type="number" class="form-control col-4 mt-4" placeholder="price" id="seatPrice">
 					</div>
 				</div>
 				<div class="d-flex justify-content-end mt-5">
@@ -44,10 +47,41 @@
 	
 	<script>
 		$(document).ready(function(){
+			let dupCheck = 0;
 			
 			$("#backToRoomListBtn").on("click",function(){
 				// 관 리스트 보여주기
 				location.href="/room/roomList";
+			});
+			
+			$("#roomName").on("input",function(){
+				dupCheck = 0;
+			});
+			
+			$("#checkDupRoomBtn").on("click",function(){
+				let roomName = $("#roomName").val();
+				if(roomName == ""){
+					alert("관 이름을 입력하세요");
+					return ;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/room/isDuplicate"
+					, data:{"roomName":roomName}
+					, success:function(data){
+						if(data.isDuplicateRoom){
+							alert("관 이름 중복");
+						} else {
+							alert("사용 가능한 관 이름");
+							dupCheck = 1;
+						}
+					}
+					, error:function(){
+						alert("중복 확인 에러");
+					}
+				});
+				
 			});
 			
 			$("#addNewRoomBtn").on("click", function(){
@@ -64,9 +98,16 @@
 				}
 				if(totalSeat == ""){
 					alert("총 좌석을 입력하세요");
+					return ;
 				}
 				if(seatPrice == ""){
 					alert("가격을 입력하세요");
+					return ;
+				}
+				
+				if(dupCheck == 0){
+					alert("중복확인 필요");
+					return ;
 				}
 				
 				$.ajax({

@@ -36,6 +36,20 @@ public class RoomService {
 		
 		return room;
 	}
+	
+	// 중복된 관 이름인지 확인
+	public boolean isDupRoom(String roomName) {
+		
+		int count = roomRepository.countByRoomName(roomName);
+		
+		if(count != 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
 		
 	// 등록되어 있는 관 리스트 보여주기
 	public List<Room> getMovieList(){

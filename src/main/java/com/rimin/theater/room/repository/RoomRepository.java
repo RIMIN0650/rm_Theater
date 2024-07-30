@@ -8,4 +8,6 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 	
 	public Room findByRoomName(String roomName);
 	
+	public int countByRoomName(String roomName);
+	
 }

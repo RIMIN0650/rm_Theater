@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,23 @@ public class RoomRestController {
 		
 		return resultMap;
 	}
+	
+	// 관 이름 중복 확인
+	@GetMapping("/room/isDuplicate")
+	public Map<String, Boolean> isDuplicateRoom(@RequestParam("roomName") String roomName){
+		
+		boolean isDuplicateRoom = roomService.isDupRoom(roomName);
+		
+		Map<String, Boolean> resultMap = new HashMap<>();
+		
+		resultMap.put("isDuplicateRoom", isDuplicateRoom);
+		
+		return resultMap;
+		
+		
+	}
+	
+	
 	
 	// 관 정보 수정
 	@PostMapping("/room/update")
