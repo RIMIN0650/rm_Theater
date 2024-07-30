@@ -26,6 +26,7 @@
 							<th>#</th>
 							<th>관 이름</th>
 							<th>등록 영화</th>	
+							<th>상영 시간</th>
 							<th>삭제</th>
 						</tr>
 					</thead>
@@ -34,7 +35,8 @@
 						<tr>
 							<th>${status.count }</th>
 							<td>${linkList.roomName }</td>
-							<td>${linkList.movieName }</td>
+							<td>${linkList.movieName }</td>							
+							<td><button type="button" class="btn btn-info showRunTimeBtn" data-room-name="${linkList.roomName }">상영 시간 확인</button></td>
 							<td><button type="button" class="btn btn-danger deleteBtn" data-room-name="${linkList.roomName }">삭제</button></td>
 						</tr>
 						</c:forEach>
@@ -53,6 +55,12 @@
 	
 	<script>
 		$(document).ready(function(){
+			
+			$(".showRunTimeBtn").on("click",function(){
+				let roomName = $(this).data("room-name");
+				location.href="/runTime/perRoom?roomName=" + roomName;
+				
+			});
 			
 			$(".deleteBtn").on("click",function(){
 				

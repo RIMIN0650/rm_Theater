@@ -11,7 +11,9 @@
 								<li><a href="/admin/addRoom">새로운 관 등록</a></li>
 								<li><a href="/room/roomList">관 리스트</a></li>
 								<li><a href="/movie/linkRoom">영화 배정</a></li>
-								<li><a href="/room/linkMovie">관-영화 리스트</a></li>
+								<li><a href="/room/linkMovie">관-영화 리스트</a></li>								
+								<li><a href="/runTime/assign">영화 상영 시간 추가</a></li>
+								<li><a href="/runTime/showList">영화 상영 시간 리스트</a></li>
 							</ul>
 						</li>
 						<li class="nav-item mt-2"><a href="#" class="text-dark">이벤트 관리</a></li>

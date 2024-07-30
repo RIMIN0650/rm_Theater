@@ -271,3 +271,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .no-line-break{
 	white-space: nowrap;
 }
+
+
+#assignShowTimeForm{
+	width: 700px;
+	height: 230px;
+	background-color: #ffebde;
+}

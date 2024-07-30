@@ -39,4 +39,5 @@ public class ManagerController {
 	public String resetPassword() {
 		return "manager/resetPassword";
 	}
+	
 }
