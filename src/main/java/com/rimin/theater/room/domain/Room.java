@@ -33,8 +33,8 @@ public class Room {
 	@Column(name="totalSeat")
 	private int totalSeat;
 	
-	@Column(name="remainSeat")
-	private int remainSeat;
+	@Column(name="reservedSeat")
+	private int reservedSeat;
 	
 	@Column(name="seatPrice")
 	private int seatPrice;
