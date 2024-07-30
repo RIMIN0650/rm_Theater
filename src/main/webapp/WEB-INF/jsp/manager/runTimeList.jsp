@@ -37,9 +37,9 @@
 						<tr>
 							<th>${status.count }</th>
 							<td>${list.roomName }</td>
-							<td>${list.movieName }</td>					
-							<td>1900</td>
-							<td>${movie.runTime }</td>
+							<td>${movie.title }</td>					
+							<td>${list.startTime }</td>
+							<td>${list.endTime }</td>
 							<td><button type="button" class="btn btn-danger deleteBtn" data-room-name="${list.roomName }">삭제</button></td>
 						</tr>
 						</c:forEach>
