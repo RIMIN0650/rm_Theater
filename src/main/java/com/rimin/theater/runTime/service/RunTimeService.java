@@ -55,4 +55,33 @@ public class RunTimeService {
 									.build();
 		return runTimeRepository.save(runTime);
 	}
+	
+	// 영화 상영시간 정보 확인
+	
+	public Boolean availableRunTime(String roomName, int startTime) {
+		
+		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(roomName);
+		
+		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
+		
+		// 연결된 영화 이름 찾기
+		String movieName = cineLink.getMovieName();
+				
+		// 영화 정보 불러오기
+		Movie movie = movieRepository.findByTitle(movieName);
+		
+		for(RunTime runTime:runTimeList) {
+			
+			
+			
+			if(startTime < runTime.getStartTime() + (movie.getRunTime()+20) 
+					&& startTime > runTime.getStartTime() - (movie.getRunTime()+20)) {
+				return false;
+			}
+			
+		}
+		
+		return true;
+	}
+	
 }

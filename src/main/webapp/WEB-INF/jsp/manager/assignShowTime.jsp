@@ -50,7 +50,25 @@
 		$(document).ready(function(){
 			
 			$("#verifyTimeBtn").on("click",function(){
-				alert("시간 확인");
+				let roomName = "${roomName }";
+				let showTime = $("#showTime").val();
+				
+				$.ajax({
+					type:"post"
+					, url:"/runTime/available"
+					, data:{"roomName":roomName, "startTime":showTime}
+					, success:function(data){
+						if(data.isAvailable){
+							alert("추가 가능");
+						} else {
+							alert("추가 불가능");
+						}
+					}
+					, error:function(){
+						alert("영화 시간 확인 오류");
+					}
+				});
+				
 				
 			});
 			
