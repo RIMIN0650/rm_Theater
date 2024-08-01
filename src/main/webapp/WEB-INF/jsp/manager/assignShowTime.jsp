@@ -48,6 +48,13 @@
 	
 	<script>
 		$(document).ready(function(){
+			let availableCheck = 0;
+			let available = 0;
+			
+			$("#showTime").on("input",function(){
+				availableCheck = 0;
+				available = 0;
+			});
 			
 			$("#verifyTimeBtn").on("click",function(){
 				let roomName = "${roomName }";
@@ -59,9 +66,11 @@
 					, data:{"roomName":roomName, "startTime":showTime}
 					, success:function(data){
 						if(data.isAvailable){
-							alert("추가 가능");
+							alert("추가 가능한 시간입니다.");
+							availableCheck = 1;
+							available = 1;
 						} else {
-							alert("추가 불가능");
+							alert("추가 불가능한 시간입니다.");
 						}
 					}
 					, error:function(){
@@ -75,6 +84,16 @@
 			$("#addShowTimeBtn").on("click",function(){
 				let showTime = $("#showTime").val();
 				let roomName = "${roomName }";
+				
+				if(availableCheck == 0){
+					alert("시간 확인 필요");
+					return ;
+				}
+				
+				if(available == 0){
+					alert("추가 불가능한 시간");
+					return ;
+				}
 				
 				$.ajax({
 					type:"post"
