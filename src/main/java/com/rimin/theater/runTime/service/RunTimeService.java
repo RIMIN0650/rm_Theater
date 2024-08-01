@@ -83,7 +83,7 @@ public class RunTimeService {
 
 			int registeredStartTime = runTime.getStartTime();
 			int registeredEndTime = runTime.getEndTime();
-			int endTime = startTime + movie.getRunTime();
+			int endTime = convert.returnEndTime(startTime, movie.getRunTime());
 			
 			if( (startTime >= registeredStartTime && startTime <= registeredEndTime)
 					|| (endTime >= registeredStartTime && endTime <= registeredEndTime)
