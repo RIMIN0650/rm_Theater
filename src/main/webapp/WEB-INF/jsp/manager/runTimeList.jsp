@@ -25,8 +25,6 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>관 이름</th>
-							<th>등록 영화</th>	
 							<th>상영 시작 시간</th>
 							<th>상영 종료 시간</th>
 							<th>삭제</th>
@@ -35,12 +33,10 @@
 					<tbody>
 						<c:forEach var="list" items="${runTimeList }" varStatus="status">
 						<tr>
-							<th>${status.count }</th>
-							<td>${list.roomName }</td>
-							<td>${movie.title }</td>					
+							<th>${status.count }</th>					
 							<td>${list.startTime }</td>
 							<td>${list.endTime }</td>
-							<td><button type="button" class="btn btn-danger deleteBtn" data-room-name="${list.roomName }">삭제</button></td>
+							<td><button type="button" class="btn btn-danger deleteBtn" data-start-time="${list.startTime }">삭제</button></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -63,6 +59,28 @@
 	<script>
 		
 		$(document).ready(function(){
+			
+			$(".deleteBtn").on("click",function(){
+				let startTime  = $(this).data("start-time");
+				
+				$.ajax({
+					type:"delete"
+					, url:"/runTime/delete"
+					, data:{"startTime":startTime}
+					, success:function(data){
+						if(data.result == "success"){
+							alert("삭제 성공");
+							location.reload();
+						} else {
+							alert("삭제 실패");
+						}
+					}
+					, error:function(){
+						alert("상영시간 삭제 에러");
+					}
+				});
+				
+			});
 			
 			$("#addRunTimeBtn").on("click",function(){
 				

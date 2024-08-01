@@ -96,4 +96,18 @@ public class RunTimeService {
 		return true;
 	}
 	
+	
+	// 상영 시간 삭제
+	public RunTime deleteRunTime(int startTime) {
+		
+		RunTime runTime = runTimeRepository.findByStartTime(startTime);
+		
+		if(runTime != null) {
+			runTimeRepository.delete(runTime);
+		}
+		
+		return runTime;
+	}
+	
+	
 }
