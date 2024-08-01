@@ -13,4 +13,13 @@ public class convert {
 		
 	}
 	
+	
+	public static int returnEndTime(int startTime, int runTime) {
+		
+		int hour = ((startTime / 100) + (convert.convertTimeUnit(runTime)/100)) * 100;
+		
+		int minute = convert.convertTimeUnit((startTime % 100) + (convert.convertTimeUnit(runTime) % 100));
+		
+		return hour + minute;
+	}
 }

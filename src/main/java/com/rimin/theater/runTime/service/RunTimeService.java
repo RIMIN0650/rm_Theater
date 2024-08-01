@@ -49,21 +49,23 @@ public class RunTimeService {
 		// 영화 상영 시간 저장
 		
 		// 영화시간 + 상영시간 했을 때 60분 이상 > 시간 분 으로 표시하도록
-		int hour = ((startTime / 100) + (convert.convertTimeUnit(movie.getRunTime()) / 100)) * 100;
-		
-		int minute = convert.convertTimeUnit((startTime % 100) 
-												+ (convert.convertTimeUnit(movie.getRunTime()) % 100));
+//		int hour = ((startTime / 100) + (convert.convertTimeUnit(movie.getRunTime()) / 100)) * 100;
+//		
+//		int minute = convert.convertTimeUnit((startTime % 100) 
+//												+ (convert.convertTimeUnit(movie.getRunTime()) % 100));
+//		
+		int endTime = convert.returnEndTime(startTime, movie.getRunTime());
 		
 		RunTime runTime = RunTime.builder()
 									.roomName(roomName)
 									.startTime(startTime)
-									.endTime(hour + minute)
+									.endTime(endTime)
 									.build();
 		return runTimeRepository.save(runTime);
 	}
 	
-	// 영화 상영시간 정보 확인
 	
+	// 영화 상영시간 정보 확인
 	public Boolean availableRunTime(String roomName, int startTime) {
 		
 		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(roomName);
@@ -78,15 +80,18 @@ public class RunTimeService {
 		
 		// 모든 상영시간 중
 		for(RunTime runTime:runTimeList) {
-			// 입력한 시작시간이 등록된 시작시간 + 영화 runTime + 20분 보다 작거나
-			if(startTime < runTime.getStartTime() + (movie.getRunTime()+20)
-					// 입력한 시작시간이 등록된 시작시간 - (영화 runtime + 20분) 보다 작으면
-					|| startTime > runTime.getStartTime() - (movie.getRunTime()+20)) {
-				// 등록 불가
+
+			int registeredStartTime = runTime.getStartTime();
+			int registeredEndTime = runTime.getEndTime();
+			int endTime = startTime + movie.getRunTime();
+			
+			if( (startTime >= registeredStartTime && startTime <= registeredEndTime)
+					|| (endTime >= registeredStartTime && endTime <= registeredEndTime)
+					|| (startTime <= registeredStartTime && endTime >= registeredEndTime)
+					)
+				
 				return false;
 			}
-			
-		}
 		
 		return true;
 	}
