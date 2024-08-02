@@ -102,6 +102,7 @@
 					, success:function(data){
 						if(data.result == "success"){
 							alert("시간 추가 성공");
+							location.href = "/runTime/perRoom?roomName="+roomName;
 						} else {
 							alert("시간 추가 실패");
 						}

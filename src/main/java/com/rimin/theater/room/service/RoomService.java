@@ -135,22 +135,26 @@ public class RoomService {
 		Optional<Room> optionalRoom = roomRepository.findById(id);
 		Room room = optionalRoom.orElse(null);
 		
-		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
 		
-		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(roomName);
+		
+		
+		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(room.getRoomName());
 		
 		for(RunTime runTime : runTimeList) {
 			runTime = runTime.toBuilder()
 								.roomName(roomName)
 								.build();
+			runTime = runTimeRepository.save(runTime);
 								
 		}
 		
+		CineLink cineLink = cineLinkRepository.findByRoomName(room.getRoomName());
 		
 		if(cineLink != null) {
 			cineLink = cineLink.toBuilder()
 								.roomName(roomName)
 								.build();
+			cineLinkRepository.save(cineLink);
 		}
 		
 		if(room != null) {
@@ -159,7 +163,7 @@ public class RoomService {
 						.totalSeat(totalSeat)
 						.seatPrice(seatPrice)
 						.build();
-			room = roomRepository.save(room);
+			roomRepository.save(room);
 		}
 		
 		return room;
