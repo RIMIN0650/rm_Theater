@@ -1,5 +1,7 @@
 package com.rimin.theater.cinelink.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class CineLinkService {
 	
 	@Autowired
 	private RoomRepository roomRepository;
+	
 	
 	public CineLink linkRoomwithMovie(String roomName, String movieName) {
 		
@@ -83,6 +86,7 @@ public class CineLinkService {
 	}
 	
 	
+	// 관 이름으로 연결된 영화 찾기
 	public String findLinkedMovie(String roomName) {
 		
 		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
@@ -92,6 +96,13 @@ public class CineLinkService {
 		} else {
 			return null;
 		}
+	}
+	
+	// 연결된 모든 관 - 영화 리스트 불러오기
+	public List<CineLink> findEveryCineLink(){
+		List<CineLink> cineLinkList = cineLinkRepository.findAll();
+		
+		return cineLinkList;
 	}
 	
 }

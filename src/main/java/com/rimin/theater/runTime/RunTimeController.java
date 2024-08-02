@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.service.CineLinkService;
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.service.MovieService;
@@ -26,8 +27,17 @@ public class RunTimeController {
 	@Autowired
 	private CineLinkService cineLinkService;
 	
+	// 모든 상영시간 보여주기
 	@GetMapping("/runTime/showList")
-	public String showRunTimeList() {
+	public String showRunTimeList(Model model) {
+		
+		List<RunTime> runTimeList = runTimeService.findEveryRunTime();
+		
+		List<CineLink> cineLinkList = cineLinkService.findEveryCineLink();
+		
+		model.addAttribute("cineLinkList", cineLinkList);
+		model.addAttribute("runTimeList", runTimeList);
+		
 		return "manager/everyRunTimeList";
 	}
 	

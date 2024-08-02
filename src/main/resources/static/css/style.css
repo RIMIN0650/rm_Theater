@@ -278,3 +278,9 @@ input[type="number"]::-webkit-inner-spin-button {
 	height: 230px;
 	background-color: #ffebde;
 }
+
+#runTimeBtn{
+	border-color:black;
+	width:100px;
+	background-color: #F5F5F5;
+}

@@ -109,5 +109,15 @@ public class RunTimeService {
 		return runTime;
 	}
 	
+	// 모든 상영시간 찾기
+	public List<RunTime> findEveryRunTime(){
+		
+		List<RunTime> runTimeList = runTimeRepository.findAll();
+		
+		return runTimeList;
+		
+	}
+	
+	
 	
 }
