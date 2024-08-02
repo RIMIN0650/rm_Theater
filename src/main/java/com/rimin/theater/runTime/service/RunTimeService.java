@@ -60,6 +60,7 @@ public class RunTimeService {
 									.roomName(roomName)
 									.startTime(startTime)
 									.endTime(endTime)
+									.reservedSeat(0)
 									.build();
 		return runTimeRepository.save(runTime);
 	}

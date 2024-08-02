@@ -34,6 +34,9 @@ public class RunTime {
 	
 	@Column(name="endTime")
 	private int endTime;
+
+	@Column(name="reservedSeat")
+	private int reservedSeat;
 	
 	@UpdateTimestamp
 	@Column(name="createdAt", updatable=false)

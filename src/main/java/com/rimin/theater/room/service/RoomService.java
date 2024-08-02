@@ -32,7 +32,6 @@ public class RoomService {
 		Room room = Room.builder()
 						.roomName(roomName)
 						.totalSeat(totalSeat)
-						.reservedSeat(0)
 						.seatPrice(seatPrice)						
 						.linkCheck("Unlinked")
 						.build();
