@@ -8,15 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.rimin.theater.cinelink.domain.CineLink;
+import com.rimin.theater.cinelink.repository.CineLinkRepository;
 import com.rimin.theater.common.FileManager;
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.dto.MovieDetail;
 import com.rimin.theater.movie.repository.MovieRepository;
+import com.rimin.theater.runTime.domain.RunTime;
+import com.rimin.theater.runTime.repository.RunTimeRepository;
 
 @Service
 public class MovieService {
 	@Autowired
 	private MovieRepository movieRepository;
+	
+	@Autowired
+	private CineLinkRepository cineLinkRepository;
+	
+	@Autowired
+	private RunTimeRepository runTimeRepository;
 	
 	// 영화 신규 등록
 	public Movie addNewMovie(String title, String mainGenre 
@@ -104,6 +114,16 @@ public class MovieService {
 		Optional<Movie> optionalMovie = movieRepository.findById(id);
 		Movie movie = optionalMovie.orElse(null);
 		
+		// 상영중인 영화 시간 같이 제거하기
+		CineLink cineLink = cineLinkRepository.findByMovieName(movie.getTitle());
+		
+		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(cineLink.getRoomName());
+		
+		for(RunTime runTime : runTimeList) {
+			runTimeRepository.delete(runTime);
+		}
+		
+		// 영화 제거하기
 		if(movie != null) {
 		FileManager.removeFile(movie.getImagePath());
 		movieRepository.delete(movie);
@@ -127,6 +147,13 @@ public class MovieService {
 							, String detail, MultipartFile file, String existingImagePath ) {
 		Optional<Movie> optionalMovie = movieRepository.findById(id);
 		Movie movie = optionalMovie.orElse(null);
+		
+		CineLink cineLink = cineLinkRepository.findByMovieName(title);
+		if(cineLink != null) {
+			cineLink = cineLink.toBuilder()
+								.movieName(title)
+								.build();
+		}
 		
 		String filePath = FileManager.saveFile(title, file, existingImagePath);
 		

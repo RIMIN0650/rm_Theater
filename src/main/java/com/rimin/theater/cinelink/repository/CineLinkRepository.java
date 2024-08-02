@@ -18,4 +18,5 @@ public interface CineLinkRepository extends JpaRepository <CineLink, Integer> {
 	
 	public CineLink findByRoomName(String roomName);
 	
+	public CineLink findByMovieName(String movieName);
 }

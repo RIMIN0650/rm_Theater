@@ -82,6 +82,7 @@ public class CineLinkService {
 		
 	}
 	
+	
 	public String findLinkedMovie(String roomName) {
 		
 		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);

@@ -11,6 +11,8 @@ import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.repository.CineLinkRepository;
 import com.rimin.theater.room.domain.Room;
 import com.rimin.theater.room.repository.RoomRepository;
+import com.rimin.theater.runTime.domain.RunTime;
+import com.rimin.theater.runTime.repository.RunTimeRepository;
 
 @Service
 public class RoomService {
@@ -20,6 +22,9 @@ public class RoomService {
 	
 	@Autowired
 	private CineLinkRepository cineLinkRepository;
+	
+	@Autowired
+	private RunTimeRepository runTimeRepository;
 	                                 
 	// 새로운 관 등록
 	public Room addRoom(String roomName, int totalSeat, int seatPrice) {
@@ -126,10 +131,21 @@ public class RoomService {
 	
 	// 관 정보 수정
 	public Room updateRoom(int id, String roomName, int totalSeat, int seatPrice) {
+		
 		Optional<Room> optionalRoom = roomRepository.findById(id);
 		Room room = optionalRoom.orElse(null);
 		
 		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
+		
+		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(roomName);
+		
+		for(RunTime runTime : runTimeList) {
+			runTime = runTime.toBuilder()
+								.roomName(roomName)
+								.build();
+								
+		}
+		
 		
 		if(cineLink != null) {
 			cineLink = cineLink.toBuilder()
@@ -157,6 +173,12 @@ public class RoomService {
 		String roomName = room.getRoomName();
 		
 		CineLink cineLink = cineLinkRepository.findByRoomName(roomName);
+		
+		List<RunTime> runTimeList = runTimeRepository.findAllByRoomName(roomName);
+		
+		for(RunTime runTime : runTimeList) {
+				runTimeRepository.delete(runTime);
+		}
 		
 		if(room != null) {
 			roomRepository.delete(room);
