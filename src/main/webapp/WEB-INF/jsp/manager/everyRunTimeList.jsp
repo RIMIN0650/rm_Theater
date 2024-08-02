@@ -21,10 +21,9 @@
 			<div>
 				<c:forEach var="clList" items="${cineLinkList }" varStatus="status">
 					<div class="mb-5">
-						<h4 class="mb-4">${clList.roomName }관 - ${clList.movieName } </h4>
 						<c:forEach var="rtList" items="${runTimeList }">
 							<c:if test="${clList.roomName eq  rtList.roomName}">
-							
+							<h4 class="mb-4">${clList.roomName }관 - ${clList.movieName } </h4>
 								<button type="button" class="btn ml-2" id="runTimeBtn">
 									${rtList.startTime } ~ <br>  
 									&nbsp;&nbsp; ${rtList.endTime }
