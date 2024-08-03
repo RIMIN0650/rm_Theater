@@ -13,6 +13,7 @@ import com.rimin.theater.cinelink.service.CineLinkService;
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.service.MovieService;
 import com.rimin.theater.runTime.domain.RunTime;
+import com.rimin.theater.runTime.dto.RunTimeDetail;
 import com.rimin.theater.runTime.service.RunTimeService;
 
 @Controller
@@ -31,12 +32,12 @@ public class RunTimeController {
 	@GetMapping("/runTime/showList")
 	public String showRunTimeList(Model model) {
 		
-		List<RunTime> runTimeList = runTimeService.findEveryRunTime();
+		List<RunTimeDetail> runTimeDetailList = runTimeService.findEveryRunTime();
 		
 		List<CineLink> cineLinkList = cineLinkService.findEveryCineLink();
 		
 		model.addAttribute("cineLinkList", cineLinkList);
-		model.addAttribute("runTimeList", runTimeList);
+		model.addAttribute("runTimeDetailList", runTimeDetailList);
 		
 		return "manager/everyRunTimeList";
 	}

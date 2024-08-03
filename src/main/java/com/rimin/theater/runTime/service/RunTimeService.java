@@ -1,5 +1,6 @@
 package com.rimin.theater.runTime.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import com.rimin.theater.cinelink.repository.CineLinkRepository;
 import com.rimin.theater.common.convert;
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.repository.MovieRepository;
+import com.rimin.theater.room.domain.Room;
+import com.rimin.theater.room.repository.RoomRepository;
 import com.rimin.theater.runTime.domain.RunTime;
+import com.rimin.theater.runTime.dto.RunTimeDetail;
 import com.rimin.theater.runTime.repository.RunTimeRepository;
 
 @Service
@@ -24,6 +28,9 @@ public class RunTimeService {
 	
 	@Autowired
 	private MovieRepository movieRepository;
+	
+	@Autowired
+	private RoomRepository roomRepository;
 	
 	// 관 별 상영시간 확인
 	public List<RunTime> findShowTimeList(String roomName){
@@ -110,15 +117,40 @@ public class RunTimeService {
 		return runTime;
 	}
 	
+	
+	
 	// 모든 상영시간 찾기
-	public List<RunTime> findEveryRunTime(){
+	public List<RunTimeDetail> findEveryRunTime(){
 		
 		List<RunTime> runTimeList = runTimeRepository.findAll();
 		
-		return runTimeList;
+		List<RunTimeDetail> runTimeDetailList = new ArrayList<>();
+		
+		
+		
+		for(RunTime runTime:runTimeList) {
+		
+			CineLink cineLink = cineLinkRepository.findByRoomName(runTime.getRoomName());
+			
+			Room room = roomRepository.findByRoomName(runTime.getRoomName());
+			
+			String movieName = cineLink.getMovieName();
+			
+			RunTimeDetail runTimeDetail = RunTimeDetail.builder()
+														.roomName(runTime.getRoomName())
+														.movieName(movieName)
+														.startTime(runTime.getStartTime())
+														.endTime(runTime.getEndTime())
+														.totalSeat(room.getTotalSeat())
+														.reservedSeat(runTime.getReservedSeat())
+														.build();
+			
+			runTimeDetailList.add(runTimeDetail);
+		}
+		
+		return runTimeDetailList;
 		
 	}
-	
 	
 	
 }

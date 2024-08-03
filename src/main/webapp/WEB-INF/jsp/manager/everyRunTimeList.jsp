@@ -22,13 +22,13 @@
 				<c:forEach var="clList" items="${cineLinkList }" varStatus="status">
 					<div class="mb-5">
 						<h4 class="mb-4">${clList.roomName }관 - ${clList.movieName } </h4>
-						<c:forEach var="rtList" items="${runTimeList }">
+						<c:forEach var="rtList" items="${runTimeDetailList }">
 							<c:choose>
 								<c:when test="${not empty clList.roomName }">
 									<c:if test="${clList.roomName == rtList.roomName}">
 										<button type="button" class="btn ml-2" id="runTimeBtn">
-											${rtList.startTime } ~ <br>  
-											&nbsp;&nbsp; ${rtList.endTime }
+											${rtList.startTime } ~ <br>
+											${rtList.reservedSeat }/${rtList.totalSeat }
 										</button>
 									</c:if>
 								</c:when>
