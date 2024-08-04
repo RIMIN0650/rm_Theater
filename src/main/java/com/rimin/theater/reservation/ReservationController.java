@@ -12,6 +12,8 @@ import com.rimin.theater.room.service.RoomService;
 import com.rimin.theater.runTime.domain.RunTime;
 import com.rimin.theater.runTime.service.RunTimeService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ReservationController {
 	
@@ -28,7 +30,10 @@ public class ReservationController {
 		// 영화, 시간 확인용
 		@GetMapping("/reservation/detail")
 		private String runTimeDetail(@RequestParam("runTimeId") int runTimeId
+									, HttpSession session
 									, Model model) {
+			
+			int userId = (Integer)session.getAttribute("userId");
 			
 			RunTime runTime = runTimeService.findRunTimeById(runTimeId);
 			
@@ -38,6 +43,8 @@ public class ReservationController {
 			
 			Room room = roomService.findRoomByRoomName(roomName);
 			
+			model.addAttribute("runTimeId", runTimeId);
+			model.addAttribute("userId", userId);
 			model.addAttribute("room", room);
 			model.addAttribute("roomName", roomName);
 			model.addAttribute("movieName", movieName);

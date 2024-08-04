@@ -12,17 +12,20 @@
 <body>
 	
 	<div id="wrap">
-	
+		
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-			
+		
 		<c:import url="/WEB-INF/jsp/include/mainMenu.jsp" />
 			
 		<section>
+			<div id="userId" class="d-none">${userId }</div>
+			<div id="runTimeId" class="d-none">${runTimeId }</div>
+			
 			<div class="d-flex">
 				<div id="movieDetailForm" class="pt-3 pl-3">
-					<h2> ${movieName }</h2>
+					<h2>${movieName }</h2>
 					<h4>${runTimeDetail.startTime } ~ ${runTimeDetail.endTime }</h4>
-					<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - reservedSeat }</h5>
+					<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat }</h5>
 				</div>
 				<div id="inputClientNumberForm">
 					<div class="d-flex align-items-between mt-3">
@@ -154,11 +157,31 @@
 			});
 			
 			$("#submitBookInfoBtn").on("click",function(){
+				let userId = $("#userId").text();
+				let runTimeId = $("#runTimeId").text();
+				
 				let adultCount = $("#countAdult").val();
 				let juniorCount = $("#countJunior").val();
 				let seniorCount = $("#countSenior").val();
 				let disabledCount = $("#countDisabled").val();
 				
+				$.ajax({
+					type:"post"
+					, url:"/reservation/add"
+					, data:{"userId":userId, "runTimeId":runTimeId, "countAdult":adultCount
+						, "countJunior":juniorCount, "countSenior":seniorCount, "countDisabled":disabledCount}
+					, success:function(data){
+						if(data.result == "success"){
+							alert("예약 성공");
+							location.href="/main/home";
+						} else {
+							alert("예약 실패");
+						}
+					}
+					, error:function(){
+						alert("예약 에러");
+					}
+				});
 			});
 			
 		});

@@ -30,9 +30,6 @@ public class RunTimeController {
 	@Autowired
 	private CineLinkService cineLinkService;
 	
-	@Autowired
-	private RoomService roomService;
-	
 	// 모든 상영시간 보여주기
 	@GetMapping("/runTime/showList")
 	public String showRunTimeList(Model model) {

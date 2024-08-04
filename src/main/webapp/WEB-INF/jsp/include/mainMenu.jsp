@@ -19,7 +19,7 @@
 						<li class="nav-item mt-2"><a href="#" class="text-dark">공지 관리</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="nav-item mt-2"><a href="/movie/reservation" class="text-dark">예매</a></li>
+						<li class="nav-item mt-2"><a href="/runTime/showList" class="text-dark">예매</a></li>
 						<li class="nav-item mt-2"><a href="#" class="text-dark">영화</a></li>
 						<li class="nav-item mt-2"><a href="#" class="text-dark">스토어</a></li>
 					</c:otherwise>

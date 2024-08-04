@@ -29,11 +29,11 @@ public class Reservation {
 	@Column(name="userId")
 	private int userId;
 	
+	@Column(name="runTimeId")
+	private int runTimeId;
+	
 	@Column(name="countAdult")
 	private int countAdult;
-	
-	@Column(name="countTeen")
-	private int countTeen;
 	
 	@Column(name="countJunior")
 	private int countJunior;
@@ -43,9 +43,6 @@ public class Reservation {
 	
 	@Column(name="countDisabled")
 	private int countDisabled;
-	
-	@Column(name="runTimeId")
-	private int runTimeId;
 	
 	@UpdateTimestamp
 	@Column(name="createdAt", updatable=false)
