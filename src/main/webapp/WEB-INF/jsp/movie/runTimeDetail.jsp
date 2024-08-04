@@ -20,7 +20,7 @@
 		<section>
 			<div id="userId" class="d-none">${userId }</div>
 			<div id="runTimeId" class="d-none">${runTimeId }</div>
-			<div id="remainSeatCount" class="d-none">${room.totalSeat - runTimeDetailreservedSeat }</div>
+			<div id="remainSeatCount" class="d-none">${room.totalSeat - runTimeDetail.reservedSeat }</div>
 			
 			<div class="d-flex">
 				<div id="movieDetailForm" class="pt-3 pl-3">
@@ -160,7 +160,9 @@
 			$("#submitBookInfoBtn").on("click",function(){
 				let userId = $("#userId").text();
 				let runTimeId = $("#runTimeId").text();
-				let remainSeatCount = $("#remainSeatCount").text();
+				let remainSeatCount = parseInt($("#remainSeatCount").text());
+				
+				alert(remainSeatCount);
 				
 				let adultCount = parseInt($("#countAdult").val());
 				let juniorCount = parseInt($("#countJunior").val());
@@ -179,7 +181,7 @@
 					return ;
 				}
 				
-				if(remainSeatCount<totalCount){
+				if(remainSeatCount < totalCount){
 					alert("예매 가능 인원을 확인해주세요");
 					return ;
 				}
