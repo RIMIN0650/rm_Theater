@@ -19,7 +19,7 @@
 			
 		<section>
 			<div class="d-flex">
-				<div id="movieDetailForm" class="bg-success pt-5 pl-3">
+				<div id="movieDetailForm" class="pt-3 pl-3">
 					<h2> ${movieName }</h2>
 					<h4>${runTimeDetail.startTime } ~ ${runTimeDetail.endTime }</h4>
 					<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - reservedSeat }</h5>
@@ -154,7 +154,11 @@
 			});
 			
 			$("#submitBookInfoBtn").on("click",function(){
-				alert("1");
+				let adultCount = $("#countAdult").val();
+				let juniorCount = $("#countJunior").val();
+				let seniorCount = $("#countSenior").val();
+				let disabledCount = $("#countDisabled").val();
+				
 			});
 			
 		});
