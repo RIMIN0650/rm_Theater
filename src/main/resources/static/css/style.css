@@ -279,8 +279,41 @@ input[type="number"]::-webkit-inner-spin-button {
 	background-color: #ffebde;
 }
 
-#runTimeBtn{
+.runTimeBtn{
 	border-color:black;
 	width:100px;
 	background-color: #F5F5F5;
+}
+
+#movieDetailForm{
+	width: 500px;
+	height: 300px;
+}
+
+#inputClientNumberForm{
+	width: 1200px;
+	height: 300px;
+	background-color: #ffebde;
+	/* 글씨 하단 배치 위함*/
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.subCntBtn{
+	width: 38px;
+	height: 38px;
+}
+
+.addCntBtn{
+	width: 38px;
+	height: 38px;
+}
+
+#ageInfoForm{
+	background-color: #fd9cff;
+}
+
+#submitBookInfoBtn{
+	background-color: #de3f46;
 }

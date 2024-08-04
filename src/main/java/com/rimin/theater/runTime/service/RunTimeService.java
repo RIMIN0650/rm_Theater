@@ -2,6 +2,7 @@ package com.rimin.theater.runTime.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -137,6 +138,7 @@ public class RunTimeService {
 			String movieName = cineLink.getMovieName();
 			
 			RunTimeDetail runTimeDetail = RunTimeDetail.builder()
+														.runTimeId(runTime.getId())
 														.roomName(runTime.getRoomName())
 														.movieName(movieName)
 														.startTime(runTime.getStartTime())
@@ -150,6 +152,15 @@ public class RunTimeService {
 		
 		return runTimeDetailList;
 		
+	}
+	
+	
+	// runTime pk로 runTime 정보 찾기
+	public RunTime findRunTimeById(int id) {
+		Optional<RunTime> optionalRunTime = runTimeRepository.findById(id);
+		RunTime runTime = optionalRunTime.orElse(null);
+		
+		return runTime;
 	}
 	
 	

@@ -128,6 +128,12 @@ public class RoomService {
 		}
 	}
 	
+	// 관 이름으로 관 찾기
+	public Room findRoomByRoomName(String roomName) {
+		Room room = roomRepository.findByRoomName(roomName);
+		return room;
+	}
+	
 	// 관 정보 수정
 	public Room updateRoom(int id, String roomName, int totalSeat, int seatPrice) {
 		

@@ -12,6 +12,8 @@ import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.service.CineLinkService;
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.service.MovieService;
+import com.rimin.theater.room.domain.Room;
+import com.rimin.theater.room.service.RoomService;
 import com.rimin.theater.runTime.domain.RunTime;
 import com.rimin.theater.runTime.dto.RunTimeDetail;
 import com.rimin.theater.runTime.service.RunTimeService;
@@ -27,6 +29,9 @@ public class RunTimeController {
 	
 	@Autowired
 	private CineLinkService cineLinkService;
+	
+	@Autowired
+	private RoomService roomService;
 	
 	// 모든 상영시간 보여주기
 	@GetMapping("/runTime/showList")
@@ -77,4 +82,6 @@ public class RunTimeController {
 		
 		return "manager/runTimeList";
 	}
+	
+	
 }
