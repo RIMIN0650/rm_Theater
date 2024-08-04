@@ -27,8 +27,8 @@
 								<c:when test="${not empty clList.roomName }">
 									<c:if test="${clList.roomName == rtList.roomName}">
 										<button type="button" class="btn ml-2 runTimeBtn" data-runtime-id="${rtList.runTimeId }">
-											${rtList.startTime } ~ <br>
-											${rtList.reservedSeat }/${rtList.totalSeat }
+											<div>${rtList.startTime } ~</div>
+											<div class="small-text">${rtList.totalSeat - rtList.reservedSeat }/${rtList.totalSeat }</div>
 										</button>
 									</c:if>
 								</c:when>

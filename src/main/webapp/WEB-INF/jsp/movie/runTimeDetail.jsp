@@ -20,12 +20,13 @@
 		<section>
 			<div id="userId" class="d-none">${userId }</div>
 			<div id="runTimeId" class="d-none">${runTimeId }</div>
+			<div id="remainSeatCount" class="d-none">${room.totalSeat - runTimeDetailreservedSeat }</div>
 			
 			<div class="d-flex">
 				<div id="movieDetailForm" class="pt-3 pl-3">
 					<h2>${movieName }</h2>
 					<h4>${runTimeDetail.startTime } ~ ${runTimeDetail.endTime }</h4>
-					<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat }</h5>
+					<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat } / ${room.totalSeat }</h5>
 				</div>
 				<div id="inputClientNumberForm">
 					<div class="d-flex align-items-between mt-3">
@@ -159,11 +160,29 @@
 			$("#submitBookInfoBtn").on("click",function(){
 				let userId = $("#userId").text();
 				let runTimeId = $("#runTimeId").text();
+				let remainSeatCount = $("#remainSeatCount").text();
 				
-				let adultCount = $("#countAdult").val();
-				let juniorCount = $("#countJunior").val();
-				let seniorCount = $("#countSenior").val();
-				let disabledCount = $("#countDisabled").val();
+				let adultCount = parseInt($("#countAdult").val());
+				let juniorCount = parseInt($("#countJunior").val());
+				let seniorCount = parseInt($("#countSenior").val());
+				let disabledCount = parseInt($("#countDisabled").val());
+				
+				let totalCount = adultCount + juniorCount + seniorCount + disabledCount;
+				
+				if(totalCount < 1){
+					alert("0명은 예매할 수 없습니다.");
+					return ;
+				}
+				
+				if(totalCount > 8){
+					alert("최대 예약 가능 인원은 8명 입니다");
+					return ;
+				}
+				
+				if(remainSeatCount<totalCount){
+					alert("예매 가능 인원을 확인해주세요");
+					return ;
+				}
 				
 				$.ajax({
 					type:"post"
