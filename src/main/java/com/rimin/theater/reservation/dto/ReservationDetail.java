@@ -1,4 +1,4 @@
-package com.rimin.theater.user;
+package com.rimin.theater.reservation.dto;
 
 import lombok.Builder;
 import lombok.Getter;

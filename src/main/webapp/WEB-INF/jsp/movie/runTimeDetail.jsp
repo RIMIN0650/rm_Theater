@@ -162,8 +162,6 @@
 				let runTimeId = $("#runTimeId").text();
 				let remainSeatCount = parseInt($("#remainSeatCount").text());
 				
-				alert(remainSeatCount);
-				
 				let adultCount = parseInt($("#countAdult").val());
 				let juniorCount = parseInt($("#countJunior").val());
 				let seniorCount = parseInt($("#countSenior").val());
@@ -193,7 +191,7 @@
 						, "countJunior":juniorCount, "countSenior":seniorCount, "countDisabled":disabledCount}
 					, success:function(data){
 						if(data.result == "success"){
-							alert("예약 성공");
+							alert("예약 성공! 메인 페이지로 이동합니다.");
 							location.href="/main/home";
 						} else {
 							alert("예약 실패");

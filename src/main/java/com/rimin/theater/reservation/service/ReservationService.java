@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.repository.CineLinkRepository;
 import com.rimin.theater.reservation.domain.Reservation;
+import com.rimin.theater.reservation.dto.ReservationDetail;
 import com.rimin.theater.reservation.repository.ReservationRepository;
 import com.rimin.theater.runTime.domain.RunTime;
 import com.rimin.theater.runTime.repository.RunTimeRepository;
-import com.rimin.theater.user.ReservationDetail;
 
 @Service
 public class ReservationService {
@@ -95,4 +95,38 @@ public class ReservationService {
 		return reservationDetailList;
 		
 	}
+	
+	// 예매 내역 제거하기
+	public Reservation deleteReservation(int id) {
+		Optional<Reservation> optionalReservation = reservationRepository.findById(id);
+		Reservation reservation = optionalReservation.orElse(null);
+		
+		// 예약된 총 좌석 수 구하기
+		int totalReservedCount = reservation.getCountAdult()
+							+ reservation.getCountJunior()
+							+ reservation.getCountSenior()
+							+ reservation.getCountDisabled();
+
+		// 빠졌던 좌석 수를 채우기 runTime 조회
+		Optional<RunTime> optionalRunTime = runTimeRepository.findById(reservation.getRunTimeId());
+		RunTime runTime = optionalRunTime.orElse(null);
+		
+		// 예약된 좌석 수 = 예약된 좌석 수 - 사용자가 예약했던 좌석 수
+		if(runTime != null) {
+			runTime = runTime.toBuilder()
+								.reservedSeat(runTime.getReservedSeat()-totalReservedCount)
+								.build();
+			
+			runTime = runTimeRepository.save(runTime);
+		}
+		
+		if(reservation != null) {
+			reservationRepository.delete(reservation);
+		}
+		
+		return reservation;
+	}
+	
+	
+	
 }

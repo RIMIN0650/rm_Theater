@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.rimin.theater.reservation.dto.ReservationDetail;
 import com.rimin.theater.reservation.service.ReservationService;
 import com.rimin.theater.user.domain.User;
 import com.rimin.theater.user.service.UserService;

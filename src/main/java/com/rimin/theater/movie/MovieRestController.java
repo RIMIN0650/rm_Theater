@@ -52,7 +52,7 @@ public class MovieRestController {
 	
 	// 영화 삭제
 	@DeleteMapping("/movie/delete")
-	public Map<String, String> deletePost(@RequestParam("id") int id){
+	public Map<String, String> deleteMovie(@RequestParam("id") int id){
 		
 		Movie movie = movieService.deleteMovie(id);
 		
@@ -70,7 +70,7 @@ public class MovieRestController {
 	
 	// 영화 상세정보 수정 api
 	@PutMapping("/movie/update")
-	public Map<String, String> updateMemo(@RequestParam("id") int id
+	public Map<String, String> updateMovie(@RequestParam("id") int id
 											, @RequestParam("title") String title
 											, @RequestParam("mainGenre") String mainGenre
 											, @RequestParam("subGenre") String subGenre
