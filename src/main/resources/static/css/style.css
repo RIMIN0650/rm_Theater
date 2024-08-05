@@ -159,6 +159,11 @@ footer{
 
 
 /*메인 페이지*/
+.single-item{
+	width: 1600px;
+	margin: 0 auto;
+}
+
 .movie-thumbnail{
 	height: 300px;
 }

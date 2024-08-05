@@ -52,7 +52,6 @@ public class MovieService {
 		return movieRepository.save(movie);
 	}
 	
-	
 	// 등록된 영화 전체 목록 가져오기
 	// 메인 페이지에 보여주기 위함
 	public List<MovieDetail> getMovieDetail(){

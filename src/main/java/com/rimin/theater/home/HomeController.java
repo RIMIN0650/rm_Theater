@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.dto.MovieDetail;
 import com.rimin.theater.movie.service.MovieService;
 

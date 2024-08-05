@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>RM Theater</title>
+
+<link rel="stylesheet" href="/static/css/slick.css" type="text/css">
+<link rel="stylesheet" href="/static/css/slick-theme.css" type="text/css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
@@ -19,7 +23,18 @@
 		
 		<section>
 			<div class="movie-thumbnail bg-light d-flex justify-content-center align-items-center mt-3">
-				<h3>slick 사용해서 영화 포스터 회전시킬 공간</h3>
+				<div class="single-item">
+					<c:forEach var="movie" items="${movieList }" varStatus="status">
+						<div class="d-flex">
+							<img src="${movie.imagePath }" height="300">
+							<div class="ml-4 mt-3">
+								<h1>${movie.title }</h1>
+								<h4>${movie.age }</h4>
+								<h5 class="mt-3">${movie.detail }</h5>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			
 			<div class="movie-subInfo d-flex justify-content-between align-items-center mx-2">
@@ -148,6 +163,24 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
+	<script type="text/javascript" src="/static/js/slick.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+		});
+	</script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$(".single-item").slick({
+				autoplay: true,
+				autoplaySpeed: 3000,
+			});
+			
+		});
+	
+	</script>
+	
 </body>
 </html>
