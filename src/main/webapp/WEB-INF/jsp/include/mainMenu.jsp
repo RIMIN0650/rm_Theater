@@ -40,17 +40,17 @@
 						<li class="nav-item mt-2"><a href="/user/join" class="text-dark">회원가입</a></li>
 						<li class="nav-item mt-2"><a href="#" class="text-dark">비회원 예매</a></li>
 					</c:when>
-					<c:when test="${userName eq null }">
+					<c:when test="${managerName ne null }">
 						<div id="loginStatus" class="mt-3 right">
 							<div>${managerName }님&nbsp;&nbsp;<a href="/admin/logout">로그아웃</a></div>
 						</div>
 						<li class="nav-item mt-2"><a href="#" class="text-dark">내정보</a></li>
 					</c:when>
-					<c:when test="${managerName eq null }">
+					<c:when test="${userName ne null }">
 						<div id="loginStatus" class="mt-3 right">
 							<div>${userName }님&nbsp;&nbsp;<a href="/user/logout">로그아웃</a></div>
 						</div>
-						<li class="nav-item mt-2"><a href="#" class="text-dark">내정보</a></li>
+						<li class="nav-item mt-2"><a href="/user/getReservList" class="text-dark">내정보</a></li>
 					</c:when>
 					<c:otherwise>
 						<div id="loginStatus" class="mt-3 right">

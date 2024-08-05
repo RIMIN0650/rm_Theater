@@ -1,5 +1,7 @@
 package com.rimin.theater.user.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -125,7 +127,11 @@ public class UserService {
 		
 	}
 	
-	
+	public User findById(int id) {
+		Optional<User> optionalUser = userRepository.findById(id);
+		User user = optionalUser.orElse(null);
+		return user;
+	}
 	
 	
 	
