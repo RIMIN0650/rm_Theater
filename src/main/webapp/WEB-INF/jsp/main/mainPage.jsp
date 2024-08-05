@@ -25,6 +25,7 @@
 			<div class="movie-thumbnail bg-light d-flex justify-content-center align-items-center mt-3">
 				<div class="single-item">
 					<c:forEach var="movie" items="${movieList }" varStatus="status">
+						<a href="/movie/detail?id=${movie.id }" class="movie-link">
 						<div class="d-flex">
 							<img src="${movie.imagePath }" height="300">
 							<div class="ml-4 mt-3">
@@ -33,6 +34,7 @@
 								<h5 class="mt-3">${movie.detail }</h5>
 							</div>
 						</div>
+						</a>
 					</c:forEach>
 				</div>
 			</div>
