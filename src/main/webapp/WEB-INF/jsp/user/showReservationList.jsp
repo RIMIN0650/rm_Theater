@@ -33,23 +33,25 @@
 						<th>청소년</th>
 						<th>경로</th>
 						<th>장애인</th>
-						<th>취소</th>
+						<th>합계</th>
+						<th>예매 취소</th>
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="list" items="${reservationDetailList }" varStatus="status">
-					<tr class="text-center">
-						<td>${status.count }</td>
-						<td>${list.movieTitle }</td>
-						<td>${list.roomName }</td>
-						<td>${list.startTime }</td>
-						<td>${list.countAdult }</td>
-						<td>${list.countJunior }</td>
-						<td>${list.countSenior }</td>
-						<td>${list.countDisabled }</td>
-						<td><button type="button" class="btn btn-danger deleteBtn">삭제</button></td>
-					</tr>
-				</c:forEach>
+					<c:forEach var="list" items="${reservationDetailList }" varStatus="status">
+						<tr class="text-center">
+							<td>${status.count }</td>
+							<td>${list.movieTitle }</td>
+							<td>${list.roomName }</td>
+							<td>${list.startTime }</td>
+							<td>${list.countAdult }</td>
+							<td>${list.countJunior }</td>
+							<td>${list.countSenior }</td>
+							<td>${list.countDisabled }</td>
+							<td>${list.totalPrice }</td>
+							<td><button type="button" class="btn btn-danger deleteBtn">취소</button></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			</div>

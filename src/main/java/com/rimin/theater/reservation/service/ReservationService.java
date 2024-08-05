@@ -58,7 +58,7 @@ public class ReservationService {
 		
 	}
 	
-	
+	// 사용자별 과거 예매 목록 불러오기
 	public List<ReservationDetail> findByUserId(int userId) {
 		
 		List<Reservation> reservationList = reservationRepository.findAllByUserId(userId);
@@ -72,6 +72,11 @@ public class ReservationService {
 			
 			CineLink cineLink = cineLinkRepository.findByRoomName(runTime.getRoomName());
 			
+			int totalPrice = (reservation.getCountAdult() * 12000)
+								+ (reservation.getCountJunior() * 8000)
+								+ (reservation.getCountSenior() * 5000)
+								+ (reservation.getCountDisabled() * 3000);
+			
 			ReservationDetail reservationDetail = ReservationDetail.builder()
 																	.reservationId(reservation.getId())
 																	.movieTitle(cineLink.getMovieName())
@@ -81,6 +86,7 @@ public class ReservationService {
 																	.countJunior(reservation.getCountJunior())
 																	.countSenior(reservation.getCountSenior())
 																	.countDisabled(reservation.getCountDisabled())
+																	.totalPrice(totalPrice)
 																	.build();
 																	
 			reservationDetailList.add(reservationDetail);
