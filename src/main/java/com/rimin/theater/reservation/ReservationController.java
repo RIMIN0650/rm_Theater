@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rimin.theater.cinelink.service.CineLinkService;
+import com.rimin.theater.movie.domain.Movie;
+import com.rimin.theater.movie.service.MovieService;
 import com.rimin.theater.room.domain.Room;
 import com.rimin.theater.room.service.RoomService;
 import com.rimin.theater.runTime.domain.RunTime;
@@ -26,6 +28,9 @@ public class ReservationController {
 	@Autowired
 	private RoomService roomService;
 	
+	@Autowired
+	private MovieService movieService;
+	
 	// 예약 상세정보 창 보여주기
 		// 영화, 시간 확인용
 		@GetMapping("/reservation/detail")
@@ -43,11 +48,13 @@ public class ReservationController {
 			
 			Room room = roomService.findRoomByRoomName(roomName);
 			
+			Movie movie = movieService.findMovie(movieName);
+			
+			model.addAttribute("movie", movie);
 			model.addAttribute("runTimeId", runTimeId);
 			model.addAttribute("userId", userId);
 			model.addAttribute("room", room);
 			model.addAttribute("roomName", roomName);
-			model.addAttribute("movieName", movieName);
 			model.addAttribute("runTimeDetail", runTime);
 			
 			return "movie/runTimeDetail";

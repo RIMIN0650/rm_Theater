@@ -24,9 +24,14 @@
 			
 			<div class="d-flex">
 				<div id="movieDetailForm" class="pt-3 pl-3">
-					<h2>${movieName }</h2>
-					<h4>${runTimeDetail.startTime } ~ ${runTimeDetail.endTime }</h4>
-					<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat } / ${room.totalSeat }</h5>
+					<div class="d-flex">
+						<img src="${movie.imagePath }" width="150">
+						<div class="ml-3">
+							<h2>${movie.title }</h2>
+							<h4>${runTimeDetail.startTime } ~ ${runTimeDetail.endTime }</h4>
+							<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat } / ${room.totalSeat }</h5>
+						</div>
+					</div>
 				</div>
 				<div id="inputClientNumberForm">
 					<div class="d-flex align-items-between mt-3">
