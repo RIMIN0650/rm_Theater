@@ -15,7 +15,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				//정적 자원의 핸들러를 추가하기 위해 오버라이드
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/images/**")
-		.addResourceLocations("file:///" + FileManager.FILE_UPLOAD_PATH + "/");
+		// 기존 .addResourceLocations("file:///" + FileManager.FILE_UPLOAD_PATH + "/");
+		.addResourceLocations("file://" + FileManager.FILE_UPLOAD_PATH + "/");
 	}
 	// 웹 어플리케이션에서 업로드된 이미지 파일을 URL을 통해 접근할 수 있도록 함
 }

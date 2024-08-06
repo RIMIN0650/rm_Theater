@@ -2,8 +2,10 @@ package com.rimin.theater;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 @SpringBootApplication
-public class RmTheaterApplication {
+public class RmTheaterApplication extends SpringBootServletInitializer
+ {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RmTheaterApplication.class, args);
