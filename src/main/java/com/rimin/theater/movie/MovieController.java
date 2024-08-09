@@ -14,6 +14,8 @@ import com.rimin.theater.cinelink.service.CineLinkService;
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.dto.MovieDetail;
 import com.rimin.theater.movie.service.MovieService;
+import com.rimin.theater.reservation.domain.Reservation;
+import com.rimin.theater.reservation.service.ReservationService;
 import com.rimin.theater.runTime.domain.RunTime;
 import com.rimin.theater.runTime.service.RunTimeService;
 
@@ -28,6 +30,9 @@ public class MovieController {
 	
 	@Autowired
 	private RunTimeService runTimeService;
+	
+	@Autowired
+	private ReservationService reservationService;
 	
 	@GetMapping("/movie/addMovie")
 	public String addMovie() {
@@ -75,13 +80,21 @@ public class MovieController {
 			
 			// 해당 영화 상영 시간 ID 리스트에 넣기
 			for(RunTime runTime : runTimeList) {
-				RunTimeIdList.add(runTime.getId());
+				Reservation reservation = reservationService.findById(runTime.getId());
+				
+				countAdult += reservation.getCountAdult();
+				countJunior += reservation.getCountJunior();
+				countSenior += reservation.getCountSenior();
+				countDisabled += reservation.getCountSenior();
+				
 			}
-			
-			
 			
 		}
 		
+		model.addAttribute("countAdult", countAdult);
+		model.addAttribute("countJunior", countJunior);
+		model.addAttribute("countSenior", countSenior);
+		model.addAttribute("countDisabled", countDisabled);
 		
 		
 		// runTime id 중 movie.title == runtimeId > roomName > movieName 일치하는 것 조회
@@ -89,7 +102,7 @@ public class MovieController {
 		// 분자로는 특정
 		
 		
-		model.addAttribute("movieInfo",movie);
+		model.addAttribute("movieInfo", movie);
 		
 		return "movie/movieDetail";
 	}

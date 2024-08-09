@@ -41,7 +41,10 @@
 			<div class="ml-5 mt-5">
 				<h3>남성 / 여성</h3>
 				<h3>나이</h3>
-				
+				<h6>${countAdult }</h6>
+				<h6>${countJunior }</h6>
+				<h6>${countSenior }</h6>
+				<h6>${countDisabled }</h6>
 			</div>
 			
 		</section>

@@ -128,5 +128,12 @@ public class ReservationService {
 	}
 	
 	
+	// id로 연령 별 조회 위해
+	public Reservation findById(int id) {
+		Optional<Reservation> optionalReservation = reservationRepository.findById(id);
+		Reservation reservation = optionalReservation.orElse(null);
+		
+		return reservation;
+	}
 	
 }
