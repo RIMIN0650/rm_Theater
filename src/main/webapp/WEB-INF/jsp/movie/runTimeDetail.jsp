@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,37 @@
 						<img src="${movie.imagePath }" width="150">
 						<div class="ml-3">
 							<h2>${movie.title }</h2>
-							<h4>${runTimeDetail.startTime } ~ ${runTimeDetail.endTime }</h4>
+							<h4>
+								<fmt:formatNumber maxFractionDigits="0"
+									value="${runTimeDetail.startTime / 100 }">
+								</fmt:formatNumber>
+								
+								<c:if test="${runTimeDetail.startTime % 100 % 100 eq 0 }">
+								: 00  
+								</c:if>
+								<c:if test="${(runTimeDetail.startTime % 100 % 100) lt 10 && (runTimeDetail.startTime % 100 % 100) gt 0}">
+								: 0${runTimeDetail.startTime % 100 }  
+								</c:if>
+								<c:if test="${runTimeDetail.startTime % 100 % 100 gt 9}">
+								: ${runTimeDetail.startTime % 100 }
+								</c:if>
+								
+								~
+								<fmt:formatNumber type="number" maxFractionDigits="0"
+									value="${runTimeDetail.endTime / 100 }">
+								</fmt:formatNumber>
+															
+								<c:if test="${runTimeDetail.endTime % 100 % 100 eq 0 }">
+								: 00  
+								</c:if>
+								<c:if test="${(runTimeDetail.endTime % 100 % 100) lt 10 && (runTimeDetail.endTime % 100 % 100) gt 0}">
+								: 0${runTimeDetail.endTime % 100 }  
+								</c:if>
+								<c:if test="${runTimeDetail.endTime % 100 % 100 gt 9}">
+								: ${runTimeDetail.endTime % 100 }
+								</c:if>
+							</h4>	  
+							
 							<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat } / ${room.totalSeat }</h5>
 						</div>
 					</div>

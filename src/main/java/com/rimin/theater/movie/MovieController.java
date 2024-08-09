@@ -41,6 +41,14 @@ public class MovieController {
 		
 		Movie movie = movieService.getMovieInfo(id);
 		
+		// 성별은 어떻게 처리해야할지 고민중
+		
+		// 연령대 분포 계산
+		// runTime id 중 movie.title == runtimeId > roomName > movieName 일치하는 것 조회
+		// 전부 더해서 countAdult, countJunior, countSenior, countDisabled 더한 것 분모
+		// 분자로는 특정
+		
+		
 		model.addAttribute("movieInfo",movie);
 		
 		return "movie/movieDetail";

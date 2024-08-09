@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,21 @@
 								<c:when test="${not empty clList.roomName }">
 									<c:if test="${clList.roomName == rtList.roomName}">
 										<button type="button" class="btn ml-2 runTimeBtn" data-runtime-id="${rtList.runTimeId }">
-											<div>${rtList.startTime } ~</div>
+											<div>
+											<fmt:formatNumber type="number" maxFractionDigits="0"
+											value="${rtList.startTime / 100 }">
+											</fmt:formatNumber>
+											
+											<c:if test="${rtList.startTime % 100 eq 0 }">
+											: 00  
+											</c:if>
+											<c:if test="${(rtList.startTime % 100) lt 10 && (rtList.startTime % 100) gt 0}">
+											: 0${rtList.startTime % 100 }  
+											</c:if>
+											<c:if test="${rtList.startTime % 100 gt 9}">
+											: ${rtList.startTime % 100 }
+											</c:if>
+											</div>
 											<div class="small-text">${rtList.totalSeat - rtList.reservedSeat }/${rtList.totalSeat }</div>
 										</button>
 									</c:if>

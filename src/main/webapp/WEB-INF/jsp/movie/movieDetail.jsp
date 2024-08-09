@@ -38,6 +38,12 @@
 				</div>
 			</div>
 			
+			<div class="ml-5 mt-5">
+				<h3>남성 / 여성</h3>
+				<h3>나이</h3>
+				
+			</div>
+			
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
