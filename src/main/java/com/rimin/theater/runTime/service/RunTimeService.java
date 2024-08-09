@@ -127,8 +127,6 @@ public class RunTimeService {
 		
 		List<RunTimeDetail> runTimeDetailList = new ArrayList<>();
 		
-		
-		
 		for(RunTime runTime:runTimeList) {
 		
 			CineLink cineLink = cineLinkRepository.findByRoomName(runTime.getRoomName());
@@ -163,5 +161,14 @@ public class RunTimeService {
 		return runTime;
 	}
 	
+	
+	public List<RunTime> findAllByRoomName(String roomName){
+		
+		List<RunTime> runTimeList = new ArrayList<>();
+		
+		runTimeList.addAll(runTimeRepository.findAllByRoomName(roomName));
+	
+		return runTimeList;
+	}
 	
 }

@@ -60,7 +60,7 @@
 								</c:if>
 							</h4>	  
 							
-							<h5>${roomName }관 / 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat } / ${room.totalSeat }</h5>
+							<h5>${roomName }관 | 잔여 좌석 : ${room.totalSeat - runTimeDetail.reservedSeat } / ${room.totalSeat }</h5>
 						</div>
 					</div>
 				</div>

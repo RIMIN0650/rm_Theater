@@ -12,5 +12,5 @@ public interface RunTimeRepository extends JpaRepository<RunTime, Integer> {
 	public List<RunTime> findAllByRoomName(String roomName);
 	
 	public RunTime findByStartTime(int startTime);
-	
+
 }

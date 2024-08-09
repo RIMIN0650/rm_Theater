@@ -187,4 +187,7 @@ public class MovieService {
 		return movie;
 	}
 	
+	// 연령대별 비율 보여주기
+	
+	
 }

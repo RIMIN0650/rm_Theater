@@ -105,4 +105,16 @@ public class CineLinkService {
 		return cineLinkList;
 	}
 	
+	
+	// 영화로 연결된 관 찾기
+	public List<CineLink> findConnectedRoom(String movieName){
+		
+		List<CineLink> cineLinkList = cineLinkRepository.findAllByMovieName(movieName);
+		
+		for(CineLink cineLink : cineLinkList) {
+			cineLinkList.add(cineLink);
+		}
+		
+		return cineLinkList;
+	}
 }

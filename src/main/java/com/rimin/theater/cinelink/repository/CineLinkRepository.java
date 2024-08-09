@@ -1,5 +1,7 @@
 package com.rimin.theater.cinelink.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.rimin.theater.cinelink.domain.CineLink;
@@ -19,4 +21,6 @@ public interface CineLinkRepository extends JpaRepository <CineLink, Integer> {
 	public CineLink findByRoomName(String roomName);
 	
 	public CineLink findByMovieName(String movieName);
+	
+	public List<CineLink> findAllByMovieName(String MovieName);
 }
