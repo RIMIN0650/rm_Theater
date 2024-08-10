@@ -68,26 +68,30 @@ public class MovieController {
 		// 영화와 연결된 관 리스트 받아오기
 		List<CineLink> RoomList = cineLinkService.findConnectedRoom(movieTitle);
 		
-		List<Integer> RunTimeIdList = new ArrayList<>();
-		
 		// 관 리스트 돌면서
 		for(CineLink cineLink : RoomList) {
-			// 관 이름 저장
+			// 관 이름 불러오기
 			String roomName = cineLink.getRoomName();
 			
 			// 관에 있는 상영 시간 리스트 불러오기
 			List<RunTime> runTimeList = runTimeService.findAllByRoomName(roomName);
 			
+			
 			// 해당 영화 상영 시간 ID 리스트에 넣기
+			
 			for(RunTime runTime : runTimeList) {
-				Reservation reservation = reservationService.findById(runTime.getId());
+				
+				Reservation reservation = reservationService.findByRunTimeId(runTime.getId());
+				
+				if(reservation != null);
 				
 				countAdult += reservation.getCountAdult();
 				countJunior += reservation.getCountJunior();
 				countSenior += reservation.getCountSenior();
-				countDisabled += reservation.getCountSenior();
+				countDisabled += reservation.getCountDisabled();
 				
 			}
+		
 			
 		}
 		

@@ -10,5 +10,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	
 	List<Reservation> findAllByUserId(int UserId);
 	
-	
+	public Reservation findByRunTimeId(int id);
 }
