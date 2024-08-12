@@ -9,11 +9,15 @@ import org.springframework.stereotype.Service;
 
 import com.rimin.theater.cinelink.domain.CineLink;
 import com.rimin.theater.cinelink.repository.CineLinkRepository;
+import com.rimin.theater.movie.domain.Movie;
+import com.rimin.theater.movie.repository.MovieRepository;
 import com.rimin.theater.reservation.domain.Reservation;
 import com.rimin.theater.reservation.dto.ReservationDetail;
 import com.rimin.theater.reservation.repository.ReservationRepository;
 import com.rimin.theater.runTime.domain.RunTime;
 import com.rimin.theater.runTime.repository.RunTimeRepository;
+import com.rimin.theater.viewerAge.domain.ViewerAge;
+import com.rimin.theater.viewerAge.repository.ViewerAgeRepository;
 
 @Service
 public class ReservationService {
@@ -27,6 +31,13 @@ public class ReservationService {
 	@Autowired
 	private CineLinkRepository cineLinkRepository;
 	
+	@Autowired
+	private MovieRepository movieRepository;
+	
+	@Autowired
+	private ViewerAgeRepository viewerAgeRepository;
+	
+	// 예매하기
 	public Reservation addReservation(int userId, int runTimeId, int countAdult
 										, int countJunior, int countSenior, int countDisabled) {
 		
@@ -38,8 +49,6 @@ public class ReservationService {
 												.countSenior(countSenior)
 												.countDisabled(countDisabled)
 												.build();
-		
-		
 		
 		Optional<RunTime> optionalRunTime = runTimeRepository.findById(runTimeId);
 		RunTime runTime = optionalRunTime.orElse(null);
@@ -54,9 +63,32 @@ public class ReservationService {
 			runTime = runTimeRepository.save(runTime);
 		}
 		
-		return reservationRepository.save(reservation);
+		reservationRepository.save(reservation);
+		
+		// 영화 viewerAge 테이블에 나이 분류 별 관객 수 추가
+		CineLink cineLink = cineLinkRepository.findByRoomName(runTime.getRoomName());
+		
+		Movie movie = movieRepository.findByTitle(cineLink.getMovieName());
+		
+		ViewerAge viewerAge = viewerAgeRepository.findByMovieId(movie.getId());
+		
+		if(viewerAge != null) {
+			viewerAge = viewerAge.toBuilder()
+						.countAdult(viewerAge.getCountAdult() + countAdult)
+						.countJunior(viewerAge.getCountJunior() + countJunior)
+						.countSenior(viewerAge.getCountSenior() + countSenior)
+						.countDisabled(viewerAge.getCountDisabled() + countDisabled)
+						.build();
+			
+			viewerAgeRepository.save(viewerAge);
+		}
+		
+		return reservation;
 		
 	}
+	
+	
+	
 	
 	// 사용자별 과거 예매 목록 불러오기
 	public List<ReservationDetail> findByUserId(int userId) {
