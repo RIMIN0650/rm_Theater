@@ -1,6 +1,5 @@
 package com.rimin.theater.movie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +24,16 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
-	@Autowired
-	private CineLinkService cineLinkService;
+//	@Autowired
+//	private CineLinkService cineLinkService;
+//	
+//	@Autowired
+//	private RunTimeService runTimeService;
+//	
+//	@Autowired
+//	private ReservationService reservationService;
 	
-	@Autowired
-	private RunTimeService runTimeService;
-	
-	@Autowired
-	private ReservationService reservationService;
-	
+		
 	@GetMapping("/movie/addMovie")
 	public String addMovie() {
 		return "main/addMovie";
@@ -57,49 +57,64 @@ public class MovieController {
 		
 		Movie movie = movieService.getMovieInfo(id);
 		
-		// 성별은 어떻게 처리해야할지 고민중
-		
-		// 연령대 분포 계산
-		int countAdult = 0, countJunior = 0, countSenior = 0, countDisabled = 0;
-		
-		// 영화제목 받아서
-		String movieTitle = movie.getTitle();
-		
-		// 영화와 연결된 관 리스트 받아오기
-		List<CineLink> RoomList = cineLinkService.findConnectedRoom(movieTitle);
-		
-		// 관 리스트 돌면서
-		for(CineLink cineLink : RoomList) {
-			// 관 이름 불러오기
-			String roomName = cineLink.getRoomName();
-			
-			// 관에 있는 상영 시간 리스트 불러오기
-			List<RunTime> runTimeList = runTimeService.findAllByRoomName(roomName);
-			
-			
-			// 해당 영화 상영 시간 ID 리스트에 넣기
-			
-			for(RunTime runTime : runTimeList) {
-				
-				Reservation reservation = reservationService.findByRunTimeId(runTime.getId());
-				
-				if(reservation != null);
-				
-				countAdult += reservation.getCountAdult();
-				countJunior += reservation.getCountJunior();
-				countSenior += reservation.getCountSenior();
-				countDisabled += reservation.getCountDisabled();
-				
-			}
-		
-			
-		}
-		
-		model.addAttribute("countAdult", countAdult);
-		model.addAttribute("countJunior", countJunior);
-		model.addAttribute("countSenior", countSenior);
-		model.addAttribute("countDisabled", countDisabled);
-		
+//		// 성별은 어떻게 처리해야할지 고민중
+//		
+//		// 연령대 분포 계산
+//		int countAdult = 0, countJunior = 0, countSenior = 0, countDisabled = 0;
+//		
+//		// 영화제목 받아서
+//		String movieTitle = movie.getTitle();
+//		
+//		// 영화와 연결된 관 리스트 받아오기
+//		List<CineLink> cineLinkList = cineLinkService.findConnectedRoom(movieTitle);
+//		
+//		
+//		if(cineLinkList == null || cineLinkList.isEmpty()) {
+//			model.addAttribute("movieInfo", movie);
+//			return "movie/movieDetail";
+//		}
+//		
+//		
+//		
+//		// 관 리스트 돌면서
+//		for(CineLink cineLink : cineLinkList) {
+//			// 관 이름 불러오기
+//			String roomName = cineLink.getRoomName();
+//			if(roomName == null) {
+//				continue;
+//			}
+//			
+//			// 관에 있는 상영 시간 리스트 불러오기
+//			List<RunTime> runTimeList = runTimeService.findAllByRoomName(roomName);
+//			
+//			if(runTimeList == null || runTimeList.isEmpty()) {
+//				continue;
+//			}
+//			
+//			
+//			// 해당 영화 상영 시간 ID 리스트에 넣기
+//			
+//			for(RunTime runTime : runTimeList) {
+//				
+//				Reservation reservation = reservationService.findByRunTimeId(runTime.getId());
+//				
+//				if(reservation != null) {
+//				
+//				countAdult += reservation.getCountAdult();
+//				countJunior += reservation.getCountJunior();
+//				countSenior += reservation.getCountSenior();
+//				countDisabled += reservation.getCountDisabled();
+//				}
+//			}
+//			
+//			
+//		}
+//		
+//		model.addAttribute("countAdult", countAdult);
+//		model.addAttribute("countJunior", countJunior);
+//		model.addAttribute("countSenior", countSenior);
+//		model.addAttribute("countDisabled", countDisabled);
+//		
 		
 		// runTime id 중 movie.title == runtimeId > roomName > movieName 일치하는 것 조회
 		// 전부 더해서 countAdult, countJunior, countSenior, countDisabled 더한 것 분모

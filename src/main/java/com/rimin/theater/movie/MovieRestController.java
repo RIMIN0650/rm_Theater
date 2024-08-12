@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.rimin.theater.movie.domain.Movie;
 import com.rimin.theater.movie.service.MovieService;
+import com.rimin.theater.viewerAge.domain.ViewerAge;
+import com.rimin.theater.viewerAge.service.ViewerAgeService;
 
 @RestController
 public class MovieRestController {

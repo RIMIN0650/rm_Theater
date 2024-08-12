@@ -16,6 +16,8 @@ import com.rimin.theater.movie.dto.MovieDetail;
 import com.rimin.theater.movie.repository.MovieRepository;
 import com.rimin.theater.runTime.domain.RunTime;
 import com.rimin.theater.runTime.repository.RunTimeRepository;
+import com.rimin.theater.viewerAge.domain.ViewerAge;
+import com.rimin.theater.viewerAge.repository.ViewerAgeRepository;
 
 @Service
 public class MovieService {
@@ -27,6 +29,9 @@ public class MovieService {
 	
 	@Autowired
 	private RunTimeRepository runTimeRepository;
+	
+	@Autowired
+	private ViewerAgeRepository viewerAgeRepository;
 	
 	// 영화 신규 등록
 	public Movie addNewMovie(String title, String mainGenre 
@@ -49,7 +54,20 @@ public class MovieService {
 							.imagePath(filePath)
 							.build();
 		
-		return movieRepository.save(movie);
+		movieRepository.save(movie);
+		
+		
+		ViewerAge viewerAge = ViewerAge.builder()
+				.movieId(movie.getId())
+				.countAdult(0)
+				.countJunior(0)
+				.countSenior(0)
+				.countDisabled(0)
+				.build();
+		
+		viewerAgeRepository.save(viewerAge);
+
+		return movie;
 	}
 	
 	// 등록된 영화 전체 목록 가져오기
